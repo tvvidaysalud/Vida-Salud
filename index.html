@@ -3,401 +3,157 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vida & Salud — Artículos y Resúmenes</title>
+<title>Vida & Salud TV — Repositorio de Resúmenes</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono&display=swap" rel="stylesheet">
 <style>
   :root {
-    --teal:       #1d6b6b;
-    --teal-light: #2a8f8f;
-    --teal-pale:  #e1f5ee;
-    --sand:       #f5efe6;
-    --sand-dark:  #e8ddd0;
-    --terracota:  #c05a3a;
-    --terracota-light: #e07858;
-    --ink:        #1a1a1a;
-    --muted:      #6b6b6b;
-    --white:      #fdfaf6;
+    --teal: #1d6b6b;
+    --terracota: #c05a3a;
+    --sand: #f5efe6;
+    --white: #fdfaf6;
+    --ink: #1a1a1a;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     background: var(--sand);
     font-family: 'Poppins', sans-serif;
     color: var(--ink);
-    font-size: 18px;
-    line-height: 1.65;
   }
 
-  /* HEADER & TABS */
-  header {
+  /* NAVEGACIÓN */
+  nav {
     background: var(--teal);
-    padding: 30px 20px;
-    text-align: center;
-    border-bottom: 6px solid var(--terracota);
+    padding: 20px;
+    display: flex; justify-content: space-between; align-items: center;
+    position: sticky; top: 0; z-index: 100;
+    border-bottom: 4px solid var(--terracota);
   }
-  .brand-logo {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 28px; font-weight: 900; color: #fff;
-    text-transform: uppercase; letter-spacing: 2px;
-  }
-  .tabs-container {
-    background: var(--white);
-    padding: 15px 20px;
-    display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-  }
-  .tab-btn {
-    font-family: 'DM Mono', monospace;
-    font-size: 14px; text-transform: uppercase; font-weight: 600;
-    background: transparent; color: var(--muted);
-    border: 2px solid var(--sand-dark); padding: 10px 20px;
-    border-radius: 30px; cursor: pointer; transition: all 0.3s;
-  }
-  .tab-btn.active, .tab-btn:hover {
-    background: var(--teal); color: #fff; border-color: var(--teal);
+  .nav-logo { font-family: 'Montserrat', sans-serif; color: white; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; }
+  .nav-links button {
+    background: transparent; border: 1px solid rgba(255,255,255,0.3);
+    color: white; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-family: 'DM Mono';
   }
 
-  /* ARTICLE WRAPPER */
-  .article-content {
-    display: none;
-    animation: fadeIn 0.4s ease-in-out;
-  }
-  .article-content.active {
-    display: block;
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+  /* SECCIONES */
+  .view { display: none; padding: 40px 20px; max-width: 1100px; margin: 0 auto; min-height: 80vh; }
+  .view.active { display: block; animation: fadeIn 0.4s; }
 
-  /* COMMON COMPONENTS */
-  .cover {
-    background: var(--teal);
-    padding: 52px 40px 44px; text-align: center; position: relative; overflow: hidden;
-  }
-  .cover.alt { background: var(--terracota); }
-  .brand {
-    font-family: 'DM Mono', monospace;
-    font-size: 14px; letter-spacing: 4px; text-transform: uppercase;
-    color: rgba(255,255,255,.5); margin-bottom: 18px; position: relative;
-  }
-  .cover h1 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: clamp(28px, 6vw, 44px); font-weight: 900; letter-spacing: -1px;
-    color: #fff; line-height: 1.15; margin-bottom: 10px; position: relative; text-transform: uppercase;
-  }
-  .cover h1 em { font-style: italic; color: #9dd8d8; }
-  .cover.alt h1 em { color: var(--sand); }
-  .cover-sub { font-size: 16px; color: rgba(255,255,255,.55); margin-bottom: 28px; position: relative; }
-  
-  .opening {
-    background: var(--terracota); padding: 40px 40px; text-align: center;
-  }
-  .opening.alt { background: var(--teal-light); }
-  .opening p {
-    font-family: 'Poppins', sans-serif; font-size: clamp(18px, 2.5vw, 22px); 
-    font-style: italic; color: #fff; max-width: 600px; margin: 0 auto; line-height: 1.65;
-  }
+  /* PORTADA (HOME) */
+  .hero { text-align: center; margin-bottom: 50px; }
+  .hero h1 { font-family: 'Montserrat'; font-size: 40px; color: var(--teal); margin-bottom: 10px; }
+  .hero p { color: var(--terracota); font-weight: 600; }
 
-  .body-wrap { max-width: 720px; margin: 0 auto; padding: 0 24px 60px; }
+  .grid-resumenes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+  }
+  .card {
+    background: var(--white); border-radius: 15px; overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05); transition: transform 0.3s; cursor: pointer;
+    border-bottom: 5px solid var(--teal);
+  }
+  .card:hover { transform: translateY(-5px); }
+  .card-img { height: 180px; background: var(--teal); display: flex; align-items: center; justify-content: center; color: white; font-size: 50px; }
+  .card-img.alt { background: var(--terracota); }
+  .card-content { padding: 20px; }
+  .card-tag { font-family: 'DM Mono'; font-size: 12px; color: var(--terracota); text-transform: uppercase; }
+  .card-title { font-family: 'Montserrat'; font-size: 20px; margin: 10px 0; }
 
-  .diag-section {
-    background: var(--white); border-radius: 16px; padding: 32px 28px;
-    margin-top: 36px; border-left: 6px solid var(--terracota);
-  }
-  .section-tag {
-    font-family: 'DM Mono', monospace; font-size: 13px; letter-spacing: 3px;
-    text-transform: uppercase; color: var(--terracota); margin-bottom: 8px;
-  }
-  .section-title {
-    font-family: 'Montserrat', sans-serif; font-size: 26px; font-weight: 700;
-    color: var(--ink); margin-bottom: 16px;
-  }
-  
-  .check-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-  .check-list li { display: flex; gap: 12px; align-items: flex-start; font-size: 17px; }
-  .check-input {
-    appearance: none; width: 20px; height: 20px; border: 2px solid var(--sand-dark); 
-    border-radius: 4px; margin-top: 3px; cursor: pointer; flex-shrink: 0;
-  }
-  .check-input:checked { background: var(--terracota); border-color: var(--terracota); }
-  
-  .diag-note {
-    margin-top: 20px; background: var(--sand); border-radius: 10px;
-    padding: 14px 16px; font-size: 16px; color: var(--muted); line-height: 1.6;
-  }
+  /* VISOR DE CONTENIDO */
+  #content-viewer { background: var(--white); padding: 0; border-radius: 20px; overflow: hidden; }
+  .back-btn { margin-bottom: 20px; cursor: pointer; color: var(--teal); font-weight: bold; display: inline-block; }
 
-  .num-header { display: flex; align-items: center; gap: 16px; margin: 36px 0 18px; }
-  .num-circle {
-    width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; 
-    justify-content: center; font-family: 'Montserrat', sans-serif; font-size: 22px; 
-    font-weight: 900; flex-shrink: 0;
-  }
-  .num-circle.teal { background: var(--teal); color: #fff; }
-  .num-circle.terra { background: var(--terracota); color: #fff; }
-  .num-label { font-family: 'DM Mono', monospace; font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); }
-  .num-title { font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 900; color: var(--ink); text-transform: uppercase; }
+  /* FOOTER */
+  footer { background: var(--teal); color: white; text-align: center; padding: 30px; margin-top: 50px; }
 
-  .tres-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
-  .tres-card {
-    background: var(--white); border-radius: 12px; padding: 24px;
-    border-top: 4px solid var(--teal-light); display: grid; gap: 10px;
-  }
-  .pillar-tag { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 2px; color: var(--teal); text-transform: uppercase; }
-  .tres-card h3 { font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 900; color: var(--ink); text-transform: uppercase; }
-  .highlight { display: block; margin-top: 12px; padding: 12px 16px; background: var(--sand); border-radius: 8px; font-style: italic; color: var(--teal); border-left: 4px solid var(--teal-light); }
-
-  a { text-decoration: none; }
-  .btn-watch {
-    display: inline-flex; align-items: center; gap: 8px; margin-top: 12px;
-    font-family: 'DM Mono', monospace; font-size: 13px; text-transform: uppercase; 
-    font-weight: 600; color: var(--terracota); border: 1.5px solid var(--terracota); 
-    padding: 6px 14px; border-radius: 4px; transition: all 0.2s;
-  }
-  .btn-watch:hover { background: var(--terracota); color: #fff; }
-  .btn-row { display: flex; flex-wrap: wrap; gap: 8px; }
-
-  .uno-card {
-    background: var(--teal); border-radius: 16px; padding: 36px 28px; text-align: center;
-  }
-  .uno-card blockquote { font-size: 20px; font-style: italic; color: #fff; margin-bottom: 16px; }
-  .uno-card .attribution { font-size: 15px; opacity: .55; color: #fff; }
-
-  .protocolo {
-    margin-top: 36px; background: var(--terracota); border-radius: 16px; padding: 32px 26px;
-  }
-  .protocolo .section-tag, .protocolo .section-title, .protocolo h4, .protocolo p { color: #fff; }
-  .proto-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 24px; margin-top: 20px; }
-  .proto-step { background: rgba(255,255,255,.12); border-radius: 10px; padding: 18px; }
-
-  .divider { border: none; border-top: 1px solid var(--sand-dark); margin: 30px 0; }
-  
-  footer {
-    background: var(--teal); padding: 24px 40px; text-align: center;
-    color: rgba(255,255,255,.45); font-size: 14px; letter-spacing: 1px;
-  }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 </style>
 </head>
 <body>
 
-<header>
-  <div class="brand-logo">Vida & Salud TV</div>
-</header>
-
-<div class="tabs-container">
-  <button class="tab-btn" onclick="showArticle('art1')">El Ritmo de la Renovación</button>
-  <button class="tab-btn active" onclick="showArticle('art2')">El Poder de la Simplicidad</button>
-</div>
-
-<!-- ARTÍCULO 1 -->
-<article id="art1" class="article-content">
-  <div class="cover alt">
-    <div class="brand">Resumen Semanal</div>
-    <h1>Trabajar <em>desde</em> el descanso,<br>no <em>para</em> el descanso</h1>
-    <div class="cover-sub">PRG 171–175 · Reordenando el punto de partida</div>
+<nav>
+  <div class="nav-logo" onclick="showView('home')">Vida & Salud TV</div>
+  <div class="nav-links">
+    <button onclick="showView('home')">Inicio</button>
   </div>
-  
-  <div class="opening alt">
-    <p>¿Qué pasaría si el descanso no fuera la recompensa al final del camino, sino el punto de partida desde donde vivís, decidís y avanzás?</p>
+</nav>
+
+<section id="home" class="view active">
+  <div class="hero">
+    <h1>Recursos Semanales</h1>
+    <p>Hacia un estilo de vida pleno y consciente</p>
   </div>
 
-  <div class="body-wrap">
-    <div class="diag-section">
-      <div class="section-tag">Autodiagnóstico</div>
-      <div class="section-title">¿Desde dónde estás viviendo?</div>
-      <ul class="check-list">
-        <li><input type="checkbox" class="check-input"><label>¿Sentís que el descanso es el "premio final" que llega recién cuando terminás todo?</label></li>
-        <li><input type="checkbox" class="check-input"><label>¿Llegás al fin de semana tan agotado que el descanso no se siente reparador?</label></li>
-        <li><input type="checkbox" class="check-input"><label>¿En el trabajo, olvidás comer o ir al baño por producir?</label></li>
-      </ul>
-      <div class="diag-note">Si marcaste 2 o más, esta edición es para vos. No se trata de hacer menos, sino de reordenar el punto de partida.</div>
-    </div>
-
-    <div class="num-header">
-      <div class="num-circle teal">3</div>
-      <div>
-        <div class="num-label">Ideas principales</div>
-        <div class="num-title">Perspectivas de cambio</div>
+  <div class="grid-resumenes">
+    <div class="card" onclick="openArticle('art1')">
+      <div class="card-img">🌿</div>
+      <div class="card-content">
+        <div class="card-tag">PRG 171-175</div>
+        <div class="card-title">El Ritmo de la Renovación</div>
+        <p>Aprender a trabajar desde el descanso y no para el descanso.</p>
       </div>
     </div>
 
-    <div class="tres-grid">
-      <div class="tres-card">
-        <div class="pillar-tag">Pilar Mental</div>
-        <h3>El descanso no se gana, se necesita</h3>
-        <p>El modelo 90/20 demuestra que el cuerpo funciona en ciclos ultradianos: 90 minutos de alta energía seguidos de recuperación. Ignorarlo te hace lento y menos creativo.</p>
-      </div>
-      <div class="tres-card">
-        <div class="pillar-tag">Pilar Espiritual</div>
-        <h3>Tu laboratorio creativo</h3>
-        <p>Al desconectarte, el cerebro activa la Red Neuronal por Defecto: el laboratorio interno donde nacen las ideas nuevas. La quietud no es pérdida de tiempo.</p>
-      </div>
-      <div class="tres-card">
-        <div class="pillar-tag">Pilar Físico</div>
-        <h3>La Ciencia del Plato</h3>
-        <p>El estrés crónico y la falta de sueño son enemigos del intestino. Cuidarlo con fibra y fermentados es la base de la recuperación.</p>
+    <div class="card" onclick="openArticle('art2')">
+      <div class="card-img alt">✨</div>
+      <div class="card-content">
+        <div class="card-tag">PRG 176-180</div>
+        <div class="card-title">El Poder de la Simplicidad</div>
+        <p>Vivir con menos para tener más espacio para lo esencial.</p>
       </div>
     </div>
 
-    <div class="protocolo" style="background: var(--teal);">
-      <div class="section-tag" style="color:var(--sand);">Protocolo de Implementación</div>
-      <div class="section-title">El sábado como ancla</div>
-      <div class="proto-steps">
-        <div class="proto-step">
-          <h4>Viernes: Preparar el corazón</h4>
-          <p>Cerrá los pendientes de la semana. Si no alcanzaste, agradecé lo logrado y soltá el resto.</p>
-        </div>
-        <div class="proto-step">
-          <h4>Sábado: Definir un propósito</h4>
-          <p>¿Renovación personal? ¿Conexión familiar? Elegí uno. El sábado sin intención es pura inercia.</p>
-        </div>
+    <div class="card" style="opacity: 0.5; border-style: dashed; border-width: 2px; background: transparent;">
+      <div class="card-img" style="background: #ccc;">+</div>
+      <div class="card-content">
+        <div class="card-title">Próxima Semana</div>
+        <p>Contenido en preparación...</p>
       </div>
     </div>
   </div>
-</article>
+</section>
 
-<!-- ARTÍCULO 2 (NUEVO ADJUNTO) -->
-<article id="art2" class="article-content active">
-  <div class="cover">
-    <div class="brand">Resumen Semanal</div>
-    <h1>Vivir con <em>menos</em><br>para tener <em>más</em></h1>
-    <div class="cover-sub">PRG 176–180 · El Poder de la Simplicidad[cite: 1]</div>
-  </div>
-
-  <div class="opening">
-    <p>¿Y si el problema no es que tenés poco, sino que tenés demasiado? Esta semana exploramos cómo soltar lo innecesario libera el espacio que el alma necesita para respirar[cite: 1].</p>
-  </div>
-
-  <div class="body-wrap">
-    <div class="diag-section">
-      <div class="section-tag">Autodiagnóstico</div>
-      <div class="section-title">¿Cuánto peso estás cargando?[cite: 1]</div>
-      <ul class="check-list">
-        <li><input type="checkbox" class="check-input"><label>¿Abrís un cajón o el placard y sentís incomodidad o agobio?[cite: 1]</label></li>
-        <li><input type="checkbox" class="check-input"><label>¿Vivís cansado sin saber exactamente por qué?[cite: 1]</label></li>
-        <li><input type="checkbox" class="check-input"><label>¿Comprás cosas "por si acaso" y después no usás?[cite: 1]</label></li>
-        <li><input type="checkbox" class="check-input"><label>¿Tu casa desordenada te impide relajarte cuando llegás?[cite: 1]</label></li>
-        <li><input type="checkbox" class="check-input"><label>¿Sentís que la felicidad siempre está en la próxima compra?[cite: 1]</label></li>
-      </ul>
-      <div class="diag-note">Si marcaste 2 o más, esta edición es para vos[cite: 1].</div>
+<section id="viewer" class="view">
+  <div class="back-btn" onclick="showView('home')">← Volver al inicio</div>
+  <div id="content-area">
     </div>
-
-    <div class="num-header">
-      <div class="num-circle teal">3</div>
-      <div>
-        <div class="num-label">ideas que cambian la perspectiva[cite: 1]</div>
-        <div class="num-title">Lo que aprendimos sobre la simplicidad[cite: 1]</div>
-      </div>
-    </div>
-
-    <div class="tres-grid">
-      <div class="tres-card">
-        <div class="pillar-tag">Pilar Mental · PRG 176[cite: 1]</div>
-        <h3>Cansados de perseguir lo innecesario[cite: 1]</h3>
-        <p>La sociedad nos vendió que la felicidad depende de tener más, creando un ritmo frenético[cite: 1]. El resultado: saturación, ansiedad y agotamiento[cite: 1]. Jesús propone otro ritmo: dar descanso a los cansados[cite: 1].</p>
-        <div class="btn-row">
-          <a href="https://youtu.be/FIvtv1LOWOI" target="_blank" class="btn-watch">▶ Ver PRG 176</a>
-        </div>
-      </div>
-
-      <div class="tres-card">
-        <div class="pillar-tag">Pilar Espiritual · PRG 177 & 178[cite: 1]</div>
-        <h3>Minimalismo no es lo mismo que sencillez[cite: 1]</h3>
-        <p>El minimalismo es estético; la sencillez intencional es un valor de vida[cite: 1]. Un bloguero minimalista vivía con una sola silla y nadie lo visitaba, entendiendo luego que la sencillez es tener lo suficiente para compartir[cite: 1].</p>
-      </div>
-
-      <div class="tres-card">
-        <div class="pillar-tag">Pilar Mental · PRG 179 & 180[cite: 1]</div>
-        <h3>La acumulación enferma. El orden sana.[cite: 1]</h3>
-        <p>Un estudio de la UCLA confirmó que madres con hogares desordenados tienen más cortisol[cite: 1]. La psicóloga Sharon Heller explica que el desorden visual sobrecarga el sistema cognitivo[cite: 1].</p>
-      </div>
-    </div>
-
-    <hr class="divider">
-
-    <div class="num-header">
-      <div class="num-circle terra">2</div>
-      <div>
-        <div class="num-label">herramientas para aplicar[cite: 1]</div>
-        <div class="num-title">De la reflexión a la práctica[cite: 1]</div>
-      </div>
-    </div>
-
-    <div class="tres-grid" style="grid-template-columns: 1fr 1fr;">
-      <div class="tres-card" style="border-top-color: var(--terracota);">
-        <h3>Método ALPEN (PRG 178)[cite: 1]</h3>
-        <p>Método alemán de 5 pasos: Anotar tareas, Limar tiempos, Pausas, Establecer prioridades y revisar al cierre[cite: 1].</p>
-      </div>
-      <div class="tres-card" style="border-top-color: var(--terracota);">
-        <h3>Desafío 21 días (PRG 180)[cite: 1]</h3>
-        <p>El objetivo: tender la cama al levantarte[cite: 1]. Un pequeño hábito es una puerta, no un destino[cite: 1].</p>
-      </div>
-    </div>
-
-    <hr class="divider">
-
-    <div class="uno-card">
-      <blockquote>"Vivir con simplicidad significa hacer espacio para lo que el dinero no puede comprar: tiempo, amor y paz."[cite: 1]</blockquote>
-      <div class="attribution">— Vida & Salud · PRG 178[cite: 1]</div>
-    </div>
-
-    <div class="diag-section" style="border-left-color: var(--teal);">
-      <div class="section-tag" style="color:var(--teal);">Nutrición & Ciencia del Plato[cite: 1]</div>
-      <div class="section-title">Comer simple también sana[cite: 1]</div>
-      <p><strong>El cortisol (PRG 178):</strong> Altos niveles causan sueño no reparador y grasa abdominal[cite: 1]. Clave: dormir 7-9 horas y comer proteína/fibra cada 3-4 horas[cite: 1].</p>
-      <p><strong>Selectividad alimentaria (PRG 180):</strong> Neofobia entre los 2 y 6 años[cite: 1]. Ofrecer un alimento nuevo junto a uno conocido sin presionar[cite: 1].</p>
-      <div class="diag-note">
-        <strong>Recetas destacadas:</strong><br>
-        Sopa Vichyssoise vegana (PRG 177)[cite: 1]<br>
-        Galletitas de lentejas y cacao (PRG 179)[cite: 1]
-      </div>
-    </div>
-
-    <div class="protocolo">
-      <div class="section-tag">Protocolo Semanal[cite: 1]</div>
-      <div class="section-title">Plan para soltar lo que sobra[cite: 1]</div>
-      <div class="proto-steps">
-        <div class="proto-step">
-          <h4>Lunes[cite: 1]</h4>
-          <p>Mapeá tu caos. Columnas: Escapes vs. Lo esencial[cite: 1].</p>
-        </div>
-        <div class="proto-step">
-          <h4>Martes a Jueves[cite: 1]</h4>
-          <p>Despejá un rincón físico por día, 15 minutos[cite: 1].</p>
-        </div>
-        <div class="proto-step">
-          <h4>Viernes[cite: 1]</h4>
-          <p>Evaluá el impacto. ¿Qué calma apareció?[cite: 1]</p>
-        </div>
-      </div>
-      <div class="diag-note" style="background: rgba(255,255,255,0.15); color: #fff;">
-        <strong>Desafío:</strong> Antes de comprar, preguntate si te acerca al propósito de Dios o solo te da satisfacción momentánea[cite: 1].
-      </div>
-    </div>
-
-    <hr class="divider">
-
-    <div class="diag-section">
-      <div class="section-title" style="font-size: 20px;">Comunidad Digital[cite: 1]</div>
-      <div class="btn-row">
-        <a class="btn-watch" href="https://www.youtube.com/@vidaysaludtv" target="_blank">YouTube[cite: 1]</a>
-        <a class="btn-watch" href="https://www.instagram.com/vidaysaludtv" target="_blank">Instagram[cite: 1]</a>
-        <a class="btn-watch" href="https://www.facebook.com/tv.vidaysalud" target="_blank">Facebook[cite: 1]</a>
-        <a class="btn-watch" href="https://whatsapp.com/channel/0029VbCXcJD72WU2Tvqiv31h" target="_blank">WhatsApp[cite: 1]</a>
-      </div>
-    </div>
-  </div>
-</article>
+</section>
 
 <footer>
-  Una guía de <strong>@vidaysaludtv</strong> &nbsp;·&nbsp; Transformando hábitos[cite: 1]
+  <p><strong>Vida & Salud TV</strong></p>
+  <p style="font-size: 13px; opacity: 0.7;">© 2026 · Transformando hábitos cada semana</p>
 </footer>
 
 <script>
-  function showArticle(articleId) {
-    document.querySelectorAll('.article-content').forEach(el => el.classList.remove('active'));
-    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-    document.getElementById(articleId).classList.add('active');
-    event.currentTarget.classList.add('active');
+  function showView(viewId) {
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+    document.getElementById(viewId).classList.add('active');
+    window.scrollTo(0,0);
+  }
+
+  function openArticle(artId) {
+    const contentArea = document.getElementById('content-area');
+    
+    // Aquí puedes ir agregando el código HTML de cada resumen según el ID
+    if(artId === 'art1') {
+      contentArea.innerHTML = `
+        <div style="background:var(--white); padding:40px; border-radius:15px; border-top:8px solid var(--teal);">
+          <h2 style="font-family:Montserrat; color:var(--teal)">El Ritmo de la Renovación</h2>
+          <hr style="margin:20px 0; opacity:0.1">
+          <p>Aquí va todo el contenido del primer artículo que ya diseñamos...</p>
+          </div>`;
+    } 
+    else if(artId === 'art2') {
+      contentArea.innerHTML = `
+        <div style="background:var(--white); padding:40px; border-radius:15px; border-top:8px solid var(--terracota);">
+          <h2 style="font-family:Montserrat; color:var(--terracota)">El Poder de la Simplicidad</h2>
+          <hr style="margin:20px 0; opacity:0.1">
+          <p>Aquí va todo el contenido del segundo artículo que ya diseñamos...</p>
+          </div>`;
+    }
+    
+    showView('viewer');
   }
 </script>
 
