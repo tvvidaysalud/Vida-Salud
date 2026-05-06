@@ -50,7 +50,7 @@ nav a {
 /* BANNER */
 .banner {
   width: 100%;
-  aspect-ratio: 16 / 6; /* proporción elegante */
+  height: 350px; /* altura linda para desktop */
   overflow: hidden;
 }
 
@@ -60,6 +60,20 @@ nav a {
   object-fit: cover;
   object-position: center center;
   display: block;
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+  .banner {
+    height: 280px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .banner {
+    height: 180px;
+  }
 }
 
 /* CONTENIDO */
@@ -165,15 +179,6 @@ footer {
 
   <div class="grid">
     
-<div class="card" style="opacity:0.7;border-style:dashed;border-color:#ccc;cursor:default;">
-      <div class="card-header" style="background:#a0a0a0;">⏳</div>
-      <div class="card-body">
-        <div class="card-tag">Próxima Semana</div>
-        <div class="card-title">Contenido en preparación</div>
-        <p class="card-text">Estamos trabajando en el nuevo resumen. ¡Vuelve pronto!</p>
-      </div>
-    </div>
-
      <a href="resumenes/simplicidad.html" class="card">
       <div class="card-header alt">✨</div>
       <div class="card-body">
@@ -191,7 +196,15 @@ footer {
         <p class="card-text">Aprender a trabajar DESDE el descanso.</p>
       </div>
     </a>
-
+    
+<div class="card" style="opacity:0.7;border-style:dashed;border-color:#ccc;cursor:default;">
+      <div class="card-header" style="background:#a0a0a0;">⏳</div>
+      <div class="card-body">
+        <div class="card-tag">Próxima Semana</div>
+        <div class="card-title">Contenido en preparación</div>
+        <p class="card-text">Estamos trabajando en el nuevo resumen. ¡Vuelve pronto!</p>
+      </div>
+    </div>
   </div>
 
 </div>
