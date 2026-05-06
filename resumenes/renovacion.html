@@ -250,38 +250,29 @@
   }
   .nutri-recipe p { font-size: 17px; color: #444; line-height: 1.6; }
 
-  /* ===== PROTOCOLO ===== */
-
-.protocolo {  margin-top: 36px;  background: var(--terracota);  border-radius: 16px;  padding: 32px 26px;  position: relative;  overflow: hidden;}.protocolo .section-title {  color: #fff;  font-size: 20px;  margin-bottom: 22px;}
-
-/* GRID */
-.proto-steps {  display: grid;  grid-template-columns: repeat(3, 1fr);  gap: 16px;  margin-bottom: 24px;}
-.proto-step {  background: rgba(255,255,255,.12);  border-radius: 10px;  padding: 18px;}
-.proto-step h4 {  font-size: 17px;  font-weight: 600;  margin-bottom: 6px;  color: #fff;}
-.proto-step p {  font-size: 15px;  line-height: 1.5;  color: #fff;  opacity: .85;}
-
-/* DESAFÍO */
-.desafio-box {  background: rgba(255,255,255,.14);  border: 1px dashed rgba(255,255,255,.38);  border-radius: 12px;  padding: 20px 22px;  display: flex;  gap: 16px;  align-items: flex-start;}
-.desafio-box p {  font-size: 17px;  line-height: 1.6;  color: #fff;}
-
-/* ===== RESPONSIVE REAL ===== */
-
-/* Tablet */
-@media (max-width: 992px) {  .proto-steps {    grid-template-columns: repeat(2, 1fr);
+  /* PROTOCOLO */
+  .protocolo {
+    margin-top: 36px; background: var(--terracota);
+    border-radius: 16px; padding: 32px 26px; position: relative; overflow: hidden;
   }
-}
-
-/* Mobile */
-@media (max-width: 600px) {
-  .protocolo {    padding: 22px 16px;  }
-  .proto-steps {    grid-template-columns: 1fr;  }
-  .proto-step {    padding: 16px;  }
-  .proto-step h4 {    font-size: 15px;  }
-  .proto-step p {    font-size: 14px;  }
-  .desafio-box {    flex-direction: column;    padding: 16px;
+  .proto-deco { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+  .protocolo .section-tag { color: rgba(255,255,255,.6); }
+  .protocolo .section-title { color: #fff; font-size: 20px; margin-bottom: 22px; }
+  .proto-steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-bottom: 24px; }
+  @media(max-width:480px){ .proto-steps { grid-template-columns: 1fr; } }
+  .proto-step { background: rgba(255,255,255,.12); border-radius: 10px; padding: 18px; }
+  .proto-step .step-icon { margin-bottom: 10px; }
+  .proto-step h4 { font-size: 17px; font-weight: 600; margin-bottom: 6px; color: #fff; }
+  .proto-step p { font-size: 15px; opacity: .85; line-height: 1.5; color: #fff; }
+  .desafio-box {
+    background: rgba(255,255,255,.14); border: 1px dashed rgba(255,255,255,.38);
+    border-radius: 12px; padding: 20px 22px; display: flex; gap: 16px; align-items: flex-start;
   }
-  .desafio-box p {    font-size: 15px;  }
-}
+  .desafio-box .d-label {
+    font-family: 'DM Mono', monospace; font-size: 13px; letter-spacing: 3px;
+    opacity: .6; margin-bottom: 8px; color: #fff;
+  }
+  .desafio-box p { font-size: 17px; line-height: 1.65; color: #fff; }
   /* DIVIDER */
   .divider { border: none; border-top: 1px solid var(--sand-dark); margin: 30px 0; }
 
