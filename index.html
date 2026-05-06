@@ -3,159 +3,79 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vida & Salud TV — Repositorio de Resúmenes</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono&display=swap" rel="stylesheet">
+<title>Vida & Salud TV — Repositorio</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --teal: #1d6b6b;
-    --terracota: #c05a3a;
-    --sand: #f5efe6;
-    --white: #fdfaf6;
-    --ink: #1a1a1a;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    background: var(--sand);
-    font-family: 'Poppins', sans-serif;
-    color: var(--ink);
-  }
+  :root { --teal: #1d6b6b; --terracota: #c05a3a; --sand: #f5efe6; --white: #fdfaf6; }
+  body { background: var(--sand); font-family: 'Poppins', sans-serif; margin: 0; padding: 0; }
+  
+  header { background: var(--teal); padding: 40px 20px; text-align: center; border-bottom: 6px solid var(--terracota); }
+  .logo { font-family: 'Montserrat'; color: white; text-transform: uppercase; letter-spacing: 2px; font-size: 24px; }
 
-  /* NAVEGACIÓN */
-  nav {
-    background: var(--teal);
-    padding: 20px;
-    display: flex; justify-content: space-between; align-items: center;
-    position: sticky; top: 0; z-index: 100;
-    border-bottom: 4px solid var(--terracota);
-  }
-  .nav-logo { font-family: 'Montserrat', sans-serif; color: white; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; }
-  .nav-links button {
-    background: transparent; border: 1px solid rgba(255,255,255,0.3);
-    color: white; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-family: 'DM Mono';
-  }
-
-  /* SECCIONES */
-  .view { display: none; padding: 40px 20px; max-width: 1100px; margin: 0 auto; min-height: 80vh; }
-  .view.active { display: block; animation: fadeIn 0.4s; }
-
-  /* PORTADA (HOME) */
+  .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
   .hero { text-align: center; margin-bottom: 50px; }
-  .hero h1 { font-family: 'Montserrat'; font-size: 40px; color: var(--teal); margin-bottom: 10px; }
-  .hero p { color: var(--terracota); font-weight: 600; }
+  .hero h1 { font-family: 'Montserrat'; color: var(--teal); font-size: clamp(24px, 5vw, 40px); }
 
-  .grid-resumenes {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 25px;
+  /* GRID DE TARJETAS */
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
+  
+  .card { 
+    background: var(--white); border-radius: 15px; overflow: hidden; 
+    text-decoration: none; color: inherit; transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-bottom: 5px solid var(--teal);
+    display: flex; flex-direction: column;
   }
-  .card {
-    background: var(--white); border-radius: 15px; overflow: hidden;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05); transition: transform 0.3s; cursor: pointer;
-    border-bottom: 5px solid var(--teal);
-  }
-  .card:hover { transform: translateY(-5px); }
-  .card-img { height: 180px; background: var(--teal); display: flex; align-items: center; justify-content: center; color: white; font-size: 50px; }
-  .card-img.alt { background: var(--terracota); }
-  .card-content { padding: 20px; }
-  .card-tag { font-family: 'DM Mono'; font-size: 12px; color: var(--terracota); text-transform: uppercase; }
-  .card-title { font-family: 'Montserrat'; font-size: 20px; margin: 10px 0; }
+  .card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+  
+  .card-header { height: 120px; background: var(--teal); display: flex; align-items: center; justify-content: center; font-size: 40px; }
+  .card-header.alt { background: var(--terracota); }
+  
+  .card-body { padding: 20px; }
+  .card-tag { font-size: 12px; color: var(--terracota); font-weight: bold; text-transform: uppercase; }
+  .card-title { font-family: 'Montserrat'; font-size: 18px; margin: 10px 0; color: var(--teal); }
+  .card-text { font-size: 14px; color: #666; line-height: 1.5; }
 
-  /* VISOR DE CONTENIDO */
-  #content-viewer { background: var(--white); padding: 0; border-radius: 20px; overflow: hidden; }
-  .back-btn { margin-bottom: 20px; cursor: pointer; color: var(--teal); font-weight: bold; display: inline-block; }
-
-  /* FOOTER */
-  footer { background: var(--teal); color: white; text-align: center; padding: 30px; margin-top: 50px; }
-
-  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  footer { text-align: center; padding: 40px; color: var(--teal); font-size: 14px; opacity: 0.7; }
 </style>
 </head>
 <body>
 
-<nav>
-  <div class="nav-logo" onclick="showView('home')">Vida & Salud TV</div>
-  <div class="nav-links">
-    <button onclick="showView('home')">Inicio</button>
-  </div>
-</nav>
+<header>
+  <div class="logo">Vida & Salud TV</div>
+</header>
 
-<section id="home" class="view active">
+<div class="container">
   <div class="hero">
-    <h1>Recursos Semanales</h1>
-    <p>Hacia un estilo de vida pleno y consciente</p>
+    <h1>Biblioteca de Resúmenes</h1>
+    <p>Haz clic en una semana para ver los detalles y la ciencia del plato.</p>
   </div>
 
-  <div class="grid-resumenes">
-    <div class="card" onclick="openArticle('art1')">
-      <div class="card-img">🌿</div>
-      <div class="card-content">
+  <div class="grid">
+    <!-- TARJETA 1 -->
+    <a href="resumenes/renovacion.html" class="card">
+      <div class="card-header">🌿</div>
+      <div class="card-body">
         <div class="card-tag">PRG 171-175</div>
         <div class="card-title">El Ritmo de la Renovación</div>
-        <p>Aprender a trabajar desde el descanso y no para el descanso.</p>
+        <p class="card-text">Aprender a trabajar DESDE el descanso. Ciclos ultradianos y recuperación.</p>
       </div>
-    </div>
+    </a>
 
-    <div class="card" onclick="openArticle('art2')">
-      <div class="card-img alt">✨</div>
-      <div class="card-content">
+    <!-- TARJETA 2 -->
+    <a href="resumenes/simplicidad.html" class="card">
+      <div class="card-header alt">✨</div>
+      <div class="card-body">
         <div class="card-tag">PRG 176-180</div>
         <div class="card-title">El Poder de la Simplicidad</div>
-        <p>Vivir con menos para tener más espacio para lo esencial.</p>
+        <p class="card-text">Vivir con menos para tener más. Minimalismo vs Sencillez intencional.</p>
       </div>
-    </div>
+    </a>
 
-    <div class="card" style="opacity: 0.5; border-style: dashed; border-width: 2px; background: transparent;">
-      <div class="card-img" style="background: #ccc;">+</div>
-      <div class="card-content">
-        <div class="card-title">Próxima Semana</div>
-        <p>Contenido en preparación...</p>
-      </div>
-    </div>
+    <!-- Cuando tengas la semana 3, solo copias y pegas este bloque abajo -->
   </div>
-</section>
+</div>
 
-<section id="viewer" class="view">
-  <div class="back-btn" onclick="showView('home')">← Volver al inicio</div>
-  <div id="content-area">
-    </div>
-</section>
-
-<footer>
-  <p><strong>Vida & Salud TV</strong></p>
-  <p style="font-size: 13px; opacity: 0.7;">© 2026 · Transformando hábitos cada semana</p>
-</footer>
-
-<script>
-  function showView(viewId) {
-    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-    document.getElementById(viewId).classList.add('active');
-    window.scrollTo(0,0);
-  }
-
-  function openArticle(artId) {
-    const contentArea = document.getElementById('content-area');
-    
-    // Aquí puedes ir agregando el código HTML de cada resumen según el ID
-    if(artId === 'art1') {
-      contentArea.innerHTML = `
-        <div style="background:var(--white); padding:40px; border-radius:15px; border-top:8px solid var(--teal);">
-          <h2 style="font-family:Montserrat; color:var(--teal)">El Ritmo de la Renovación</h2>
-          <hr style="margin:20px 0; opacity:0.1">
-          <p>Aquí va todo el contenido del primer artículo que ya diseñamos...</p>
-          </div>`;
-    } 
-    else if(artId === 'art2') {
-      contentArea.innerHTML = `
-        <div style="background:var(--white); padding:40px; border-radius:15px; border-top:8px solid var(--terracota);">
-          <h2 style="font-family:Montserrat; color:var(--terracota)">El Poder de la Simplicidad</h2>
-          <hr style="margin:20px 0; opacity:0.1">
-          <p>Aquí va todo el contenido del segundo artículo que ya diseñamos...</p>
-          </div>`;
-    }
-    
-    showView('viewer');
-  }
-</script>
+<footer>© 2026 Vida & Salud TV</footer>
 
 </body>
 </html>
