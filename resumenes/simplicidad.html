@@ -23,7 +23,7 @@
     background: var(--sand);
     font-family: 'Poppins', sans-serif;
     color: var(--ink);
-    font-size: 22px;
+    font-size: 16px;
     line-height: 1.65;
   }
 
@@ -242,16 +242,63 @@
 
   /* btn row */
   .btn-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+
+   /* NAV */
+.main-nav {
+  background: var(--teal);
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 3px solid var(--terracota);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+/* LOGO */
+.nav-logo {
+  height: 32px;   /* más equilibrado */
+  width: auto;
+  filter: brightness(0) invert(1);
+}
+/* BOTÓN */
+.nav-btn {
+  color: white;
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  text-transform: uppercase;
+  border: 1px solid rgba(255,255,255,0.3);
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.1);
+  transition: all .2s ease;
+}
+.nav-btn:hover {
+  background: rgba(255,255,255,0.2);
+}
+/* MOBILE */
+@media (max-width: 600px) {
+  .main-nav {
+    padding: 10px 14px;
+  }
+  .nav-logo {
+    height: 26px;
+  }
+  .nav-btn {
+    font-size: 11px;
+    padding: 5px 10px;
+  }
+}
+  
 </style>
 </head>
 <body>
-<nav style="background: var(--teal); padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--terracota); position: sticky; top: 0; z-index: 1000;">
-  <!-- El logo también necesita ../ para salir de la carpeta y buscar la imagen -->
-  <img src="../Marca V&S T7.png" alt="Vida y Salud" style="height: 40px; width: auto; filter: brightness(0) invert(1);">
-  
-  <div style="display: flex; gap: 15px;">
-    <a href="../index.html" style="color: white; text-decoration: none; font-family: 'DM Mono', monospace; font-size: 14px; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.3); padding: 8px 16px; border-radius: 20px; background: rgba(255,255,255,0.1);">← Volver al Inicio</a>
-  </div>
+<nav class="main-nav">
+  <img src="../Marca V&S T7.png" alt="Vida y Salud" class="nav-logo">
+
+  <a href="../index.html" class="nav-btn">
+    ← Volver al Inicio
+  </a>
 </nav>
 <!-- PORTADA -->
 <div class="cover">
