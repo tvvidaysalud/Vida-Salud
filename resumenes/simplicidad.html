@@ -244,6 +244,18 @@
   .desafio-box p {
     font-size: clamp(14px, 2vw, 17px); line-height: 1.7; color: #fff;
   }
+  /* Ajuste para que se apile en Mobile */
+@media (max-width: 600px) {
+  .desafio-box {
+    flex-direction: column; /* Cambia de horizontal a vertical */
+    align-items: center;    /* Opcional: centra los elementos */
+    text-align: center;     /* Opcional: centra el texto */
+  }
+
+  .proto-steps {
+    grid-template-columns: 1fr; /* También apila los pasos del protocolo */
+  }
+}
 
   /* DIVIDER */
   .divider { border: none; border-top: 1px solid var(--sand-dark); margin: 30px 0; }
