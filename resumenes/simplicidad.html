@@ -291,59 +291,17 @@
 .nav-btn:hover {
   background: rgba(255,255,255,0.2);
 }
-  /* ════════════════════════════════════════════════════
-     RESPONSIVE — tablet  ≤ 640px
-  ════════════════════════════════════════════════════ */
-  @media (max-width: 640px) {
-    .cover        { padding: 40px 16px 36px; }
-    .opening      { padding: 28px 16px; }
-    .body-wrap    { padding: 0 14px 50px; }
-
-    .diag-section { grid-template-columns: 1fr; }
-    .diag-section > div:last-child { display: none; } /* oculta SVG lateral en móvil */
-
-    .dos-grid     { grid-template-columns: 1fr; }     /* 2 cols → 1 col */
-
-    .proto-steps  { grid-template-columns: 1fr; }     /* 3 cols → 1 col */
-
-    .tres-card {
-      grid-template-columns: auto 1fr;  /* mantiene icono + texto */
-    }
-
-    .nutri-body   { grid-template-columns: 1fr; }     /* 2 cols → 1 col */
-
-    /* Desafío: icono encima del texto en pantallas chicas */
-    .desafio-box {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 12px;
-    }
+/* MOBILE */
+@media (max-width: 600px) {
+  .main-nav {
+    padding: 10px 14px;
   }
-
-  /* ════════════════════════════════════════════════════
-     RESPONSIVE — móvil pequeño  ≤ 420px
-  ════════════════════════════════════════════════════ */
-  @media (max-width: 420px) {
-    .main-nav   { padding: 10px 14px; }
-    .nav-logo   { height: 26px; }
-    .nav-btn    { font-size: 11px; padding: 5px 10px; }
-
-    .pill       { font-size: 11px; padding: 4px 11px; }
-
-    /* En móvil muy pequeño las tres-card van icono arriba */
-    .tres-card  {
-      grid-template-columns: 1fr;
-    }
-    .tres-card-icon { padding-top: 0; margin-bottom: 8px; }
-
-    .btn-watch  { font-size: 11px; padding: 5px 10px; }
-    .btn-row    { gap: 6px; }
-
-    .uno-card   { padding: 24px 16px; }
-    .quote-mark { font-size: 44px; }
-
-    .protocolo  { padding: 22px 14px; }
-    .desafio-box { padding: 16px 14px; }
+  .nav-logo {
+    height: 26px;
+  }
+  .nav-btn {
+    font-size: 11px;
+    padding: 5px 10px;
   }
 </style>
 </head>
