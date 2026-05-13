@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vida & Salud — Resumen Semanal PRG 181–185</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal:       #1d6b6b;
+    --teal-light: #2a8f8f;
+    --teal-pale:  #e1f5ee;
+    --sand:       #f5efe6;
+    --sand-dark:  #e8ddd0;
+    --terracota:  #c05a3a;
+    --terracota-light: #e07858;
+    --ink:        #1a1a1a;
+    --muted:      #6b6b6b;
+    --white:      #fdfaf6;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--sand);
+    font-family: 'Poppins', sans-serif;
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  /* PORTADA */
+  .cover {
+    background: var(--teal);
+    padding: 52px 40px 44px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover-deco { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+  .brand {
+    font-family: 'DM Mono', monospace;
+    font-size: 14px; letter-spacing: 4px; text-transform: uppercase;
+    color: rgba(255,255,255,.5); margin-bottom: 18px; position: relative;
+  }
+  .cover h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(28px, 6vw, 44px); font-weight: 900; letter-spacing: -1px;
+    color: #fff; line-height: 1.15; margin-bottom: 10px; position: relative; text-transform: uppercase;
+  }
+  .cover h1 em { font-style: italic; color: #9dd8d8; }
+  .cover-sub { font-size: 16px; color: rgba(255,255,255,.55); margin-bottom: 28px; position: relative; }
+
+  /* OPENING */
+  .opening {
+    background: var(--terracota); padding: 40px 40px; text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .opening-deco { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+  .opening p {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(18px, 2.5vw, 22px); font-style: italic; font-weight: 400;
+    color: #fff; max-width: 600px; margin: 0 auto; line-height: 1.65; position: relative;
+  }
+
+  /* BODY */
+  .body-wrap { max-width: 720px; margin: 0 auto; padding: 0 24px 60px; }
+
+  /* AUTODIAGNÓSTICO */
+  .diag-section {
+    background: var(--white); border-radius: 16px; padding: 32px 28px;
+    margin-top: 36px; border-left: 6px solid var(--terracota);
+    display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: start;
+  }
+  @media(max-width:540px){ .diag-section { grid-template-columns: 1fr; } }
+  .section-tag {
+    font-family: 'DM Mono', monospace; font-size: 13px; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--terracota); margin-bottom: 8px;
+  }
+  .section-title {
+    font-family: 'Montserrat', sans-serif; font-size: 26px; font-weight: 700;
+    color: var(--ink); margin-bottom: 16px;
+  }
+  .check-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .check-list li {
+    display: flex; gap: 12px; align-items: flex-start;
+    font-size: 17px; color: #333; line-height: 1.5;
+  }
+  .check-input {
+    appearance: none; width: 20px; height: 20px;
+    border: 2px solid var(--sand-dark); border-radius: 4px;
+    margin-top: 3px; cursor: pointer; position: relative; flex-shrink: 0;
+    transition: all .2s ease;
+  }
+  .check-input:checked { background: var(--terracota); border-color: var(--terracota); }
+  .check-input:checked::after {
+    content: "✓"; color: #fff; font-size: 14px; position: absolute;
+    top: 50%; left: 50%; transform: translate(-50%, -58%); font-weight: bold;
+  }
+  .diag-note {
+    margin-top: 20px; background: var(--sand); border-radius: 10px;
+    padding: 14px 16px; font-size: 16px; color: var(--muted); line-height: 1.6;
+  }
+
+  a { text-decoration: none; color: inherit; }
+  .btn-watch {
+    display: inline-flex; align-items: center; gap: 8px;
+    margin-top: 12px; font-family: 'DM Mono', monospace; font-size: 13px;
+    text-transform: uppercase; font-weight: 600; color: var(--terracota);
+    border: 1.5px solid var(--terracota); padding: 6px 14px; border-radius: 4px;
+    transition: all 0.2s;
+  }
+  .btn-watch:hover { background: var(--terracota); color: #fff; }
+  .btn-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+
+  /* SECTION INTRO */
+  .section-intro { text-align: center; font-size: 24px; font-weight: 900; color: var(--teal); margin-bottom: 24px; }
+
+  /* NUM HEADERS */
+  .num-header { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
+  .num-circle {
+    width: 48px; height: 48px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Montserrat', sans-serif; font-size: 22px; font-weight: 900; flex-shrink: 0;
+  }
+  .num-circle.teal { background: var(--teal); color: #fff; }
+  .num-circle.terra { background: var(--terracota); color: #fff; }
+  .num-label { font-family: 'DM Mono', monospace; font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); }
+  .num-title { font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 900; letter-spacing: -0.2px; color: var(--ink); margin-top: 4px; text-transform: uppercase; }
+
+  /* 3 CARDS */
+  .tres-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+  .tres-card {
+    background: var(--white); border-radius: 12px; padding: 24px;
+    border-top: 4px solid var(--teal-light); display: grid;
+    grid-template-columns: auto 1fr; gap: 0 18px;
+  }
+  .tres-card-icon { padding-top: 4px; }
+  .pillar-tag {
+    font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 2px;
+    color: var(--teal); text-transform: uppercase; margin-bottom: 8px;
+  }
+  .tres-card h3 {
+    font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 900;
+    color: var(--ink); margin-bottom: 8px; text-transform: uppercase;
+  }
+  .tres-card p { font-size: 17px; color: #444; line-height: 1.65; }
+  .highlight {
+    display: block; margin-top: 12px; padding: 12px 16px;
+    background: var(--sand); border-radius: 8px; font-size: 16px;
+    font-style: italic; color: var(--teal); border-left: 4px solid var(--teal-light);
+  }
+
+  /* 2 CARDS */
+  .dos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media(max-width:500px){ .dos-grid { grid-template-columns: 1fr; } }
+  .dos-card {
+    background: var(--white); border-radius: 12px; padding: 24px;
+    border-bottom: 4px solid var(--terracota);
+  }
+  .dos-card-icon { margin-bottom: 12px; }
+  .dos-card h3 {
+    font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 900;
+    color: var(--ink); margin-bottom: 8px; text-transform: uppercase;
+  }
+  .dos-card p { font-size: 17px; color: #555; line-height: 1.6; }
+
+  /* 1 CARD (FRASE) */
+  .uno-card {
+    background: var(--teal); border-radius: 16px; padding: 36px 28px;
+    text-align: center; position: relative; overflow: hidden;
+  }
+  .uno-deco { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+  .quote-mark {
+    font-family: 'Montserrat', sans-serif; font-size: 60px; line-height: .8;
+    opacity: .25; display: block; margin-bottom: 6px; color: #fff; position: relative;
+  }
+  .uno-card blockquote {
+    font-family: 'Poppins', sans-serif; font-size: clamp(18px, 3vw, 22px);
+    font-style: italic; font-weight: 400; line-height: 1.65; color: #fff; margin-bottom: 16px; position: relative;
+  }
+  .uno-card .attribution { font-size: 15px; opacity: .55; letter-spacing: 1px; color: #fff; position: relative; }
+
+  /* NUTRICIONAL */
+  .nutricion-section {
+    margin-top: 36px; background: var(--white);
+    border-radius: 16px; overflow: hidden;
+  }
+  .nutri-header {
+    background: var(--sand-dark); padding: 18px 24px;
+    border-left: 6px solid var(--teal); display: flex; align-items: center; gap: 16px;
+  }
+  .nutri-body {
+    padding: 22px 24px 28px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+  }
+  @media(max-width:500px){ .nutri-body { grid-template-columns: 1fr; } }
+  .nutri-item h4 { font-size: 17px; font-weight: 600; color: var(--teal); margin-bottom: 6px; }
+  .nutri-item p { font-size: 17px; color: #555; line-height: 1.55; }
+  .nutri-recipe {
+    grid-column: 1 / -1; background: var(--sand); border-radius: 10px;
+    padding: 16px 18px; display: flex; gap: 12px; align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  .nutri-recipe .btn-watch { flex-shrink: 0; }
+  .nutri-recipe p { font-size: 17px; color: #444; line-height: 1.6; min-width: 0; flex: 1 1 200px; }
+  @media(max-width:500px){
+    .nutri-recipe { flex-direction: column; align-items: flex-start; }
+    .nutri-recipe .btn-watch { margin-top: 0; }
+  }
+
+  /* PROTOCOLO */
+  .protocolo {
+    margin-top: 32px; background: var(--terracota);
+    border-radius: 16px; padding: 28px 22px; position: relative; overflow: hidden;
+  }
+  .proto-deco { position: absolute; inset: 0; pointer-events: none; }
+  .protocolo .section-tag   { color: rgba(255,255,255,.65); }
+  .protocolo .section-title { color: #fff; font-size: clamp(16px, 2.5vw, 20px); margin-bottom: 20px; }
+  .proto-steps {
+    display: grid; grid-template-columns: repeat(3,1fr);
+    gap: 12px; margin-bottom: 22px;
+  }
+  .proto-step {
+    background: rgba(255,255,255,.13); border-radius: 10px; padding: 16px;
+  }
+  .proto-step .step-icon { margin-bottom: 9px; }
+  .proto-step h4 { font-size: clamp(14px, 2vw, 17px); font-weight: 600; margin-bottom: 6px; color: #fff; }
+  .proto-step p  { font-size: clamp(12px, 1.7vw, 15px); opacity: .88; line-height: 1.5; color: #fff; }
+
+  .desafio-box {
+    background: rgba(255,255,255,.15);
+    border: 1.5px dashed rgba(255,255,255,.4);
+    border-radius: 14px;
+    padding: 22px 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .desafio-box svg { flex-shrink: 0; }
+  .desafio-box .d-label {
+    font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 3px;
+    text-transform: uppercase; opacity: .65; margin-bottom: 10px; color: #fff;
+  }
+  .desafio-box p {
+    font-size: clamp(14px, 2vw, 17px); line-height: 1.7; color: #fff;
+  }
+
+  @media (max-width: 600px) {
+    .desafio-box { flex-direction: column; align-items: center; text-align: center; }
+    .proto-steps { grid-template-columns: 1fr; }
+  }
+
+  /* DIVIDER */
+  .divider { border: none; border-top: 1px solid var(--sand-dark); margin: 30px 0; }
+
+  /* FOOTER */
+  footer {
+    background: var(--teal); padding: 24px 40px; text-align: center;
+    color: rgba(255,255,255,.45); font-size: 14px; letter-spacing: 1px;
+  }
+  footer strong { color: rgba(255,255,255,.75); }
+
+  /* NAV */
+  .main-nav {
+    background: var(--teal);
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid var(--terracota);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  .nav-logo {
+    height: 32px;
+    width: auto;
+    filter: brightness(0) invert(1);
+  }
+  .nav-btn {
+    color: white;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    text-transform: uppercase;
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 6px 14px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.1);
+    transition: all .2s ease;
+  }
+  .nav-btn:hover { background: rgba(255,255,255,0.2); }
+  @media (max-width: 600px) {
+    .main-nav { padding: 10px 14px; }
+    .nav-logo { height: 26px; }
+    .nav-btn { font-size: 11px; padding: 5px 10px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="main-nav">
+  <img src="../Marca V&S T7.png" alt="Vida y Salud" class="nav-logo">
+  <a href="../index.html" class="nav-btn">← Volver al Inicio</a>
+</nav>
+
+<!-- PORTADA -->
+<div class="cover">
+  <svg class="cover-deco" viewBox="0 0 680 280" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+    <circle cx="620" cy="40" r="110" fill="rgba(255,255,255,0.05)"/>
+    <circle cx="600" cy="60" r="70" fill="rgba(255,255,255,0.04)"/>
+    <circle cx="60" cy="240" r="90" fill="rgba(255,255,255,0.04)"/>
+    <circle cx="80" cy="260" r="50" fill="rgba(255,255,255,0.05)"/>
+    <ellipse cx="30" cy="190" rx="18" ry="38" fill="rgba(255,255,255,0.07)" transform="rotate(-20 30 190)"/>
+    <ellipse cx="46" cy="175" rx="12" ry="28" fill="rgba(255,255,255,0.06)" transform="rotate(-40 46 175)"/>
+    <circle cx="520" cy="220" r="4" fill="rgba(255,255,255,0.12)"/>
+    <circle cx="540" cy="235" r="3" fill="rgba(255,255,255,0.09)"/>
+    <circle cx="650" cy="250" r="22" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/>
+    <circle cx="650" cy="250" r="14" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+    <!-- íconos de celular/silencio decorativos -->
+    <g transform="translate(340,30)" opacity="0.08">
+      <rect x="-8" y="-12" width="16" height="24" rx="3" fill="none" stroke="#fff" stroke-width="2"/>
+      <circle cx="0" cy="8" r="2" fill="#fff"/>
+    </g>
+  </svg>
+  <div class="brand">Resumen Semanal</div>
+  <h1>Vivir <em>despacio</em><br>en un mundo <em>acelerado</em></h1>
+  <div class="cover-sub">PRG 181–185 · La Sencillez en lo Cotidiano</div>
+</div>
+
+<!-- OPENING -->
+<div class="opening">
+  <svg class="opening-deco" viewBox="0 0 680 90" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+    <circle cx="30" cy="45" r="50" fill="rgba(255,255,255,0.06)"/>
+    <circle cx="660" cy="45" r="55" fill="rgba(255,255,255,0.05)"/>
+  </svg>
+  <p>¿Y si el problema no es que hacés poco, sino que te movés tan rápido que ya no podés disfrutar nada? Esta semana exploramos la sencillez en la agenda, lo digital, el ritmo, las decisiones y la comida.</p>
+</div>
+
+<div class="body-wrap">
+
+  <!-- AUTODIAGNÓSTICO -->
+  <div class="diag-section">
+    <div class="diag-content">
+      <div class="section-tag">Autodiagnóstico</div>
+      <div class="section-title">¿Cómo está tu ritmo?</div>
+      <ul class="check-list">
+        <li><input type="checkbox" class="check-input" id="c1"><label for="c1">¿Te cuesta decir que no aunque tu agenda ya está llena y terminás agotado?</label></li>
+        <li><input type="checkbox" class="check-input" id="c2"><label for="c2">¿Revisás notificaciones automáticamente en cada momento libre, sin elegirlo conscientemente?</label></li>
+        <li><input type="checkbox" class="check-input" id="c3"><label for="c3">¿Escuchás audios y ves videos en velocidad 2x porque el ritmo normal "se siente lento"?</label></li>
+        <li><input type="checkbox" class="check-input" id="c4"><label for="c4">¿Frente a muchas opciones (series, ropa, alimentos) terminás más angustiado que antes?</label></li>
+        <li><input type="checkbox" class="check-input" id="c5"><label for="c5">¿Comés de paso, frente a una pantalla, sin prestarle atención al momento ni a tu cuerpo?</label></li>
+      </ul>
+      <div class="diag-note">Si marcaste 2 o más, esta edición es para vos. No se trata de hacer menos, sino de elegir con intención: la agenda, lo digital, el ritmo, las decisiones y hasta lo que ponés en el plato.</div>
+    </div>
+    <div>
+      <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="46" fill="#fdf4ec" stroke="#e8ddd0" stroke-width="1.5"/>
+        <!-- reloj desacelerado -->
+        <circle cx="50" cy="50" r="28" fill="none" stroke="#1d6b6b" stroke-width="2" opacity="0.5"/>
+        <circle cx="50" cy="50" r="3" fill="#1d6b6b" opacity="0.7"/>
+        <!-- agujas -->
+        <line x1="50" y1="50" x2="50" y2="28" stroke="#1d6b6b" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+        <line x1="50" y1="50" x2="65" y2="55" stroke="#c05a3a" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+        <!-- marcas de hora -->
+        <line x1="50" y1="24" x2="50" y2="28" stroke="#1d6b6b" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+        <line x1="50" y1="72" x2="50" y2="76" stroke="#1d6b6b" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+        <line x1="24" y1="50" x2="28" y2="50" stroke="#1d6b6b" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+        <line x1="72" y1="50" x2="76" y2="50" stroke="#1d6b6b" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+        <!-- pausa / dos barras -->
+        <rect x="43" y="64" width="4" height="12" rx="2" fill="#c05a3a" opacity="0.5"/>
+        <rect x="51" y="64" width="4" height="12" rx="2" fill="#c05a3a" opacity="0.35"/>
+      </svg>
+    </div>
+  </div>
+
+  <br><br>
+
+  <div class="section-intro">
+    3 ideas que desaceleran tu vida<br><br>
+    2 herramientas para aplicar esta semana<br><br>
+    1 frase para llevar
+  </div>
+
+  <hr class="divider">
+
+  <!-- 3 IDEAS -->
+  <div class="num-header">
+    <div class="num-circle teal">3</div>
+    <div>
+      <div class="num-label">ideas que cambian la perspectiva</div>
+      <div class="num-title">Lo que aprendimos sobre vivir despacio</div>
+    </div>
+  </div>
+
+  <div class="tres-grid">
+
+    <!-- IDEA 1: PRG 181 - Simplificar la agenda -->
+    <div class="tres-card">
+      <div class="tres-card-icon">
+        <svg width="36" height="36" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="18" cy="18" r="15" fill="#e1f5ee" stroke="#2a8f8f" stroke-width="1.5"/>
+          <!-- agenda/cascada -->
+          <rect x="10" y="9" width="16" height="18" rx="2" fill="none" stroke="#1d6b6b" stroke-width="1.5" opacity="0.6"/>
+          <line x1="13" y1="13" x2="23" y2="13" stroke="#1d6b6b" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+          <line x1="13" y1="16.5" x2="20" y2="16.5" stroke="#1d6b6b" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+          <line x1="13" y1="20" x2="17" y2="20" stroke="#c05a3a" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+          <!-- tilde de check -->
+          <path d="M19 19 L20.5 20.5 L23 18" fill="none" stroke="#1d6b6b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+        </svg>
+      </div>
+      <div class="tres-card-body">
+        <div class="pillar-tag">Pilar Mental · PRG 181</div>
+        <h3>Decir que no es un acto de salud</h3>
+        <p>La sociedad confunde estar ocupado con ser exitoso. El resultado: agendas sobrecargadas con cosas que incluso nos gustan, pero que nos dejan sin aire. El método Top Down (prioridad en cascada) propone definir primero dos o tres cosas verdaderamente importantes de la semana, y desde ahí construir el resto. Soltar tareas que no aportan a tus prioridades fue descripta como "una de las decisiones más liberadoras" por quienes lo aplican.</p>
+        <span class="highlight">Clave: Definí tus 2–3 prioridades antes de llenar la agenda. Los espacios vacíos no son falta de productividad: son los que te permiten pensar, descansar y conectar.</span>
+        <div class="btn-row">
+          <a href="https://youtu.be/nIA2bzXuSeI" class="btn-watch">▶ Simplificar la agenda</a>
+          <a href="https://youtu.be/YXvdFiDr0pI" class="btn-watch">▶ Elegir en el súper</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- IDEA 2: PRG 182-183 - Digital y lentitud -->
+    <div class="tres-card">
+      <div class="tres-card-icon">
+        <svg width="36" height="36" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="18" cy="18" r="15" fill="#e1f5ee" stroke="#2a8f8f" stroke-width="1.5"/>
+          <!-- celular con tachado -->
+          <rect x="13" y="9" width="10" height="18" rx="2" fill="none" stroke="#1d6b6b" stroke-width="1.5" opacity="0.6"/>
+          <circle cx="18" cy="24" r="1.5" fill="#1d6b6b" opacity="0.5"/>
+          <!-- línea diagonal de "pausa" -->
+          <line x1="11" y1="11" x2="25" y2="25" stroke="#c05a3a" stroke-width="1.8" stroke-linecap="round" opacity="0.5"/>
+          <!-- hoja/naturaleza al costado -->
+          <ellipse cx="26" cy="14" rx="4" ry="7" fill="#1d6b6b" opacity="0.3" transform="rotate(30 26 14)"/>
+        </svg>
+      </div>
+      <div class="tres-card-body">
+        <div class="pillar-tag">Pilar Espiritual · PRG 182 &amp; 183</div>
+        <h3>Desconectarse para conectar de verdad</h3>
+        <p>Vivimos hiperconectados pero desconectados de lo que importa. El "Efecto Google" (Betsy Sparrow, Universidad de Columbia) muestra que cuando sabemos que podemos buscar algo en línea, el cerebro deja de esforzarse por recordarlo. Cada scroll aparentemente inofensivo acumula fatiga cognitiva y altera la melatonina. La sencillez digital no es apagar el celular un rato: es rediseñar la relación con la tecnología y recuperar el ritmo de lo lento. Como el sábado: no dejar el celular de lado, sino conectarse activamente con lo que da vida.</p>
+        <span class="highlight">Diferencia clave: Detox digital = pausa temporal. Sencillez digital = estilo de vida donde la tecnología es herramienta, no cadena. Disfrutar el momento y sacarse la foto después (o no sacársela).</span>
+        <div class="btn-row">
+          <a href="https://youtu.be/hl46JSM4T0w" class="btn-watch">▶ Sencillez digital</a>
+          <a href="https://youtu.be/Vh9qxV4G33M" class="btn-watch">▶ Reflexión sábado digital</a>
+          <a href="https://youtu.be/YMprMT8o9Jg" class="btn-watch">▶ El valor de la lentitud</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- IDEA 3: PRG 184-185 - Opciones y alimentación -->
+    <div class="tres-card">
+      <div class="tres-card-icon">
+        <svg width="36" height="36" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="18" cy="18" r="15" fill="#e1f5ee" stroke="#2a8f8f" stroke-width="1.5"/>
+          <!-- plato simple -->
+          <circle cx="18" cy="19" r="7" fill="none" stroke="#1d6b6b" stroke-width="1.5" opacity="0.6"/>
+          <circle cx="18" cy="19" r="4" fill="#c05a3a" opacity="0.3"/>
+          <!-- tenedor simple -->
+          <line x1="10" y1="12" x2="10" y2="19" stroke="#1d6b6b" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+          <line x1="8.5" y1="12" x2="8.5" y2="15" stroke="#1d6b6b" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+          <line x1="11.5" y1="12" x2="11.5" y2="15" stroke="#1d6b6b" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+          <!-- señal de "menos" opciones -->
+          <line x1="23" y1="11" x2="27" y2="11" stroke="#c05a3a" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+        </svg>
+      </div>
+      <div class="tres-card-body">
+        <div class="pillar-tag">Pilar Físico · PRG 184 &amp; 185</div>
+        <h3>Menos opciones, más claridad (también en el plato)</h3>
+        <p>La paradoja de la elección de Barry Schwartz lo confirma: más opciones no nos hace más libres ni felices, nos agota. Elegir cansa, y cuando hay demasiadas opciones, postergamos, dudamos y nos sentimos peor tras elegir. Lo mismo vale para la comida: vivir a dieta constante y comer de paso no es sencillez, es ruido. La alimentación consciente (Susan Powell) propone volver a lo simple —alimentos reales, combinaciones lógicas, comer sin pantallas— como acto de cuidado personal y espiritual. Las "zonas azules" donde viven más de 100 años lo demuestran: la longevidad nace de una dieta simple, basada en plantas.</p>
+        <span class="highlight">Punto de partida: Armá un menú semanal con 5 almuerzos base. Antes de comprar algo, preguntate: ¿necesidad real o deseo pasajero? Esperá 48 horas antes de decidir.</span>
+        <div class="btn-row">
+          <a href="https://youtu.be/zVv9rNd2KeE" class="btn-watch">▶ La paradoja de elegir</a>
+          <a href="https://youtu.be/pMahaNwEmDE" class="btn-watch">▶ Comer con propósito</a>
+          <a href="https://youtu.be/P9O2cnEI7_8" class="btn-watch">▶ Reflexión alimentación</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <hr class="divider">
+
+  <!-- 2 HERRAMIENTAS -->
+  <div class="num-header">
+    <div class="num-circle terra">2</div>
+    <div>
+      <div class="num-label">herramientas para aplicar esta semana</div>
+      <div class="num-title">De la reflexión a la práctica</div>
+    </div>
+  </div>
+
+  <div class="dos-grid">
+    <div class="dos-card">
+      <div class="dos-card-icon">
+        <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="4" width="24" height="24" rx="5" fill="#fdf4ec" stroke="#e8ddd0" stroke-width="1.5"/>
+          <!-- cascada de prioridades -->
+          <rect x="8" y="8" width="16" height="4" rx="1.5" fill="#1d6b6b" opacity="0.7"/>
+          <rect x="9" y="14" width="12" height="4" rx="1.5" fill="#1d6b6b" opacity="0.45"/>
+          <rect x="10" y="20" width="8" height="4" rx="1.5" fill="#c05a3a" opacity="0.4"/>
+        </svg>
+      </div>
+      <h3>Método Top Down (PRG 181)</h3>
+      <p>Cada lunes, elegí máximo 2–3 prioridades reales de la semana. Paso 1: definir lo más importante. Paso 2: traducirlo en acciones concretas. Paso 3: bloquear ese tiempo en la agenda como si fuera una cita médica. Paso 4: delegar o soltar el resto sin culpa. <em>Si todo es importante, nada lo es.</em> Los espacios vacíos que quedan no son fracasos: son los que permiten que la vida respire.</p>
+    </div>
+
+    <div class="dos-card">
+      <div class="dos-card-icon">
+        <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+          <!-- chequeo consciente -->
+          <circle cx="16" cy="16" r="12" fill="#fdf4ec" stroke="#e8ddd0" stroke-width="1.5"/>
+          <!-- pausa antes -->
+          <path d="M10 13 Q10 10 13 10 Q16 10 16 13 Q16 10 19 10 Q22 10 22 13 Q22 17 16 20 Q10 17 10 13Z" fill="#1d6b6b" opacity="0.25"/>
+          <!-- check adentro -->
+          <path d="M13 15.5 L15 17.5 L19 13" fill="none" stroke="#1d6b6b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+        </svg>
+      </div>
+      <h3>Slow Check-In (PRG 183)</h3>
+      <p>Antes de cada actividad, hacete dos preguntas: <em>¿Cómo me siento? ¿Qué quiero de este momento?</em> Al terminar: <em>¿Cómo me quedo? ¿Qué necesito ahora?</em> Lleva 30 segundos. Convierte el hacer automático en presencia real. Quien lo practica reporta volverse más productivo sin perseguirse, y terminar las tareas con la sensación de haber estado ahí de verdad.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- 1 FRASE -->
+  <div class="num-header">
+    <div class="num-circle teal">1</div>
+    <div>
+      <div class="num-label">frase para llevar esta semana</div>
+      <div class="num-title">Para reflexionar y compartir</div>
+    </div>
+  </div>
+
+  <div class="uno-card">
+    <svg class="uno-deco" viewBox="0 0 680 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <circle cx="40" cy="60" r="70" fill="rgba(255,255,255,0.05)"/>
+      <circle cx="640" cy="60" r="80" fill="rgba(255,255,255,0.04)"/>
+    </svg>
+    <span class="quote-mark">"</span>
+    <blockquote>La vida no se trata de cuántas cosas hacés,<br>sino de cómo las vivís.<br>La lentitud es un lujo que vale la pena recuperar.</blockquote>
+    <div class="attribution">— Vida &amp; Salud · PRG 183</div>
+  </div>
+
+  <!-- NUTRICIONAL -->
+  <div class="nutricion-section">
+    <div class="nutri-header">
+      <svg width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="14" cy="14" r="13" fill="#e1f5ee"/>
+        <ellipse cx="14" cy="16" rx="8" ry="4" fill="none" stroke="#1d6b6b" stroke-width="1.5"/>
+        <ellipse cx="14" cy="15.5" rx="8" ry="4" fill="#fdfaf6" stroke="#1d6b6b" stroke-width="1.2"/>
+        <line x1="7" y1="8" x2="7" y2="14" stroke="#1d6b6b" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="5.5" y1="8" x2="5.5" y2="11" stroke="#1d6b6b" stroke-width="1" stroke-linecap="round"/>
+        <line x1="8.5" y1="8" x2="8.5" y2="11" stroke="#1d6b6b" stroke-width="1" stroke-linecap="round"/>
+        <line x1="21" y1="8" x2="21" y2="14" stroke="#1d6b6b" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M21 8 Q23 10 21 12" fill="none" stroke="#1d6b6b" stroke-width="1"/>
+        <ellipse cx="14" cy="15" rx="5" ry="2.5" fill="#c05a3a" opacity="0.35"/>
+        <circle cx="12" cy="14.5" r="1.5" fill="#1d6b6b" opacity="0.5"/>
+        <circle cx="16" cy="15" r="1.2" fill="#c05a3a" opacity="0.5"/>
+      </svg>
+      <div>
+        <div class="section-tag">Pilar Físico · La Ciencia del Plato</div>
+        <div class="section-title" style="font-size:15px;font-weight:900;letter-spacing:-0.2px;text-transform:uppercase;">Comer simple también sana</div>
+      </div>
+    </div>
+    <div class="nutri-body">
+      <div class="nutri-item">
+        <h4>Cómo elegir en el súper (PRG 181) <a href="https://youtu.be/YXvdFiDr0pI" class="btn-watch" style="margin-top:4px;">▶ Ver</a></h4>
+        <p>Lic. Laila Castillo: Leé los ingredientes (mientras menos, mejor). El orden importa: los primeros son los de mayor proporción. Chequeá porciones, no el paquete completo. Buscá al menos 3g de fibra y 5g de proteína por porción. Desconfiá del marketing: que diga "avena" en grande no garantiza nada.</p>
+      </div>
+      <div class="nutri-item">
+        <h4>Hábitos graduales (PRG 183) <a href="https://youtu.be/ZsdM4T2mkrY" class="btn-watch" style="margin-top:4px;">▶ Ver</a></h4>
+        <p>El cambio brusco "desde el lunes" casi siempre fracasa. La propuesta es pequeños pasos: más fruta en desayuno y merienda, verdura en almuerzo y cena, platos coloridos, agua simple en lugar de bebidas saborizadas. Comé de forma consciente, aprende a escuchar tu cuerpo entre el hambre real y la saciedad.</p>
+      </div>
+      <div class="nutri-item">
+        <h4>Alimentos y cerebro (PRG 185) <a href="https://youtu.be/tbcvKA--kr8" class="btn-watch" style="margin-top:4px;">▶ Ver</a></h4>
+        <p>La alimentación influye directamente en la salud cognitiva. El encéfalo necesita un aporte continuo de nutrientes para controlar pensamientos, emociones y movimiento. Omega-3 (nueces, semillas de chía y lino), vitamina B12, vitamina D, hierro y magnesio tienen rol directo en el cerebro. Si hoy cuidamos la alimentación, actuamos como protectores del deterioro cognitivo futuro.</p>
+      </div>
+      <div class="nutri-item" style="display:flex;align-items:center;justify-content:center;">
+        <svg width="70" height="70" viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="35" cy="35" r="33" fill="#f5efe6" stroke="#e8ddd0" stroke-width="1"/>
+          <!-- copa vaso de bebida vegetal -->
+          <path d="M22 42 Q35 50 48 42" fill="#fdfaf6" stroke="#1d6b6b" stroke-width="1.5"/>
+          <path d="M22 28 L25 42 Q35 50 45 42 L48 28 Z" fill="#e1f5ee" stroke="#1d6b6b" stroke-width="1.5" stroke-linejoin="round"/>
+          <line x1="22" y1="28" x2="48" y2="28" stroke="#1d6b6b" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+          <!-- nueces / maní arriba -->
+          <circle cx="30" cy="21" r="3.5" fill="#c05a3a" opacity="0.4"/>
+          <circle cx="36" cy="19" r="3" fill="#c05a3a" opacity="0.3"/>
+          <circle cx="42" cy="22" r="3.5" fill="#c05a3a" opacity="0.35"/>
+        </svg>
+      </div>
+      <div class="nutri-recipe">
+        <a href="https://youtu.be/2SpjyeJnJsw" class="btn-watch" style="flex-shrink:0;">▶ Ver receta</a>
+        <p><strong>Bebida Vegetal de Maní (PRG 182):</strong> Solo 3 ingredientes. Poné manteca de maní en la licuadora, agregá un poco de miel (o endulzante preferido) y agua. Licuá hasta obtener una bebida homogénea. Sin remojo previo, sin proceso largo. Ideal antes de actividad física: proteína del maní + azúcar natural de la miel = energía real.</p>
+      </div>
+      <div class="nutri-recipe">
+        <a href="https://youtu.be/X7a-3o2XGD4" class="btn-watch" style="flex-shrink:0;">▶ Ver receta</a>
+        <p><strong>Crema de Coliflor y Manzana (PRG 184):</strong> Salteá cebolla hasta transparentar. Sumá coliflor en floretes y manzana verde sin cáscara. Condimentá con pimienta de cayena, comino y sal. Agregá caldo de verduras y bebida vegetal de soja. Cocinás tapado. Procesás hasta obtener textura cremosa. Terminá con levadura nutricional (fuente de complejo B). La manzana no se siente fuerte: solo suaviza y da profundidad.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROTOCOLO -->
+  <div class="protocolo">
+    <svg class="proto-deco" viewBox="0 0 680 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <circle cx="620" cy="20" r="80" fill="rgba(255,255,255,0.06)"/>
+      <circle cx="50" cy="180" r="60" fill="rgba(255,255,255,0.05)"/>
+    </svg>
+
+    <div class="section-tag">Protocolo de Implementación</div>
+    <div class="section-title">Tu plan semanal para vivir más despacio</div>
+
+    <div class="proto-steps">
+      <div class="proto-step">
+        <div class="step-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="14" cy="14" r="13" fill="rgba(255,255,255,0.15)"/>
+            <!-- lunes: definir prioridades -->
+            <rect x="8" y="9" width="12" height="10" rx="2" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.5)" stroke-width="1"/>
+            <line x1="10" y1="13" x2="18" y2="13" stroke="rgba(255,255,255,0.7)" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M10 16.5 L11.5 17.5 L14 15" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h4>Definí 3 prioridades (lunes)</h4>
+        <p>Antes de abrir el mail o las redes, escribí las 2–3 cosas que si las lográs harán que la semana valga la pena. Todo lo demás baja en cascada.</p>
+      </div>
+      <div class="proto-step">
+        <div class="step-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="14" cy="14" r="13" fill="rgba(255,255,255,0.15)"/>
+            <!-- celular apagado -->
+            <rect x="10" y="8" width="8" height="12" rx="2" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.2"/>
+            <circle cx="14" cy="17" r="1" fill="rgba(255,255,255,0.5)"/>
+            <!-- línea diagonal pausa -->
+            <line x1="9" y1="9" x2="19" y2="19" stroke="rgba(255,255,255,0.5)" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h4>Zona sin pantallas (miércoles)</h4>
+        <p>Elegí un bloque de 2 horas sin celular: una comida, una caminata, un momento con alguien que querés. Notá qué aparece cuando el ruido digital baja.</p>
+      </div>
+      <div class="proto-step">
+        <div class="step-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="14" cy="14" r="13" fill="rgba(255,255,255,0.15)"/>
+            <!-- plato con tilde -->
+            <circle cx="14" cy="15" r="5" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.2"/>
+            <path d="M11 15 L13 17 L17 13" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="10" y1="8" x2="10" y2="12" stroke="rgba(255,255,255,0.5)" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="18" y1="8" x2="18" y2="12" stroke="rgba(255,255,255,0.5)" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h4>Comida consciente (viernes)</h4>
+        <p>Una comida de la semana sin pantallas, sin apuro. Sentate, mirá el plato, masticá despacio. Agradecé antes de comer. Escuchá cuándo estás satisfecho. Solo eso.</p>
+      </div>
+    </div>
+
+    <div class="desafio-box">
+      <svg width="36" height="36" viewBox="0 0 36 36" style="flex-shrink:0;margin-top:2px;" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="18" cy="18" r="17" fill="rgba(255,255,255,0.15)"/>
+        <rect x="10" y="8" width="16" height="20" rx="2" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.5)" stroke-width="1"/>
+        <line x1="18" y1="10" x2="18" y2="26" stroke="rgba(255,255,255,0.4)" stroke-width="1" stroke-dasharray="2 1"/>
+        <line x1="12" y1="14" x2="16" y2="14" stroke="rgba(255,255,255,0.6)" stroke-width="1" stroke-linecap="round"/>
+        <line x1="12" y1="17" x2="16" y2="17" stroke="rgba(255,255,255,0.5)" stroke-width="1" stroke-linecap="round"/>
+        <line x1="12" y1="20" x2="15" y2="20" stroke="rgba(255,255,255,0.4)" stroke-width="1" stroke-linecap="round"/>
+        <path d="M20 14 L21.5 15.5 L24 13" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M20 18 L21.5 19.5 L24 17" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div>
+        <div class="d-label">Tu desafío semanal</div>
+        <p>Elegí UNA sola acción de esta lista y ponela en agenda con día y hora: <strong>(a)</strong> Hacer el Slow Check-In antes de tu próxima tarea importante. <strong>(b)</strong> Pasar una comida sin celular esta semana. <strong>(c)</strong> Antes de comprar algo, esperá 48 horas y preguntate si es necesidad real o deseo pasajero. Solo una. La sencillez empieza con un solo gesto sostenido.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- COMUNIDAD DIGITAL -->
+  <div class="diag-section">
+    <div>
+      <div class="section-tag">COMUNIDAD DIGITAL</div>
+      <div class="section-title">Seguí a Vida &amp; Salud TV</div>
+      <ul class="check-list">
+        <li>
+          <div>
+            <a class="btn-watch" href="https://www.youtube.com/@vidaysaludtv" target="_blank">Canal YouTube</a>
+            Programas completos, temporadas y episodios especiales.
+          </div>
+        </li>
+        <li>
+          <div>
+            <a class="btn-watch" href="https://www.instagram.com/vidaysaludtv" target="_blank">Instagram</a>
+            Clips diarios y actualidad del proyecto.
+          </div>
+        </li>
+        <li>
+          <div>
+            <a class="btn-watch" href="https://www.facebook.com/tv.vidaysalud" target="_blank">Facebook</a>
+            Comunidad extendida y publicaciones semanales.
+          </div>
+        </li>
+        <li>
+          <div>
+            <a class="btn-watch" href="https://whatsapp.com/channel/0029VbCXcJD72WU2Tvqiv31h" target="_blank">Canal WhatsApp</a>
+            Recordatorios y contenido exclusivo directo en tu celular.
+          </div>
+        </li>
+      </ul>
+      <div class="diag-note">Suscribite y activá notificaciones para no perder ningún programa, segmento nutricional ni reflexión semanal.</div>
+    </div>
+  </div>
+
+</div><!-- /body-wrap -->
+
+<footer>
+  Una guía de <strong>@vidaysaludtv</strong> &nbsp;·&nbsp; PRG 181–185 &nbsp;·&nbsp; La Sencillez en lo Cotidiano
+</footer>
+
+</body>
+</html>
