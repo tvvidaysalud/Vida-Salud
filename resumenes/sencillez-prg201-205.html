@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vida & Salud — Resumen Semanal PRG 201–205</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal:       #1d6b6b;
+    --teal-light: #2a8f8f;
+    --teal-pale:  #e1f5ee;
+    --sand:       #f5efe6;
+    --sand-dark:  #e8ddd0;
+    --terracota:  #c05a3a;
+    --ink:        #1a1a1a;
+    --muted:      #6b6b6b;
+    --white:      #fdfaf6;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--sand); font-family: 'Poppins', sans-serif; color: var(--ink); font-size: 16px; line-height: 1.65; }
+
+  /* NAV */
+  .main-nav { background: var(--teal); padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--terracota); position: sticky; top: 0; z-index: 1000; }
+  .nav-logo { height: 32px; width: auto; filter: brightness(0) invert(1); }
+  .nav-btn { color: white; font-family: 'DM Mono', monospace; font-size: 13px; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.3); padding: 6px 14px; border-radius: 20px; background: rgba(255,255,255,0.1); text-decoration: none; transition: all .2s; }
+  .nav-btn:hover { background: rgba(255,255,255,0.2); }
+  @media(max-width:600px){ .main-nav { padding: 10px 14px; } .nav-logo { height: 26px; } .nav-btn { font-size: 11px; padding: 5px 10px; } }
+
+  /* PORTADA */
+  .cover { background: var(--teal); padding: 52px 40px 44px; text-align: center; position: relative; overflow: hidden; }
+  .cover-deco { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+  .brand { font-family: 'DM Mono', monospace; font-size: 14px; letter-spacing: 4px; text-transform: uppercase; color: rgba(255,255,255,.5); margin-bottom: 18px; position: relative; }
+  .cover h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(28px,6vw,44px); font-weight: 900; letter-spacing: -1px; color: #fff; line-height: 1.15; margin-bottom: 10px; position: relative; text-transform: uppercase; }
+  .cover h1 em { font-style: italic; color: #9dd8d8; }
+  .cover-sub { font-size: 16px; color: rgba(255,255,255,.55); margin-bottom: 28px; position: relative; }
+
+  /* OPENING */
+  .opening { background: var(--terracota); padding: 40px; text-align: center; position: relative; overflow: hidden; }
+  .opening p { font-size: clamp(18px,2.5vw,22px); font-style: italic; color: #fff; max-width: 600px; margin: 0 auto; line-height: 1.65; position: relative; }
+
+  /* BODY */
+  .body-wrap { max-width: 720px; margin: 0 auto; padding: 0 24px 60px; }
+
+  /* AUTODIAGNÓSTICO */
+  .diag-section { background: var(--white); border-radius: 16px; padding: 32px 28px; margin-top: 36px; border-left: 6px solid var(--terracota); display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: start; }
+  @media(max-width:540px){ .diag-section { grid-template-columns: 1fr; } }
+  .section-tag { font-family: 'DM Mono', monospace; font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: var(--terracota); margin-bottom: 8px; }
+  .section-title { font-family: 'Montserrat', sans-serif; font-size: 26px; font-weight: 700; color: var(--ink); margin-bottom: 16px; }
+  .check-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .check-list li { display: flex; gap: 12px; align-items: flex-start; font-size: 17px; color: #333; line-height: 1.5; }
+  .check-input { appearance: none; width: 20px; height: 20px; border: 2px solid var(--sand-dark); border-radius: 4px; margin-top: 3px; cursor: pointer; position: relative; flex-shrink: 0; transition: all .2s; }
+  .check-input:checked { background: var(--terracota); border-color: var(--terracota); }
+  .check-input:checked::after { content: "✓"; color: #fff; font-size: 14px; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-58%); font-weight: bold; }
+  .diag-note { margin-top: 20px; background: var(--sand); border-radius: 10px; padding: 14px 16px; font-size: 16px; color: var(--muted); line-height: 1.6; }
+
+  a { text-decoration: none; color: inherit; }
+  .btn-watch { display: inline-flex; align-items: center; gap: 8px; margin-top: 12px; font-family: 'DM Mono', monospace; font-size: 13px; text-transform: uppercase; font-weight: 600; color: var(--terracota); border: 1.5px solid var(--terracota); padding: 6px 14px; border-radius: 4px; transition: all 0.2s; }
+  .btn-watch:hover { background: var(--terracota); color: #fff; }
+  .btn-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+
+  .section-intro { text-align: center; font-size: 24px; font-weight: 900; color: var(--teal); margin-bottom: 24px; }
+
+  /* NUM HEADERS */
+  .num-header { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
+  .num-circle { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Montserrat', sans-serif; font-size: 22px; font-weight: 900; flex-shrink: 0; }
+  .num-circle.teal { background: var(--teal); color: #fff; }
+  .num-circle.terra { background: var(--terracota); color: #fff; }
+  .num-label { font-family: 'DM Mono', monospace; font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); }
+  .num-title { font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 900; letter-spacing: -0.2px; color: var(--ink); margin-top: 4px; text-transform: uppercase; }
+
+  /* 3 CARDS */
+  .tres-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+  .tres-card { background: var(--white); border-radius: 12px; padding: 24px; border-top: 4px solid var(--teal-light); display: grid; grid-template-columns: auto 1fr; gap: 0 18px; }
+  .tres-card-icon { padding-top: 4px; }
+  .pillar-tag { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 2px; color: var(--teal); text-transform: uppercase; margin-bottom: 8px; }
+  .tres-card h3 { font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 900; color: var(--ink); margin-bottom: 8px; text-transform: uppercase; }
+  .tres-card p { font-size: 17px; color: #444; line-height: 1.65; }
+
+  /* GANCHO — integrado, sutil */
+  .gancho {
+    border-left: 3px solid var(--terracota);
+    padding: 10px 14px;
+    margin-bottom: 16px;
+    background: var(--sand);
+    border-radius: 0 8px 8px 0;
+  }
+  .gancho p { font-size: 15px; font-style: italic; color: var(--muted); line-height: 1.55; margin: 0; }
+  .gancho .prg-ref { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--terracota); opacity: .7; display: block; margin-top: 5px; }
+
+  .highlight { display: block; margin-top: 12px; padding: 12px 16px; background: var(--sand); border-radius: 8px; font-size: 16px; font-style: italic; color: var(--teal); border-left: 4px solid var(--teal-light); }
+
+  /* 2 CARDS */
+  .dos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media(max-width:500px){ .dos-grid { grid-template-columns: 1fr; } }
+  .dos-card { background: var(--white); border-radius: 12px; padding: 24px; border-bottom: 4px solid var(--terracota); }
+  .dos-card-icon { margin-bottom: 12px; }
+  .dos-card h3 { font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 900; color: var(--ink); margin-bottom: 8px; text-transform: uppercase; }
+  .dos-card p { font-size: 17px; color: #555; line-height: 1.6; }
+
+  /* 1 CARD FRASE */
+  .uno-card { background: var(--teal); border-radius: 16px; padding: 36px 28px; text-align: center; position: relative; overflow: hidden; }
+  .uno-deco { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+  .quote-mark { font-family: 'Montserrat', sans-serif; font-size: 60px; line-height: .8; opacity: .25; display: block; margin-bottom: 6px; color: #fff; position: relative; }
+  .uno-card blockquote { font-size: clamp(18px,3vw,22px); font-style: italic; line-height: 1.65; color: #fff; margin-bottom: 16px; position: relative; }
+  .uno-card .attribution { font-size: 15px; opacity: .55; letter-spacing: 1px; color: #fff; position: relative; }
+
+  /* NUTRICIONAL */
+  .nutricion-section { margin-top: 36px; background: var(--white); border-radius: 16px; overflow: hidden; }
+  .nutri-header { background: var(--sand-dark); padding: 18px 24px; border-left: 6px solid var(--teal); display: flex; align-items: center; gap: 16px; }
+  .nutri-body { padding: 22px 24px 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  @media(max-width:500px){ .nutri-body { grid-template-columns: 1fr; } }
+  .nutri-item h4 { font-size: 17px; font-weight: 600; color: var(--teal); margin-bottom: 6px; }
+  .nutri-item p { font-size: 16px; color: #555; line-height: 1.55; }
+
+  /* PROTOCOLO */
+  .protocolo { margin-top: 32px; background: var(--terracota); border-radius: 16px; padding: 28px 22px; position: relative; overflow: hidden; }
+  .proto-deco { position: absolute; inset: 0; pointer-events: none; }
+  .protocolo .section-tag { color: rgba(255,255,255,.65); }
+  .protocolo .section-title { color: #fff; font-size: clamp(16px,2.5vw,20px); margin-bottom: 20px; }
+  .proto-steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 22px; }
+  .proto-step { background: rgba(255,255,255,.13); border-radius: 10px; padding: 16px; }
+  .proto-step .step-icon { margin-bottom: 9px; }
+  .proto-step h4 { font-size: clamp(14px,2vw,17px); font-weight: 600; margin-bottom: 6px; color: #fff; }
+  .proto-step p { font-size: clamp(12px,1.7vw,15px); opacity: .88; line-height: 1.5; color: #fff; }
+  .desafio-box { background: rgba(255,255,255,.15); border: 1.5px dashed rgba(255,255,255,.4); border-radius: 14px; padding: 22px 20px; display: flex; flex-direction: row; gap: 16px; align-items: flex-start; }
+  .desafio-box .d-label { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 3px; text-transform: uppercase; opacity: .65; margin-bottom: 10px; color: #fff; }
+  .desafio-box p { font-size: clamp(14px,2vw,17px); line-height: 1.7; color: #fff; }
+  @media(max-width:600px){ .desafio-box { flex-direction: column; align-items: center; text-align: center; } .proto-steps { grid-template-columns: 1fr; } }
+
+  .divider { border: none; border-top: 1px solid var(--sand-dark); margin: 30px 0; }
+  footer { background: var(--teal); padding: 24px 40px; text-align: center; color: rgba(255,255,255,.45); font-size: 14px; letter-spacing: 1px; }
+  footer strong { color: rgba(255,255,255,.75); }
+</style>
+</head>
+<body>
+
+<nav class="main-nav">
+  <img src="../Marca V&S T7.png" alt="Vida y Salud" class="nav-logo">
+  <a href="../index.html" class="nav-btn">← Volver al Inicio</a>
+</nav>
+
+<!-- PORTADA -->
+<div class="cover">
+  <svg class="cover-deco" viewBox="0 0 680 280" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+    <circle cx="620" cy="40" r="110" fill="rgba(255,255,255,0.05)"/>
+    <circle cx="60" cy="240" r="90" fill="rgba(255,255,255,0.04)"/>
+    <circle cx="650" cy="250" r="22" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/>
+    <!-- velocímetro decorativo -->
+    <path d="M300 160 Q340 100 380 160" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="12" stroke-linecap="round"/>
+    <line x1="340" y1="160" x2="340" y2="120" stroke="rgba(255,255,255,0.08)" stroke-width="3" stroke-linecap="round"/>
+  </svg>
+  <div class="brand">Resumen Semanal</div>
+  <h1>El precio<br>de vivir <em>demasiado rápido</em></h1>
+  <div class="cover-sub">PRG 201–205 · La Sencillez en la Práctica</div>
+</div>
+
+<!-- OPENING -->
+<div class="opening">
+  <svg style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;" viewBox="0 0 680 90" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+    <circle cx="30" cy="45" r="50" fill="rgba(255,255,255,0.06)"/>
+    <circle cx="660" cy="45" r="55" fill="rgba(255,255,255,0.05)"/>
+  </svg>
+  <p>Cinco episodios para cerrar una temporada. La pregunta ya no es por qué vivimos tan rápido — es por qué no podemos parar. Esta semana: la prisa como enfermedad, el multitasking como mito, la espera como regalo y la mesa como lugar sagrado.</p>
+</div>
+
+<div class="body-wrap">
+
+  <!-- AUTODIAGNÓSTICO -->
+  <div class="diag-section">
+    <div>
+      <div class="section-tag">Autodiagnóstico</div>
+      <div class="section-title">¿La velocidad ya te cuesta?</div>
+      <ul class="check-list">
+        <li><input type="checkbox" class="check-input" id="c1"><label for="c1">¿Terminás el día agotado pero sin saber bien qué hiciste?</label></li>
+        <li><input type="checkbox" class="check-input" id="c2"><label for="c2">¿Hacés varias cosas a la vez convencido de que así rendís más?</label></li>
+        <li><input type="checkbox" class="check-input" id="c3"><label for="c3">¿Los tiempos de espera te generan ansiedad o culpa?</label></li>
+        <li><input type="checkbox" class="check-input" id="c4"><label for="c4">¿Comés frente a una pantalla o de pie sin registrar el momento?</label></li>
+        <li><input type="checkbox" class="check-input" id="c5"><label for="c5">¿Sentís que tu salud mental "puede un poco más" aunque el cuerpo ya diga basta?</label></li>
+      </ul>
+      <div class="diag-note">Si marcaste 2 o más, esta edición llega a tiempo. No se trata de hacer menos: se trata de entender qué le está costando al cuerpo y a la mente la velocidad que elegimos.</div>
+    </div>
+    <div>
+      <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="46" fill="#fdf4ec" stroke="#e8ddd0" stroke-width="1.5"/>
+        <!-- velocímetro -->
+        <path d="M20 65 Q50 20 80 65" fill="none" stroke="#1d6b6b" stroke-width="2.5" opacity="0.4" stroke-linecap="round"/>
+        <path d="M25 65 Q50 28 75 65" fill="none" stroke="#1d6b6b" stroke-width="1.5" opacity="0.25" stroke-linecap="round"/>
+        <!-- aguja al máximo -->
+        <line x1="50" y1="65" x2="72" y2="38" stroke="#c05a3a" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+        <circle cx="50" cy="65" r="4" fill="#c05a3a" opacity="0.6"/>
+        <!-- marcas -->
+        <line x1="20" y1="65" x2="23" y2="62" stroke="#1d6b6b" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+        <line x1="50" y1="22" x2="50" y2="26" stroke="#1d6b6b" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+        <line x1="80" y1="65" x2="77" y2="62" stroke="#1d6b6b" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+      </svg>
+    </div>
+  </div>
+
+  <br><br>
+
+  <div class="section-intro">
+    3 ideas que cambian la perspectiva<br><br>
+    2 herramientas para aplicar esta semana<br><br>
+    1 frase para llevar
+  </div>
+
+  <hr class="divider">
+
+  <!-- 3 IDEAS -->
+  <div class="num-header">
+    <div class="num-circle teal">3</div>
+    <div>
+      <div class="num-label">ideas que cambian la perspectiva</div>
+      <div class="num-title">Lo que aprendimos sobre el precio de la velocidad</div>
+    </div>
+  </div>
+
+  <div class="tres-grid">
+
+    <!-- IDEA 1: PRG 201 + 202 -->
+    <div class="tres-card">
+      <div class="tres-card-icon">
+        <svg width="36" height="36" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="18" cy="18" r="15" fill="#e1f5ee" stroke="#2a8f8f" stroke-width="1.5"/>
+          <path d="M10 22 Q18 10 26 22" fill="none" stroke="#1d6b6b" stroke-width="2" opacity="0.5" stroke-linecap="round"/>
+          <line x1="18" y1="22" x2="24" y2="14" stroke="#c05a3a" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+          <circle cx="18" cy="22" r="2.5" fill="#c05a3a" opacity="0.6"/>
+        </svg>
+      </div>
+      <div>
+        <div class="gancho">
+          <p>Imaginá un auto que siempre corre al máximo. Al principio parece eficiente. Con el tiempo el motor se recalienta, las piezas se desgastan. El cuerpo funciona igual.</p>
+          <span class="prg-ref">PRG 201 · 202</span>
+        </div>
+        <div class="pillar-tag">Pilar Mental · La prisa como síndrome</div>
+        <h3>Vivir acelerado tiene un precio real</h3>
+        <p>La prisa crónica no es una mala costumbre: es una patología cultural. Los cardiólogos Friedman y Rosenman describieron en los años 50 el "patrón tipo A" — personas impacientes, con sensación crónica de falta de tiempo — y encontraron un riesgo significativamente mayor de enfermedades cardíacas. El cortisol elevado de forma sostenida genera inflamación, debilita el sistema inmune y daña la corteza prefrontal, la parte del cerebro que regula el autocontrol y la toma de decisiones. Y la salud mental paga el precio primero: a diferencia del cansancio físico, el agotamiento mental no se ve, no duele de forma obvia, y siempre parece que "se puede un poco más" — hasta que no se puede.</p>
+        <span class="highlight">Clave: La prisa no es una señal de éxito. El silencio de Dios tampoco es abandono. Muchas veces está trabajando en el proceso mientras nosotros queremos la respuesta ya.</span>
+        <div class="btn-row">
+          <a href="https://youtu.be/90ISao7R6G0" class="btn-watch">▶ ¿Por qué vivimos tan rápido?</a>
+          <a href="https://youtu.be/lX575bQN5Ik" class="btn-watch">▶ Comunidad PRG 201</a>
+          <a href="https://youtu.be/b3V-nNWSOHM" class="btn-watch">▶ El costo en la salud</a>
+          <a href="https://youtu.be/uKgrmbs0pp8" class="btn-watch">▶ Comunidad PRG 202</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- IDEA 2: PRG 203 + 204 -->
+    <div class="tres-card">
+      <div class="tres-card-icon">
+        <svg width="36" height="36" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="18" cy="18" r="15" fill="#e1f5ee" stroke="#2a8f8f" stroke-width="1.5"/>
+          <!-- una tarea -->
+          <rect x="11" y="10" width="14" height="16" rx="2" fill="none" stroke="#1d6b6b" stroke-width="1.5" opacity="0.6"/>
+          <line x1="14" y1="15" x2="22" y2="15" stroke="#1d6b6b" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+          <line x1="14" y1="19" x2="19" y2="19" stroke="#c05a3a" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+          <!-- tilde de foco -->
+          <path d="M14 22.5 L16 24.5 L20 21" fill="none" stroke="#1d6b6b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+        </svg>
+      </div>
+      <div>
+        <div class="gancho">
+          <p>Intentaba leer la Biblia mientras hacía otras cosas. Cuando dejó de hacerlo, descubrió que siempre se había perdido la mitad.</p>
+          <span class="prg-ref">PRG 203</span>
+        </div>
+        <div class="pillar-tag">Pilar Espiritual · Foco y paciencia</div>
+        <h3>Una cosa a la vez. Y a veces: esperar.</h3>
+        <p>El multitasking es un mito: la mente no trabaja en paralelo, alterna rápido entre tareas y cada cambio tiene un costo cognitivo. Janette, entrevistada en el programa, lo dijo sin filtro: termina agotada y sin haber resuelto nada. El foco es un músculo que se atrofia con el uso constante del multitasking y se recupera con práctica deliberada. Por otro lado, la espera tiene una pedagogía propia. Naum confiesa que siempre quiso resolver todo rápido. Tuvo un golpe en su vida que no pudo resolver — y todavía no se resolvió. Pero lo que aprendió en esa espera, dice, fue "increíble". La paciencia no es pasividad: es fe activa.</p>
+        <span class="highlight">Diferencia clave: No se trata de ir más lento, sino de ir presente. Ni el multitasking ni la impaciencia son productividad — los dos dispersan energía sin crear profundidad.</span>
+        <div class="btn-row">
+          <a href="https://youtu.be/E-IFj7Xe_aI" class="btn-watch">▶ Una cosa a la vez</a>
+          <a href="https://youtu.be/kxk_NL--aNk" class="btn-watch">▶ La espera como oportunidad</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- IDEA 3: PRG 205 -->
+    <div class="tres-card">
+      <div class="tres-card-icon">
+        <svg width="36" height="36" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="18" cy="18" r="15" fill="#e1f5ee" stroke="#2a8f8f" stroke-width="1.5"/>
+          <!-- plato con tenedor -->
+          <circle cx="18" cy="19" r="7" fill="none" stroke="#1d6b6b" stroke-width="1.5" opacity="0.6"/>
+          <circle cx="18" cy="19" r="3.5" fill="#c05a3a" opacity="0.25"/>
+          <line x1="10" y1="13" x2="10" y2="20" stroke="#1d6b6b" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+          <line x1="8.5" y1="13" x2="8.5" y2="16" stroke="#1d6b6b" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+          <line x1="11.5" y1="13" x2="11.5" y2="16" stroke="#1d6b6b" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+          <!-- reloj de arena pequeño -->
+          <path d="M24 11 L28 11 L26 15 L28 19 L24 19 L26 15 Z" fill="#c05a3a" opacity="0.3" stroke="#c05a3a" stroke-width="0.8" opacity="0.5"/>
+        </svg>
+      </div>
+      <div>
+        <div class="gancho">
+          <p>Comés sano — fruta, verdura, todo bien. Pero lo hacés de pie, en cinco minutos, frente a una pantalla. Y el cuerpo igual se inflama. El problema no era la comida.</p>
+          <span class="prg-ref">PRG 205</span>
+        </div>
+        <div class="pillar-tag">Pilar Físico · Alimentación consciente</div>
+        <h3>Comer despacio también es una forma de sanar</h3>
+        <p>El modo en que comemos puede ser tan importante como lo que comemos. La digestión empieza en la boca: la saliva necesita tiempo para actuar, y sin esa primera etapa el proceso completo se compromete. El cuerpo bajo estrés activa el sistema nervioso simpático (modo "huida"), que inhibe la digestión. Comer apurado, de pie o frente a una pantalla activa exactamente ese estado. Elena de White escribió que si no tenés tiempo de comer despacio, es mejor comer menos. No es una regla rígida: es un recordatorio de que el beneficio del alimento no depende tanto de la cantidad sino de cuánto se asimila. Cada comida puede ser una práctica de desaceleración.</p>
+        <span class="highlight">Para empezar: Elegí una comida por día — la que sea — para hacerla sin pantalla y sin apuro. Sentate, mirá el plato, masticá despacio. No necesita ser perfecta, solo presente.</span>
+        <div class="btn-row">
+          <a href="https://youtu.be/EVYFIeBS38s" class="btn-watch">▶ Comer despacio</a>
+          <a href="https://youtu.be/9FTlzwENPKk" class="btn-watch">▶ Comunidad PRG 205</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <hr class="divider">
+
+  <!-- 2 HERRAMIENTAS -->
+  <div class="num-header">
+    <div class="num-circle terra">2</div>
+    <div>
+      <div class="num-label">herramientas para aplicar esta semana</div>
+      <div class="num-title">De la reflexión a la práctica</div>
+    </div>
+  </div>
+
+  <div class="dos-grid">
+    <div class="dos-card">
+      <div class="dos-card-icon">
+        <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="4" width="24" height="24" rx="5" fill="#fdf4ec" stroke="#e8ddd0" stroke-width="1.5"/>
+          <!-- batería mental - pilas -->
+          <rect x="9" y="12" width="14" height="8" rx="2" fill="none" stroke="#1d6b6b" stroke-width="1.5" opacity="0.6"/>
+          <rect x="22" y="14" width="2" height="4" rx="1" fill="#1d6b6b" opacity="0.4"/>
+          <rect x="10" y="13" width="4" height="6" rx="1" fill="#1d6b6b" opacity="0.5"/>
+          <rect x="15" y="13" width="4" height="6" rx="1" fill="#c05a3a" opacity="0.35"/>
+        </svg>
+      </div>
+      <h3>Reducir decisiones (PRG 201)</h3>
+      <p>La fatiga de decisión existe: el cerebro se desgasta con cada elección, por pequeña que sea. La solución no es voluntad sino diseño. Tres hábitos concretos: planificá la ropa la noche anterior, armá un menú semanal con 4 o 5 opciones base, y asigná horarios fijos para revisar mensajes. Cuando algo se vuelve automático, deja de consumir energía mental. Cuanto más hábito, menos cansancio.</p>
+    </div>
+    <div class="dos-card">
+      <div class="dos-card-icon">
+        <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="16" cy="16" r="12" fill="#fdf4ec" stroke="#e8ddd0" stroke-width="1.5"/>
+          <!-- reloj de pausa -->
+          <circle cx="16" cy="16" r="7" fill="none" stroke="#1d6b6b" stroke-width="1.5" opacity="0.5"/>
+          <line x1="16" y1="16" x2="16" y2="11" stroke="#1d6b6b" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+          <line x1="16" y1="16" x2="20" y2="16" stroke="#c05a3a" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+          <!-- dos barras de pausa -->
+          <rect x="11" y="22" width="3" height="5" rx="1" fill="#c05a3a" opacity="0.4"/>
+          <rect x="16" y="22" width="3" height="5" rx="1" fill="#c05a3a" opacity="0.3"/>
+        </svg>
+      </div>
+      <h3>Pausa de 3 minutos (PRG 203)</h3>
+      <p>Entre tarea y tarea, antes de abrir el celular, antes de comer: 3 minutos de pausa intencional. No es meditación ni técnica compleja. Es simplemente no hacer nada por 3 minutos antes de pasar a lo siguiente. El cerebro usa ese tiempo para consolidar, procesar y recuperar foco. Podés empezar hoy con una sola transición del día — de la mañana al trabajo, o del trabajo a casa. Solo una.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- 1 FRASE -->
+  <div class="num-header">
+    <div class="num-circle teal">1</div>
+    <div>
+      <div class="num-label">frase para llevar esta semana</div>
+      <div class="num-title">Para reflexionar y compartir</div>
+    </div>
+  </div>
+
+  <div class="uno-card">
+    <svg class="uno-deco" viewBox="0 0 680 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <circle cx="40" cy="60" r="70" fill="rgba(255,255,255,0.05)"/>
+      <circle cx="640" cy="60" r="80" fill="rgba(255,255,255,0.04)"/>
+    </svg>
+    <span class="quote-mark">"</span>
+    <blockquote>La prisa no es una señal de éxito.<br>Es lo que nos roba la capacidad<br>de estar presentes, de disfrutar, de respirar.</blockquote>
+    <div class="attribution">— Vida &amp; Salud · PRG 201</div>
+  </div>
+
+  <!-- NUTRICIONAL -->
+  <div class="nutricion-section">
+    <div class="nutri-header">
+      <svg width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="14" cy="14" r="13" fill="#e1f5ee"/>
+        <ellipse cx="14" cy="16" rx="8" ry="4" fill="none" stroke="#1d6b6b" stroke-width="1.5"/>
+        <ellipse cx="14" cy="15.5" rx="8" ry="4" fill="#fdfaf6" stroke="#1d6b6b" stroke-width="1.2"/>
+        <line x1="7" y1="8" x2="7" y2="14" stroke="#1d6b6b" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="5.5" y1="8" x2="5.5" y2="11" stroke="#1d6b6b" stroke-width="1" stroke-linecap="round"/>
+        <line x1="8.5" y1="8" x2="8.5" y2="11" stroke="#1d6b6b" stroke-width="1" stroke-linecap="round"/>
+        <line x1="21" y1="8" x2="21" y2="14" stroke="#1d6b6b" stroke-width="1.2" stroke-linecap="round"/>
+        <ellipse cx="14" cy="15" rx="5" ry="2.5" fill="#c05a3a" opacity="0.35"/>
+      </svg>
+      <div>
+        <div class="section-tag">Pilar Físico · La Ciencia del Plato</div>
+        <div class="section-title" style="font-size:15px;font-weight:900;letter-spacing:-0.2px;text-transform:uppercase;">Lo que comés también va a otro ritmo</div>
+      </div>
+    </div>
+    <div class="nutri-body">
+      <div class="nutri-item">
+        <h4>Estrés y alimentación (PRG 201) <a href="https://youtu.be/ledduIWxm5k" class="btn-watch" style="margin-top:4px;">▶ Ver</a></h4>
+        <p>Cuando el cortisol está elevado de forma crónica, el cuerpo prioriza la grasa visceral como reserva de emergencia. No es solo cansancio: es química. Reducir el ritmo no es un consejo de bienestar — es una intervención metabólica real. La alimentación antiinflamatoria (omega-3, vegetales de hoja, frutos rojos, nueces) trabaja junto con el descanso, no en su lugar.</p>
+      </div>
+      <div class="nutri-item">
+        <h4>Masticar despacio es digestión (PRG 205) <a href="https://youtu.be/ygzMkIwlmug" class="btn-watch" style="margin-top:4px;">▶ Ver</a></h4>
+        <p>La digestión empieza en la boca. La saliva contiene enzimas que inician la descomposición de hidratos. Si no masticás bien, el estómago y el intestino reciben trabajo extra — y el sistema nervioso, si está en modo estrés, inhibe la secreción gástrica. Resultado: bloating, reflujo, mala absorción. Comer despacio no es una metáfora: es fisiología.</p>
+      </div>
+      <div class="nutri-item">
+        <h4>Cerebro y multitasking (PRG 202) <a href="https://youtu.be/5_La-8PijP8" class="btn-watch" style="margin-top:4px;">▶ Ver</a></h4>
+        <p>La inflamación crónica daña la corteza prefrontal — la parte que regula el autocontrol y las decisiones. Nutrientes clave para sostener la función cognitiva: DHA (omega-3 de pescado o alga), magnesio (semillas de zapallo, chocolate negro, legumbres), vitamina B12 y zinc. La fatiga mental tiene una base nutricional que se puede trabajar.</p>
+      </div>
+      <div class="nutri-item">
+        <h4>Paciencia y glucemia (PRG 204) <a href="https://youtu.be/YNU0WLCVkyg" class="btn-watch" style="margin-top:4px;">▶ Ver</a></h4>
+        <p>Los picos de glucosa generan irritabilidad, dificultad para esperar y reactividad emocional. Una alimentación de bajo índice glucémico (legumbres, avena entera, vegetales no almidonados, fruta entera) estabiliza la glucemia y, con ella, el humor y la tolerancia. Comer bien también es aprender a esperar sin desesperar.</p>
+      </div>
+      <div class="nutri-recipe">
+        <a href="https://youtu.be/ledduIWxm5k" class="btn-watch" style="flex-shrink:0;">▶ Ver receta</a>
+        <p><strong>Heladitos de mango y naranja (PRG 201):</strong> Solo 3 ingredientes. Licuá mango maduro con jugo de naranja fresco hasta obtener una mezcla homogénea. Si queda muy espeso, agregá un chorrito de agua. Vertí en moldes de helado, insertá los palitos y congelá 12 horas. Para desmoldar, pasá el molde bajo agua tibia. Sin azúcar añadida, con vitamina C y betacarotenos. Decorá con gajos de naranja y menta.</p>
+      </div>
+      <div class="nutri-recipe">
+        <a href="https://youtu.be/cpCqSVaHiHo" class="btn-watch" style="flex-shrink:0;">▶ Ver receta</a>
+        <p><strong>Smoothie verde (PRG 203):</strong> Licuá melón, manzana verde y espinaca fresca con un chorrito de limón y agua hasta obtener una consistencia cremosa. Sin azúcar, sin lácteos. La espinaca aporta hierro, calcio y vitamina K; la manzana verde suma fibra y antioxidantes; el melón hidrata y aporta vitamina A. Ideal para arrancar la mañana con calma, en lugar de con apuro.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROTOCOLO -->
+  <div class="protocolo">
+    <svg class="proto-deco" viewBox="0 0 680 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <circle cx="620" cy="20" r="80" fill="rgba(255,255,255,0.06)"/>
+      <circle cx="50" cy="180" r="60" fill="rgba(255,255,255,0.05)"/>
+    </svg>
+    <div class="section-tag">Protocolo de Implementación</div>
+    <div class="section-title">Tu plan semanal para bajar el ritmo de verdad</div>
+    <div class="proto-steps">
+      <div class="proto-step">
+        <div class="step-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="14" cy="14" r="13" fill="rgba(255,255,255,0.15)"/>
+            <rect x="8" y="8" width="12" height="12" rx="2" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.5)" stroke-width="1"/>
+            <line x1="10" y1="12" x2="14" y2="12" stroke="rgba(255,255,255,0.6)" stroke-width="1" stroke-linecap="round"/>
+            <line x1="10" y1="14.5" x2="16" y2="14.5" stroke="rgba(255,255,255,0.5)" stroke-width="1" stroke-linecap="round"/>
+            <line x1="10" y1="17" x2="12" y2="17" stroke="rgba(255,255,255,0.4)" stroke-width="1" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h4>Automatizá 3 decisiones (lunes)</h4>
+        <p>Elegí ropa, menú y horario de mensajes con antelación. No para rigidizarte, sino para liberar energía mental para lo que importa.</p>
+      </div>
+      <div class="proto-step">
+        <div class="step-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="14" cy="14" r="13" fill="rgba(255,255,255,0.15)"/>
+            <circle cx="14" cy="14" r="6" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.2"/>
+            <line x1="14" y1="8" x2="14" y2="20" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+            <line x1="8" y1="14" x2="20" y2="14" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+            <circle cx="14" cy="14" r="2" fill="rgba(255,255,255,0.6)"/>
+          </svg>
+        </div>
+        <h4>Una tarea a la vez (miércoles)</h4>
+        <p>Elegí un bloque de 45 minutos. Cerrá todo lo que no sea esa tarea. Celular boca abajo, notificaciones apagadas. Una sola cosa. Notá la diferencia.</p>
+      </div>
+      <div class="proto-step">
+        <div class="step-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="14" cy="14" r="13" fill="rgba(255,255,255,0.15)"/>
+            <circle cx="14" cy="15" r="5" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.2"/>
+            <line x1="9" y1="9" x2="9" y2="13" stroke="rgba(255,255,255,0.5)" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="7.5" y1="9" x2="7.5" y2="11" stroke="rgba(255,255,255,0.4)" stroke-width="1" stroke-linecap="round"/>
+            <line x1="10.5" y1="9" x2="10.5" y2="11" stroke="rgba(255,255,255,0.4)" stroke-width="1" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h4>Comida consciente (viernes)</h4>
+        <p>Una comida sin pantallas, sentado, sin apuro. No importa cuál. Mirá el plato, masticá despacio. Tres minutos de pausa antes de levantarte.</p>
+      </div>
+    </div>
+    <div class="desafio-box">
+      <svg width="36" height="36" viewBox="0 0 36 36" style="flex-shrink:0;margin-top:2px;" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="18" cy="18" r="17" fill="rgba(255,255,255,0.15)"/>
+        <rect x="10" y="8" width="16" height="20" rx="2" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.5)" stroke-width="1"/>
+        <path d="M14 16 L16 18 L22 13" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <line x1="14" y1="21" x2="22" y2="21" stroke="rgba(255,255,255,0.4)" stroke-width="1" stroke-linecap="round"/>
+        <line x1="14" y1="24" x2="19" y2="24" stroke="rgba(255,255,255,0.3)" stroke-width="1" stroke-linecap="round"/>
+      </svg>
+      <div>
+        <div class="d-label">Tu desafío semanal</div>
+        <p>Elegí UNA acción con día y hora: <strong>(a)</strong> Esta noche dejá preparada la ropa de mañana y decidí qué vas a desayunar — así la mañana arranca sin decisiones. <strong>(b)</strong> Mañana, entre dos tareas, hacé 3 minutos de pausa real: ninguna pantalla, ningún mensaje, solo parar. <strong>(c)</strong> En la próxima comida importante, dejá el celular en otro cuarto. Solo esa vez. Un gesto sostenido vale más que un plan perfecto.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- COMUNIDAD -->
+  <div class="diag-section">
+    <div>
+      <div class="section-tag">COMUNIDAD DIGITAL</div>
+      <div class="section-title">Seguí a Vida &amp; Salud TV</div>
+      <ul class="check-list">
+        <li><div><a class="btn-watch" href="https://www.youtube.com/@vidaysaludtv" target="_blank">Canal YouTube</a> Programas completos, temporadas y episodios especiales.</div></li>
+        <li><div><a class="btn-watch" href="https://www.instagram.com/vidaysaludtv" target="_blank">Instagram</a> Clips diarios y actualidad del proyecto.</div></li>
+        <li><div><a class="btn-watch" href="https://www.facebook.com/tv.vidaysalud" target="_blank">Facebook</a> Comunidad extendida y publicaciones semanales.</div></li>
+        <li><div><a class="btn-watch" href="https://whatsapp.com/channel/0029VbCXcJD72WU2Tvqiv31h" target="_blank">Canal WhatsApp</a> Recordatorios y contenido exclusivo directo en tu celular.</div></li>
+      </ul>
+      <div class="diag-note">Suscribite y activá notificaciones para no perder ningún programa, segmento nutricional ni reflexión semanal.</div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  Una guía de <strong>@vidaysaludtv</strong> &nbsp;·&nbsp; PRG 201–205 &nbsp;·&nbsp; La Sencillez en la Práctica
+</footer>
+
+</body>
+</html>
