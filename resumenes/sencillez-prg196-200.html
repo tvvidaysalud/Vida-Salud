@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vida & Salud — Resumen Semanal PRG 196–200</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal:       #1d6b6b;
+    --teal-light: #2a8f8f;
+    --teal-pale:  #e1f5ee;
+    --sand:       #f5efe6;
+    --sand-dark:  #e8ddd0;
+    --terracota:  #c05a3a;
+    --ink:        #1a1a1a;
+    --muted:      #6b6b6b;
+    --white:      #fdfaf6;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--sand); font-family: 'Poppins', sans-serif; color: var(--ink); font-size: 16px; line-height: 1.65; }
+
+  /* NAV */
+  .main-nav { background: var(--teal); padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--terracota); position: sticky; top: 0; z-index: 1000; }
+  .nav-logo { height: 32px; width: auto; filter: brightness(0) invert(1); }
+  .nav-btn { color: white; font-family: 'DM Mono', monospace; font-size: 13px; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.3); padding: 6px 14px; border-radius: 20px; background: rgba(255,255,255,0.1); text-decoration: none; transition: all .2s; }
+  .nav-btn:hover { background: rgba(255,255,255,0.2); }
+  @media(max-width:600px){ .main-nav { padding: 10px 14px; } .nav-logo { height: 26px; } .nav-btn { font-size: 11px; padding: 5px 10px; } }
+
+  /* PORTADA */
+  .cover { background: var(--teal); padding: 52px 40px 44px; text-align: center; position: relative; overflow: hidden; }
+  .cover-deco { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+  .brand { font-family: 'DM Mono', monospace; font-size: 14px; letter-spacing: 4px; text-transform: uppercase; color: rgba(255,255,255,.5); margin-bottom: 18px; position: relative; }
+  .cover h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(28px,6vw,44px); font-weight: 900; letter-spacing: -1px; color: #fff; line-height: 1.15; margin-bottom: 10px; position: relative; text-transform: uppercase; }
+  .cover h1 em { font-style: italic; color: #9dd8d8; }
+  .cover-sub { font-size: 16px; color: rgba(255,255,255,.55); margin-bottom: 28px; position: relative; }
+
+  /* OPENING */
+  .opening { background: var(--terracota); padding: 40px; text-align: center; position: relative; overflow: hidden; }
+  .opening p { font-size: clamp(18px,2.5vw,22px); font-style: italic; color: #fff; max-width: 600px; margin: 0 auto; line-height: 1.65; position: relative; }
+
+  /* BODY */
+  .body-wrap { max-width: 720px; margin: 0 auto; padding: 0 24px 60px; }
+
+  /* AUTODIAGNÓSTICO */
+  .diag-section { background: var(--white); border-radius: 16px; padding: 32px 28px; margin-top: 36px; border-left: 6px solid var(--terracota); display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: start; }
+  @media(max-width:540px){ .diag-section { grid-template-columns: 1fr; } }
+  .section-tag { font-family: 'DM Mono', monospace; font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: var(--terracota); margin-bottom: 8px; }
+  .section-title { font-family: 'Montserrat', sans-serif; font-size: 26px; font-weight: 700; color: var(--ink); margin-bottom: 16px; }
+  .check-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .check-list li { display: flex; gap: 12px; align-items: flex-start; font-size: 17px; color: #333; line-height: 1.5; }
+  .check-input { appearance: none; width: 20px; height: 20px; border: 2px solid var(--sand-dark); border-radius: 4px; margin-top: 3px; cursor: pointer; position: relative; flex-shrink: 0; transition: all .2s; }
+  .check-input:checked { background: var(--terracota); border-color: var(--terracota); }
+  .check-input:checked::after { content: "✓"; color: #fff; font-size: 14px; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-58%); font-weight: bold; }
+  .diag-note { margin-top: 20px; background: var(--sand); border-radius: 10px; padding: 14px 16px; font-size: 16px; color: var(--muted); line-height: 1.6; }
+
+  a { text-decoration: none; color: inherit; }
+  .btn-watch { display: inline-flex; align-items: center; gap: 8px; margin-top: 12px; font-family: 'DM Mono', monospace; font-size: 13px; text-transform: uppercase; font-weight: 600; color: var(--terracota); border: 1.5px solid var(--terracota); padding: 6px 14px; border-radius: 4px; transition: all 0.2s; }
+  .btn-watch:hover { background: var(--terracota); color: #fff; }
+  .btn-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+
+  .section-intro { text-align: center; font-size: 24px; font-weight: 900; color: var(--teal); margin-bottom: 24px; }
+
+  /* NUM HEADERS */
+  .num-header { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
+  .num-circle { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Montserrat', sans-serif; font-size: 22px; font-weight: 900; flex-shrink: 0; }
+  .num-circle.teal { background: var(--teal); color: #fff; }
+  .num-circle.terra { background: var(--terracota); color: #fff; }
+  .num-label { font-family: 'DM Mono', monospace; font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); }
+  .num-title { font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 900; letter-spacing: -0.2px; color: var(--ink); margin-top: 4px; text-transform: uppercase; }
+
+  /* 3 CARDS */
+  .tres-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+  .tres-card { background: var(--white); border-radius: 12px; padding: 24px; border-top: 4px solid var(--teal-light); display: grid; grid-template-columns: auto 1fr; gap: 0 18px; }
+  .tres-card-icon { padding-top: 4px; }
+  .pillar-tag { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 2px; color: var(--teal); text-transform: uppercase; margin-bottom: 8px; }
+  .tres-card h3 { font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 900; color: var(--ink); margin-bottom: 8px; text-transform: uppercase; }
+  .tres-card p { font-size: 17px; color: #444; line-height: 1.65; }
+
+  /* GANCHO */
+  .gancho { border-left: 3px solid var(--terracota); padding: 10px 14px; margin-bottom: 16px; background: var(--sand); border-radius: 0 8px 8px 0; }
+  .gancho p { font-size: 15px; font-style: italic; color: var(--muted); line-height: 1.55; margin: 0; }
+  .gancho .prg-ref { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--terracota); opacity: .7; display: block; margin-top: 5px; }
+
+  .highlight { display: block; margin-top: 12px; padding: 12px 16px; background: var(--sand); border-radius: 8px; font-size: 16px; font-style: italic; color: var(--teal); border-left: 4px solid var(--teal-light); }
+
+  /* 2 CARDS */
+  .dos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media(max-width:500px){ .dos-grid { grid-template-columns: 1fr; } }
+  .dos-card { background: var(--white); border-radius: 12px; padding: 24px; border-bottom: 4px solid var(--terracota); }
+  .dos-card-icon { margin-bottom: 12px; }
+  .dos-card h3 { font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 900; color: var(--ink); margin-bottom: 8px; text-transform: uppercase; }
+  .dos-card p { font-size: 17px; color: #555; line-height: 1.6; }
+
+  /* 1 CARD FRASE */
+  .uno-card { background: var(--teal); border-radius: 16px; padding: 36px 28px; text-align: center; position: relative; overflow: hidden; }
+  .uno-deco { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+  .quote-mark { font-family: 'Montserrat', sans-serif; font-size: 60px; line-height: .8; opacity: .25; display: block; margin-bottom: 6px; color: #fff; position: relative; }
+  .uno-card blockquote { font-size: clamp(18px,3vw,22px); font-style: italic; line-height: 1.65; color: #fff; margin-bottom: 16px; position: relative; }
+  .uno-card .attribution { font-size: 15px; opacity: .55; letter-spacing: 1px; color: #fff; position: relative; }
+
+  /* NUTRICIONAL */
+  .nutricion-section { margin-top: 36px; background: var(--white); border-radius: 16px; overflow: hidden; }
+  .nutri-header { background: var(--sand-dark); padding: 18px 24px; border-left: 6px solid var(--teal); display: flex; align-items: center; gap: 16px; }
+  .nutri-body { padding: 22px 24px 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  @media(max-width:500px){ .nutri-body { grid-template-columns: 1fr; } }
+  .nutri-item h4 { font-size: 17px; font-weight: 600; color: var(--teal); margin-bottom: 6px; }
+  .nutri-item p { font-size: 16px; color: #555; line-height: 1.55; }
+  .nutri-recipe { grid-column: 1/-1; background: var(--sand); border-radius: 10px; padding: 16px 18px; display: flex; gap: 12px; align-items: flex-start; flex-wrap: wrap; }
+  .nutri-recipe .btn-watch { flex-shrink: 0; }
+  .nutri-recipe p { font-size: 17px; color: #444; line-height: 1.6; min-width: 0; flex: 1 1 200px; }
+  @media(max-width:500px){ .nutri-recipe { flex-direction: column; align-items: flex-start; } .nutri-recipe .btn-watch { margin-top: 0; } }
+
+  /* PROTOCOLO */
+  .protocolo { margin-top: 32px; background: var(--terracota); border-radius: 16px; padding: 28px 22px; position: relative; overflow: hidden; }
+  .proto-deco { position: absolute; inset: 0; pointer-events: none; }
+  .protocolo .section-tag { color: rgba(255,255,255,.65); }
+  .protocolo .section-title { color: #fff; font-size: clamp(16px,2.5vw,20px); margin-bottom: 20px; }
+  .proto-steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 22px; }
+  .proto-step { background: rgba(255,255,255,.13); border-radius: 10px; padding: 16px; }
+  .proto-step .step-icon { margin-bottom: 9px; }
+  .proto-step h4 { font-size: clamp(14px,2vw,17px); font-weight: 600; margin-bottom: 6px; color: #fff; }
+  .proto-step p { font-size: clamp(12px,1.7vw,15px); opacity: .88; line-height: 1.5; color: #fff; }
+  .desafio-box { background: rgba(255,255,255,.15); border: 1.5px dashed rgba(255,255,255,.4); border-radius: 14px; padding: 22px 20px; display: flex; flex-direction: row; gap: 16px; align-items: flex-start; }
+  .desafio-box .d-label { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 3px; text-transform: uppercase; opacity: .65; margin-bottom: 10px; color: #fff; }
+  .desafio-box p { font-size: clamp(14px,2vw,17px); line-height: 1.7; color: #fff; }
+  @media(max-width:600px){ .desafio-box { flex-direction: column; align-items: center; text-align: center; } .proto-steps { grid-template-columns: 1fr; } }
+
+  .divider { border: none; border-top: 1px solid var(--sand-dark); margin: 30px 0; }
+  footer { background: var(--teal); padding: 24px 40px; text-align: center; color: rgba(255,255,255,.45); font-size: 14px; letter-spacing: 1px; }
+  footer strong { color: rgba(255,255,255,.75); }
+</style>
+</head>
+<body>
+
+<nav class="main-nav">
+  <img src="../Marca V&S T7.png" alt="Vida y Salud" class="nav-logo">
+  <a href="../index.html" class="nav-btn">← Volver al Inicio</a>
+</nav>
+
+<!-- PORTADA -->
+<div class="cover">
+  <svg class="cover-deco" viewBox="0 0 680 280" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+    <circle cx="620" cy="40" r="110" fill="rgba(255,255,255,0.05)"/>
+    <circle cx="60" cy="240" r="90" fill="rgba(255,255,255,0.04)"/>
+    <circle cx="650" cy="250" r="22" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/>
+    <!-- mochila decorativa -->
+    <path d="M310 80 Q340 50 370 80 L375 150 Q340 165 305 150 Z" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="3"/>
+    <path d="M325 80 Q340 70 355 80" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="2.5"/>
+  </svg>
+  <div class="brand">Resumen Semanal</div>
+  <h1>De aprender<br>a <em>vivir</em> simple</h1>
+  <div class="cover-sub">PRG 196–200 · La Sencillez en la Acción</div>
+</div>
+
+<!-- OPENING -->
+<div class="opening">
+  <svg style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;" viewBox="0 0 680 90" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+    <circle cx="30" cy="45" r="50" fill="rgba(255,255,255,0.06)"/>
+    <circle cx="660" cy="45" r="55" fill="rgba(255,255,255,0.05)"/>
+  </svg>
+  <p>Ya sabemos qué es la sencillez. Esta semana la pregunta cambia: ¿cómo se hace? Primeros pasos concretos, la libertad que viene de soltar, cambiar por amor y no por obligación, diseñar un plan real — y Daniel como ejemplo que no envejece.</p>
+</div>
+
+<div class="body-wrap">
+
+  <!-- AUTODIAGNÓSTICO -->
+  <div class="diag-section">
+    <div>
+      <div class="section-tag">Autodiagnóstico</div>
+      <div class="section-title">¿Sabés vivir simple o solo hablás de hacerlo?</div>
+      <ul class="check-list">
+        <li><input type="checkbox" class="check-input" id="c1"><label for="c1">¿Hace tiempo querés ordenar algo concreto (el ropero, la alimentación, las finanzas) pero nunca arrancás?</label></li>
+        <li><input type="checkbox" class="check-input" id="c2"><label for="c2">¿Comprás cosas por impulso y después no recordás por qué las querías?</label></li>
+        <li><input type="checkbox" class="check-input" id="c3"><label for="c3">¿Los cambios que intentaste fueron impuestos desde afuera, no elegidos desde adentro?</label></li>
+        <li><input type="checkbox" class="check-input" id="c4"><label for="c4">¿Tus finanzas tienen más deudas que plan?</label></li>
+        <li><input type="checkbox" class="check-input" id="c5"><label for="c5">¿Cuando tenés tiempo libre, lo llenás de actividades por costumbre más que por disfrute?</label></li>
+      </ul>
+      <div class="diag-note">Si marcaste 2 o más, esta edición te viene bien. Esta semana no es teoría — son pasos concretos para empezar a vivir lo que ya sabés.</div>
+    </div>
+    <div>
+      <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="46" fill="#fdf4ec" stroke="#e8ddd0" stroke-width="1.5"/>
+        <!-- mochila simplificada -->
+        <path d="M30 38 Q50 25 70 38 L72 68 Q50 76 28 68 Z" fill="none" stroke="#1d6b6b" stroke-width="2" opacity="0.45"/>
+        <path d="M38 38 Q50 32 62 38" fill="none" stroke="#1d6b6b" stroke-width="2" opacity="0.5" stroke-linecap="round"/>
+        <!-- flecha hacia afuera: soltar -->
+        <line x1="50" y1="70" x2="50" y2="82" stroke="#c05a3a" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+        <path d="M44 77 L50 83 L56 77" fill="none" stroke="#c05a3a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>
+        <!-- tilde dentro -->
+        <path d="M40 52 L46 58 L60 45" fill="none" stroke="#1d6b6b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+      </svg>
+    </div>
+  </div>
+
+  <br><br>
+
+  <div class="section-intro">
+    3 ideas que cambian la perspectiva<br><br>
+    2 herramientas para aplicar esta semana<br><br>
+    1 frase para llevar
+  </div>
+
+  <hr class="divider">
+
+  <!-- 3 IDEAS -->
+  <div class="num-header">
+    <div class="num-circle teal">3</div>
+    <div>
+      <div class="num-label">ideas que cambian la perspectiva</div>
+      <div class="num-title">Lo que aprendimos sobre pasar de la idea a la acción</div>
+    </div>
+  </div>
+
+  <div class="tres-grid">
+
+    <!-- IDEA 1: PRG 196 + 197 -->
+    <div class="tres-card">
+      <div class="tres-card-icon">
+        <svg width="36" height="36" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="18" cy="18" r="15" fill="#e1f5ee" stroke="#2a8f8f" stroke-width="1.5"/>
+          <rect x="9" y="11" width="18" height="14" rx="2" fill="none" stroke="#1d6b6b" stroke-width="1.5" opacity="0.6"/>
+          <line x1="9" y1="17" x2="27" y2="17" stroke="#1d6b6b" stroke-width="1" opacity="0.35"/>
+          <path d="M12 20 L15 23 L22 17" fill="none" stroke="#1d6b6b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+        </svg>
+      </div>
+      <div>
+        <div class="gancho">
+          <p>Nahum compró verdura, pasó la tarde picando con su compañero y llenaron el freezer para dos semanas. "No me estresé para nada."</p>
+          <span class="prg-ref">PRG 196</span>
+        </div>
+        <div class="pillar-tag">Pilar Mental · Primeros pasos &amp; Libertad</div>
+        <h3>Empezar pequeño. Soltar lo que pesa.</h3>
+        <p>La sencillez no empieza con un plan. Empieza con una tarde y una bolsita con cierre. Cada cosa que acumulás tiene un costo invisible: tiempo para limpiarla, energía para organizarla, espacio mental para recordar dónde está. Soltar no es perder — es recuperar.</p>
+        <span class="highlight">Antes de comprar algo, preguntate cuánto tiempo vas a invertir después en mantenerlo. Ese es el precio real.</span>
+        <div class="btn-row">
+          <a href="https://youtu.be/_IaL87qMBeY" class="btn-watch">▶ Primeros pasos concretos</a>
+          <a href="https://youtu.be/u6bMV9Q5uj8" class="btn-watch">▶ La sencillez como libertad</a>
+          <a href="https://youtu.be/LMjt-LXGV5k" class="btn-watch">▶ Comunidad PRG 196</a>
+          <a href="https://youtu.be/tc8k9AY525Y" class="btn-watch">▶ Comunidad PRG 197</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- IDEA 2: PRG 198 + 199 -->
+    <div class="tres-card">
+      <div class="tres-card-icon">
+        <svg width="36" height="36" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="18" cy="18" r="15" fill="#e1f5ee" stroke="#2a8f8f" stroke-width="1.5"/>
+          <path d="M18 24 Q11 19 11 15 Q11 12 14 12 Q16 12 18 14.5 Q20 12 22 12 Q25 12 25 15 Q25 19 18 24Z" fill="#c05a3a" opacity="0.3" stroke="#c05a3a" stroke-width="1.2"/>
+          <rect x="20" y="9" width="8" height="10" rx="1.5" fill="none" stroke="#1d6b6b" stroke-width="1.2" opacity="0.5"/>
+          <line x1="21.5" y1="12" x2="26.5" y2="12" stroke="#1d6b6b" stroke-width="1" opacity="0.5" stroke-linecap="round"/>
+          <line x1="21.5" y1="14.5" x2="25" y2="14.5" stroke="#1d6b6b" stroke-width="1" opacity="0.4" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div>
+        <div class="gancho">
+          <p>Nahum coleccionaba envases de desodorante vacíos. Su mamá los tiró. Le dolió — no porque fueran útiles, sino porque el cambio no fue suyo.</p>
+          <span class="prg-ref">PRG 198</span>
+        </div>
+        <div class="pillar-tag">Pilar Espiritual · Belleza &amp; Diseño de vida</div>
+        <h3>Cambiar por amor. Diseñar con propósito.</h3>
+        <p>Los cambios que duran nacen desde adentro. Cuando la sencillez se vive como algo lindo — no como privación — se sostiene sola. El siguiente paso es diseñarla: presupuesto en papel, tres preguntas antes de comprar, un plan claro. La sencillez no es una emoción. Es una arquitectura.</p>
+        <span class="highlight">¿Lo necesito? ¿Lo puedo pagar en efectivo? ¿Está en mi plan? Si alguna respuesta es no, esperá 48 horas.</span>
+        <div class="btn-row">
+          <a href="https://youtu.be/tlCeyTcYM8g" class="btn-watch">▶ La belleza de lo esencial</a>
+          <a href="https://youtu.be/u8GSPhtwQys" class="btn-watch">▶ Diseñando una vida simple</a>
+          <a href="https://youtu.be/5r4DO99ll-g" class="btn-watch">▶ Nutrición PRG 198</a>
+          <a href="https://youtu.be/fuAzMvYJ82E" class="btn-watch">▶ Comunidad PRG 199</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- IDEA 3: PRG 200 -->
+    <div class="tres-card">
+      <div class="tres-card-icon">
+        <svg width="36" height="36" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="18" cy="18" r="15" fill="#e1f5ee" stroke="#2a8f8f" stroke-width="1.5"/>
+          <line x1="18" y1="10" x2="18" y2="26" stroke="#1d6b6b" stroke-width="1.5" opacity="0.5" stroke-linecap="round"/>
+          <line x1="10" y1="16" x2="26" y2="16" stroke="#1d6b6b" stroke-width="1.5" opacity="0.6" stroke-linecap="round"/>
+          <circle cx="10" cy="20" r="3" fill="#1d6b6b" opacity="0.35"/>
+          <circle cx="26" cy="20" r="3" fill="#c05a3a" opacity="0.35"/>
+          <circle cx="18" cy="10" r="2" fill="#1d6b6b" opacity="0.5"/>
+        </svg>
+      </div>
+      <div>
+        <div class="gancho">
+          <p>Sansón empezó cerca de Dios. Se fue alejando. La vida se volvió complicada de formas que antes no hubiera imaginado.</p>
+          <span class="prg-ref">PRG 200</span>
+        </div>
+        <div class="pillar-tag">Pilar Físico · Equilibrio &amp; Ejemplos de vida</div>
+        <h3>Ni escasez ni exceso: el equilibrio como meta</h3>
+        <p>Daniel eligió un régimen simple en el palacio de Babilonia. No por privación — por claridad. John Marcomer simplificó su agenda, caminó al trabajo, priorizó el sábado. Su evaluación: "Estoy razonablemente feliz." No perfección. Paz. La escasez y el exceso son los dos extremos que nos desequilibran. La sencillez vive en el centro.</p>
+        <span class="highlight">Un régimen simple no es pobreza. Es dominio propio que abre espacio para lo que más importa.</span>
+        <div class="btn-row">
+          <a href="https://youtu.be/3ideFy40yLg" class="btn-watch">▶ Ejemplos de vida sencilla</a>
+          <a href="https://youtu.be/I9nsJaVUAw8" class="btn-watch">▶ Comunidad PRG 200</a>
+          <a href="https://youtu.be/YtKM4JFeAkE" class="btn-watch">▶ Nutrición PRG 200</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <hr class="divider">
+
+  <!-- 2 HERRAMIENTAS -->
+  <div class="num-header">
+    <div class="num-circle terra">2</div>
+    <div>
+      <div class="num-label">herramientas para aplicar esta semana</div>
+      <div class="num-title">De la reflexión a la práctica</div>
+    </div>
+  </div>
+
+  <div class="dos-grid">
+    <div class="dos-card">
+      <div class="dos-card-icon">
+        <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="4" width="24" height="24" rx="5" fill="#fdf4ec" stroke="#e8ddd0" stroke-width="1.5"/>
+          <line x1="10" y1="11" x2="22" y2="11" stroke="#e8ddd0" stroke-width="1"/>
+          <path d="M9 11 L10.5 12.5 L13 10" fill="none" stroke="#1d6b6b" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+          <line x1="14" y1="11" x2="22" y2="11" stroke="#1d6b6b" stroke-width="1" opacity="0.4" stroke-linecap="round"/>
+          <path d="M9 16 L10.5 17.5 L13 15" fill="none" stroke="#1d6b6b" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" opacity="0.55"/>
+          <line x1="14" y1="16" x2="22" y2="16" stroke="#1d6b6b" stroke-width="1" opacity="0.35" stroke-linecap="round"/>
+          <path d="M9 21 L10.5 22.5 L13 20" fill="none" stroke="#c05a3a" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+          <line x1="14" y1="21" x2="19" y2="21" stroke="#c05a3a" stroke-width="1" opacity="0.35" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h3>Las 3 preguntas antes de comprar</h3>
+      <p><em>¿Lo necesito? ¿Lo puedo pagar en efectivo? ¿Está en mi plan?</em> Si alguna es no, esperá 48 horas. La pausa no es privación — es claridad.</p>
+    </div>
+    <div class="dos-card">
+      <div class="dos-card-icon">
+        <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="4" width="24" height="24" rx="5" fill="#fdf4ec" stroke="#e8ddd0" stroke-width="1.5"/>
+          <rect x="9" y="9" width="6" height="14" rx="1.5" fill="#1d6b6b" opacity="0.35"/>
+          <rect x="17" y="13" width="6" height="10" rx="1.5" fill="#c05a3a" opacity="0.3"/>
+          <line x1="8" y1="23" x2="24" y2="23" stroke="#e8ddd0" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h3>Presupuesto en papel</h3>
+      <p>Una hoja. Lo que entra, lo que sale. Tres columnas: necesidades, deseos, ahorro. Cuando el dinero tiene nombre, deja de escaparse.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- 1 FRASE -->
+  <div class="num-header">
+    <div class="num-circle teal">1</div>
+    <div>
+      <div class="num-label">frase para llevar esta semana</div>
+      <div class="num-title">Para reflexionar y compartir</div>
+    </div>
+  </div>
+
+  <div class="uno-card">
+    <svg class="uno-deco" viewBox="0 0 680 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <circle cx="40" cy="60" r="70" fill="rgba(255,255,255,0.05)"/>
+      <circle cx="640" cy="60" r="80" fill="rgba(255,255,255,0.04)"/>
+    </svg>
+    <span class="quote-mark">"</span>
+    <blockquote>Simplificar no es vivir con carencias.<br>Es vivir con claridad.<br>Más espacio para agradecer, más tiempo para lo que importa.</blockquote>
+    <div class="attribution">— Vida &amp; Salud · PRG 196</div>
+  </div>
+
+  <!-- NUTRICIONAL -->
+  <div class="nutricion-section">
+    <div class="nutri-header">
+      <svg width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="14" cy="14" r="13" fill="#e1f5ee"/>
+        <ellipse cx="14" cy="16" rx="8" ry="4" fill="none" stroke="#1d6b6b" stroke-width="1.5"/>
+        <ellipse cx="14" cy="15.5" rx="8" ry="4" fill="#fdfaf6" stroke="#1d6b6b" stroke-width="1.2"/>
+        <line x1="7" y1="8" x2="7" y2="14" stroke="#1d6b6b" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="5.5" y1="8" x2="5.5" y2="11" stroke="#1d6b6b" stroke-width="1" stroke-linecap="round"/>
+        <line x1="8.5" y1="8" x2="8.5" y2="11" stroke="#1d6b6b" stroke-width="1" stroke-linecap="round"/>
+        <line x1="21" y1="8" x2="21" y2="14" stroke="#1d6b6b" stroke-width="1.2" stroke-linecap="round"/>
+        <ellipse cx="14" cy="15" rx="5" ry="2.5" fill="#c05a3a" opacity="0.35"/>
+      </svg>
+      <div>
+        <div class="section-tag">Pilar Físico · La Ciencia del Plato</div>
+        <div class="section-title" style="font-size:15px;font-weight:900;letter-spacing:-0.2px;text-transform:uppercase;">La mesa también se simplifica</div>
+      </div>
+    </div>
+    <div class="nutri-body">
+      <div class="nutri-item">
+        <h4>Vitamina D (PRG 196) <a href="https://youtu.be/VyeXm4PF210" class="btn-watch" style="margin-top:4px;">▶ Ver</a></h4>
+        <p>Su déficit está detrás de un sistema inmune débil, problemas hormonales y deterioro cardiovascular. Tomarla sin K2 puede generar calcificaciones. Nivel óptimo: 60–70 ng/dl. Fuente natural: 20–30 minutos de sol entre las 9 y las 13 hs, sin protector.</p>
+      </div>
+      <div class="nutri-item">
+        <h4>Nutrición en el envejecimiento (PRG 198) <a href="https://youtu.be/5r4DO99ll-g" class="btn-watch" style="margin-top:4px;">▶ Ver</a></h4>
+        <p>Al envejecer cambian el apetito, la capacidad de masticar y el efecto de los medicamentos. La clave no es cantidad sino calidad: aceite de oliva, palta, comidas blandas si es necesario. El contacto social en la mesa también alimenta.</p>
+      </div>
+      <div class="nutri-item">
+        <h4>Sarcopenia: el músculo también envejece (PRG 200) <a href="https://youtu.be/YtKM4JFeAkE" class="btn-watch" style="margin-top:4px;">▶ Ver</a></h4>
+        <p>Desde los 40 años perdemos masa muscular si no la entrenamos. 1–1,5 g de proteína por kilo al día, repartidos en las tres comidas. Lentejas con arroz es una combinación completa. El ejercicio de fuerza es insustituible.</p>
+      </div>
+      <div class="nutri-recipe">
+        <a href="https://youtu.be/2R-IyXJdNlU" class="btn-watch" style="flex-shrink:0;">▶ Ver receta</a>
+        <p><strong>Crisp de manzana y frutos rojos (PRG 197):</strong> Manzana verde en láminas con limón y canela como base. Cobertura arenada de avena, harina integral, azúcar mascabo y aceite de girasol. Horneá a 180°C por 35 minutos hasta dorar. Sin lácteos, sin huevo. Ideal como postre o merienda.</p>
+      </div>
+      <div class="nutri-recipe">
+        <a href="https://youtu.be/0Cb-YdMXmCE" class="btn-watch" style="flex-shrink:0;">▶ Ver receta</a>
+        <p><strong>Mousse de cacao y manteca de maní (PRG 199):</strong> Bebida de coco, cacao amargo, azúcar mascabo, agar-agar y manteca de maní. Cociná revolviendo hasta espesar, batí hasta enfriar y refrigerá. Sin gluten, vegano. Dura 3 días en heladera y sirve también de relleno de torta.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROTOCOLO -->
+  <div class="protocolo">
+    <svg class="proto-deco" viewBox="0 0 680 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <circle cx="620" cy="20" r="80" fill="rgba(255,255,255,0.06)"/>
+      <circle cx="50" cy="180" r="60" fill="rgba(255,255,255,0.05)"/>
+    </svg>
+    <div class="section-tag">Protocolo de Implementación</div>
+    <div class="section-title">Tu plan semanal para pasar de la idea a la acción</div>
+    <div class="proto-steps">
+      <div class="proto-step">
+        <div class="step-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="14" cy="14" r="13" fill="rgba(255,255,255,0.15)"/>
+            <rect x="7" y="9" width="14" height="10" rx="2" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.5)" stroke-width="1"/>
+            <path d="M10 14 L12 16 L16 12" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="17" y1="14" x2="20" y2="14" stroke="rgba(255,255,255,0.4)" stroke-width="1" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h4>Un área concreta (lunes)</h4>
+        <p>Elegí una sola área: el ropero, la alimentación o las finanzas. Solo una. Dedicale 30 minutos esta semana. No hace falta terminar — solo empezar.</p>
+      </div>
+      <div class="proto-step">
+        <div class="step-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="14" cy="14" r="13" fill="rgba(255,255,255,0.15)"/>
+            <line x1="7" y1="14" x2="21" y2="14" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round"/>
+            <rect x="8" y="9" width="5" height="10" rx="1" fill="rgba(255,255,255,0.3)"/>
+            <rect x="15" y="11" width="5" height="8" rx="1" fill="rgba(255,255,255,0.2)"/>
+          </svg>
+        </div>
+        <h4>Presupuesto en papel (miércoles)</h4>
+        <p>Una hoja, dos columnas: lo que entra y lo que sale. Solo este mes. Sin app, sin sistema complejo. Ver los números escritos ya cambia cómo tomás las decisiones.</p>
+      </div>
+      <div class="proto-step">
+        <div class="step-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="14" cy="14" r="13" fill="rgba(255,255,255,0.15)"/>
+            <!-- plato simple -->
+            <circle cx="14" cy="15" r="6" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.2"/>
+            <circle cx="14" cy="15" r="3" fill="rgba(255,255,255,0.25)"/>
+            <line x1="9" y1="9" x2="9" y2="13" stroke="rgba(255,255,255,0.5)" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="7.5" y1="9" x2="7.5" y2="11.5" stroke="rgba(255,255,255,0.35)" stroke-width="1" stroke-linecap="round"/>
+            <line x1="10.5" y1="9" x2="10.5" y2="11.5" stroke="rgba(255,255,255,0.35)" stroke-width="1" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h4>Comida sencilla (viernes)</h4>
+        <p>Una comida del día preparada con ingredientes simples: vegetales, legumbres, granos. Sin mezclas complicadas. Comé despacio, sin pantallas. Así también se simplifica.</p>
+      </div>
+    </div>
+    <div class="desafio-box">
+      <svg width="36" height="36" viewBox="0 0 36 36" style="flex-shrink:0;margin-top:2px;" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="18" cy="18" r="17" fill="rgba(255,255,255,0.15)"/>
+        <rect x="10" y="8" width="16" height="20" rx="2" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.5)" stroke-width="1"/>
+        <path d="M14 16 L16 18 L22 13" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <line x1="14" y1="21" x2="22" y2="21" stroke="rgba(255,255,255,0.4)" stroke-width="1" stroke-linecap="round"/>
+        <line x1="14" y1="24" x2="19" y2="24" stroke="rgba(255,255,255,0.3)" stroke-width="1" stroke-linecap="round"/>
+      </svg>
+      <div>
+        <div class="d-label">Tu desafío semanal</div>
+        <p>Elegí UNA acción con día y hora: <strong>(a)</strong> Antes de la próxima compra que tengas en mente, hacete las tres preguntas y esperá 48 horas antes de decidir. <strong>(b)</strong> Esta semana dedicá una tarde a preparar comida para los próximos días — aunque sea una sola cosa, como legumbres cocidas o vegetales cortados. <strong>(c)</strong> Abrí el ropero y sacá tres prendas que no usás hace más de un año. Solo tres. Un gesto concreto vale más que un plan perfecto.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- COMUNIDAD -->
+  <div class="diag-section">
+    <div>
+      <div class="section-tag">COMUNIDAD DIGITAL</div>
+      <div class="section-title">Seguí a Vida &amp; Salud TV</div>
+      <ul class="check-list">
+        <li><div><a class="btn-watch" href="https://www.youtube.com/@vidaysaludtv" target="_blank">Canal YouTube</a> Programas completos, temporadas y episodios especiales.</div></li>
+        <li><div><a class="btn-watch" href="https://www.instagram.com/vidaysaludtv" target="_blank">Instagram</a> Clips diarios y actualidad del proyecto.</div></li>
+        <li><div><a class="btn-watch" href="https://www.facebook.com/tv.vidaysalud" target="_blank">Facebook</a> Comunidad extendida y publicaciones semanales.</div></li>
+        <li><div><a class="btn-watch" href="https://whatsapp.com/channel/0029VbCXcJD72WU2Tvqiv31h" target="_blank">Canal WhatsApp</a> Recordatorios y contenido exclusivo directo en tu celular.</div></li>
+      </ul>
+      <div class="diag-note">Suscribite y activá notificaciones para no perder ningún programa, segmento nutricional ni reflexión semanal.</div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  Una guía de <strong>@vidaysaludtv</strong> &nbsp;·&nbsp; PRG 196–200 &nbsp;·&nbsp; La Sencillez en la Acción
+</footer>
+
+</body>
+</html>
