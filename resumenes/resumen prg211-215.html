@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vida & Salud — Resumen Semanal PRG 211–215</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal:       #1d6b6b;
+    --teal-light: #2a8f8f;
+    --teal-pale:  #e1f5ee;
+    --sand:       #f5efe6;
+    --sand-dark:  #e8ddd0;
+    --terracota:  #c05a3a;
+    --ink:        #1a1a1a;
+    --muted:      #6b6b6b;
+    --white:      #fdfaf6;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--sand); font-family: 'Poppins', sans-serif; color: var(--ink); font-size: 16px; line-height: 1.65; }
+
+  /* NAV */
+  .main-nav { background: var(--teal); padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--terracota); position: sticky; top: 0; z-index: 1000; }
+  .nav-logo { height: 32px; width: auto; filter: brightness(0) invert(1); }
+  .nav-btn { color: white; font-family: 'DM Mono', monospace; font-size: 13px; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.3); padding: 6px 14px; border-radius: 20px; background: rgba(255,255,255,0.1); text-decoration: none; transition: all .2s; }
+  .nav-btn:hover { background: rgba(255,255,255,0.2); }
+  @media(max-width:600px){ .main-nav { padding: 10px 14px; } .nav-logo { height: 26px; } .nav-btn { font-size: 11px; padding: 5px 10px; } }
+
+  /* PORTADA */
+  .cover { background: var(--teal); padding: 52px 40px 44px; text-align: center; position: relative; overflow: hidden; }
+  .cover-deco { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+  .brand { font-family: 'DM Mono', monospace; font-size: 14px; letter-spacing: 4px; text-transform: uppercase; color: rgba(255,255,255,.5); margin-bottom: 18px; position: relative; }
+  .cover h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(28px,6vw,44px); font-weight: 900; letter-spacing: -1px; color: #fff; line-height: 1.15; margin-bottom: 10px; position: relative; text-transform: uppercase; }
+  .cover h1 em { font-style: italic; color: #9dd8d8; }
+  .cover-sub { font-size: 16px; color: rgba(255,255,255,.55); margin-bottom: 28px; position: relative; }
+
+  /* OPENING */
+  .opening { background: var(--terracota); padding: 40px; text-align: center; position: relative; overflow: hidden; }
+  .opening p { font-size: clamp(18px,2.5vw,22px); font-style: italic; color: #fff; max-width: 600px; margin: 0 auto; line-height: 1.65; position: relative; }
+
+  /* BODY */
+  .body-wrap { max-width: 720px; margin: 0 auto; padding: 0 24px 60px; }
+
+  /* AUTODIAGNÓSTICO */
+  .diag-section { background: var(--white); border-radius: 16px; padding: 32px 28px; margin-top: 36px; border-left: 6px solid var(--terracota); display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: start; }
+  @media(max-width:540px){ .diag-section { grid-template-columns: 1fr; } }
+  .section-tag { font-family: 'DM Mono', monospace; font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: var(--terracota); margin-bottom: 8px; }
+  .section-title { font-family: 'Montserrat', sans-serif; font-size: 26px; font-weight: 700; color: var(--ink); margin-bottom: 16px; }
+  .check-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .check-list li { display: flex; gap: 12px; align-items: flex-start; font-size: 17px; color: #333; line-height: 1.5; }
+  .check-input { appearance: none; width: 20px; height: 20px; border: 2px solid var(--sand-dark); border-radius: 4px; margin-top: 3px; cursor: pointer; position: relative; flex-shrink: 0; transition: all .2s; }
+  .check-input:checked { background: var(--terracota); border-color: var(--terracota); }
+  .check-input:checked::after { content: "✓"; color: #fff; font-size: 14px; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-58%); font-weight: bold; }
+  .diag-note { margin-top: 20px; background: var(--sand); border-radius: 10px; padding: 14px 16px; font-size: 16px; color: var(--muted); line-height: 1.6; }
+
+  a { text-decoration: none; color: inherit; }
+  .btn-watch { display: inline-flex; align-items: center; gap: 8px; margin-top: 12px; font-family: 'DM Mono', monospace; font-size: 13px; text-transform: uppercase; font-weight: 600; color: var(--terracota); border: 1.5px solid var(--terracota); padding: 6px 14px; border-radius: 4px; transition: all 0.2s; }
+  .btn-watch:hover { background: var(--terracota); color: #fff; }
+  .btn-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+
+  .section-intro { text-align: center; font-size: 24px; font-weight: 900; color: var(--teal); margin-bottom: 24px; }
+
+  /* NUM HEADERS */
+  .num-header { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
+  .num-circle { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Montserrat', sans-serif; font-size: 22px; font-weight: 900; flex-shrink: 0; }
+  .num-circle.teal { background: var(--teal); color: #fff; }
+  .num-circle.terra { background: var(--terracota); color: #fff; }
+  .num-label { font-family: 'DM Mono', monospace; font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); }
+  .num-title { font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 900; letter-spacing: -0.2px; color: var(--ink); margin-top: 4px; text-transform: uppercase; }
+
+  /* 3 CARDS */
+  .tres-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+  .tres-card { background: var(--white); border-radius: 12px; padding: 24px; border-top: 4px solid var(--teal-light); display: grid; grid-template-columns: auto 1fr; gap: 0 18px; }
+  .tres-card-icon { padding-top: 4px; }
+  .pillar-tag { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 2px; color: var(--teal); text-transform: uppercase; margin-bottom: 8px; }
+  .tres-card h3 { font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 900; color: var(--ink); margin-bottom: 8px; text-transform: uppercase; }
+  .tres-card p { font-size: 17px; color: #444; line-height: 1.65; }
+
+  /* GANCHO */
+  .gancho { border-left: 3px solid var(--terracota); padding: 10px 14px; margin-bottom: 16px; background: var(--sand); border-radius: 0 8px 8px 0; }
+  .gancho p { font-size: 15px; font-style: italic; color: var(--muted); line-height: 1.55; margin: 0; }
+  .gancho .prg-ref { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--terracota); opacity: .7; display: block; margin-top: 5px; }
+
+  .highlight { display: block; margin-top: 12px; padding: 12px 16px; background: var(--sand); border-radius: 8px; font-size: 16px; font-style: italic; color: var(--teal); border-left: 4px solid var(--teal-light); }
+
+  /* 2 CARDS */
+  .dos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media(max-width:500px){ .dos-grid { grid-template-columns: 1fr; } }
+  .dos-card { background: var(--white); border-radius: 12px; padding: 24px; border-bottom: 4px solid var(--terracota); }
+  .dos-card-icon { margin-bottom: 12px; }
+  .dos-card h3 { font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 900; color: var(--ink); margin-bottom: 8px; text-transform: uppercase; }
+  .dos-card p { font-size: 17px; color: #555; line-height: 1.6; }
+
+  /* 1 CARD FRASE */
+  .uno-card { background: var(--teal); border-radius: 16px; padding: 36px 28px; text-align: center; position: relative; overflow: hidden; }
+  .uno-deco { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+  .quote-mark { font-family: 'Montserrat', sans-serif; font-size: 60px; line-height: .8; opacity: .25; display: block; margin-bottom: 6px; color: #fff; position: relative; }
+  .uno-card blockquote { font-size: clamp(18px,3vw,22px); font-style: italic; line-height: 1.65; color: #fff; margin-bottom: 16px; position: relative; }
+  .uno-card .attribution { font-size: 15px; opacity: .55; letter-spacing: 1px; color: #fff; position: relative; }
+
+  /* NUTRICIONAL */
+  .nutricion-section { margin-top: 36px; background: var(--white); border-radius: 16px; overflow: hidden; }
+  .nutri-header { background: var(--sand-dark); padding: 18px 24px; border-left: 6px solid var(--teal); display: flex; align-items: center; gap: 16px; }
+  .nutri-body { padding: 22px 24px 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  @media(max-width:500px){ .nutri-body { grid-template-columns: 1fr; } }
+  .nutri-item h4 { font-size: 17px; font-weight: 600; color: var(--teal); margin-bottom: 6px; }
+  .nutri-item p { font-size: 16px; color: #555; line-height: 1.55; }
+  .nutri-recipe { grid-column: 1/-1; background: var(--sand); border-radius: 10px; padding: 16px 18px; display: flex; gap: 12px; align-items: flex-start; flex-wrap: wrap; }
+  .nutri-recipe .btn-watch { flex-shrink: 0; }
+  .nutri-recipe p { font-size: 17px; color: #444; line-height: 1.6; min-width: 0; flex: 1 1 200px; }
+  @media(max-width:500px){ .nutri-recipe { flex-direction: column; align-items: flex-start; } .nutri-recipe .btn-watch { margin-top: 0; } }
+
+  /* PROTOCOLO */
+  .protocolo { margin-top: 32px; background: var(--terracota); border-radius: 16px; padding: 28px 22px; position: relative; overflow: hidden; }
+  .proto-deco { position: absolute; inset: 0; pointer-events: none; }
+  .protocolo .section-tag { color: rgba(255,255,255,.65); }
+  .protocolo .section-title { color: #fff; font-size: clamp(16px,2.5vw,20px); margin-bottom: 20px; }
+  .proto-steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 22px; }
+  .proto-step { background: rgba(255,255,255,.13); border-radius: 10px; padding: 16px; }
+  .proto-step .step-icon { margin-bottom: 9px; }
+  .proto-step h4 { font-size: clamp(14px,2vw,17px); font-weight: 600; margin-bottom: 6px; color: #fff; }
+  .proto-step p { font-size: clamp(12px,1.7vw,15px); opacity: .88; line-height: 1.5; color: #fff; }
+  .desafio-box { background: rgba(255,255,255,.15); border: 1.5px dashed rgba(255,255,255,.4); border-radius: 14px; padding: 22px 20px; display: flex; flex-direction: row; gap: 16px; align-items: flex-start; }
+  .desafio-box .d-label { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 3px; text-transform: uppercase; opacity: .65; margin-bottom: 10px; color: #fff; }
+  .desafio-box p { font-size: clamp(14px,2vw,17px); line-height: 1.7; color: #fff; }
+  @media(max-width:600px){ .desafio-box { flex-direction: column; align-items: center; text-align: center; } .proto-steps { grid-template-columns: 1fr; } }
+
+  .divider { border: none; border-top: 1px solid var(--sand-dark); margin: 30px 0; }
+  footer { background: var(--teal); padding: 24px 40px; text-align: center; color: rgba(255,255,255,.45); font-size: 14px; letter-spacing: 1px; }
+  footer strong { color: rgba(255,255,255,.75); }
+</style>
+</head>
+<body>
+
+<nav class="main-nav">
+  <img src="../Marca V&S T7.png" alt="Vida y Salud" class="nav-logo">
+  <a href="../index.html" class="nav-btn">← Volver al Inicio</a>
+</nav>
+
+<!-- PORTADA -->
+<div class="cover">
+  <svg class="cover-deco" viewBox="0 0 680 280" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+    <circle cx="620" cy="40" r="110" fill="rgba(255,255,255,0.05)"/>
+    <circle cx="60" cy="240" r="90" fill="rgba(255,255,255,0.04)"/>
+    <circle cx="650" cy="250" r="22" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/>
+    <!-- respiración / onda -->
+    <path d="M260 150 Q280 120 300 150 Q320 180 340 150 Q360 120 380 150 Q400 180 420 150" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="3" stroke-linecap="round"/>
+  </svg>
+  <div class="brand">Resumen Semanal</div>
+  <h1>Aprender a<br>vivir <em>sin prisa</em></h1>
+  <div class="cover-sub">PRG 211–215 · La Práctica Diaria</div>
+</div>
+
+<!-- OPENING -->
+<div class="opening">
+  <svg style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;" viewBox="0 0 680 90" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+    <circle cx="30" cy="45" r="50" fill="rgba(255,255,255,0.06)"/>
+    <circle cx="660" cy="45" r="55" fill="rgba(255,255,255,0.05)"/>
+  </svg>
+  <p>Ya sabemos lo que pasa cuando vivimos acelerados. Esta semana: herramientas concretas para el día a día — respirar con intención, vivir como Jesús, ritualizar la calma y soltar la adicción a la urgencia.</p>
+</div>
+
+<div class="body-wrap">
+
+  <!-- AUTODIAGNÓSTICO -->
+  <div class="diag-section">
+    <div>
+      <div class="section-tag">Autodiagnóstico</div>
+      <div class="section-title">¿Vivís en piloto automático?</div>
+      <ul class="check-list">
+        <li><input type="checkbox" class="check-input" id="c1"><label for="c1">¿Tu respiración es corta y rápida la mayor parte del día sin que lo notes?</label></li>
+        <li><input type="checkbox" class="check-input" id="c2"><label for="c2">¿Imaginarte viviendo como Jesús — sin apuro, con propósito — te parece inalcanzable?</label></li>
+        <li><input type="checkbox" class="check-input" id="c3"><label for="c3">¿Empezás y terminás el día en modo reactivo, sin ningún ritual propio?</label></li>
+        <li><input type="checkbox" class="check-input" id="c4"><label for="c4">¿Necesitás la presión para activarte — sin urgencia, no arrancás?</label></li>
+        <li><input type="checkbox" class="check-input" id="c5"><label for="c5">¿Cuando el presente es lindo, lo ignorás porque estás pensando en lo que sigue?</label></li>
+      </ul>
+      <div class="diag-note">Si marcaste 2 o más, esta semana es para vos. No hay conceptos nuevos — hay gestos concretos para poner en práctica hoy.</div>
+    </div>
+    <div>
+      <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="46" fill="#fdf4ec" stroke="#e8ddd0" stroke-width="1.5"/>
+        <!-- onda de respiración -->
+        <path d="M18 55 Q28 35 38 55 Q48 75 58 55 Q68 35 78 55" fill="none" stroke="#1d6b6b" stroke-width="2.5" opacity="0.45" stroke-linecap="round"/>
+        <!-- punto de presencia -->
+        <circle cx="50" cy="68" r="5" fill="#c05a3a" opacity="0.4"/>
+        <line x1="50" y1="63" x2="50" y2="55" stroke="#c05a3a" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+      </svg>
+    </div>
+  </div>
+
+  <br><br>
+
+  <div class="section-intro">
+    3 ideas que cambian la perspectiva<br><br>
+    2 herramientas para aplicar esta semana<br><br>
+    1 frase para llevar
+  </div>
+
+  <hr class="divider">
+
+  <!-- 3 IDEAS -->
+  <div class="num-header">
+    <div class="num-circle teal">3</div>
+    <div>
+      <div class="num-label">ideas que cambian la perspectiva</div>
+      <div class="num-title">Lo que aprendimos sobre vivir sin prisa de verdad</div>
+    </div>
+  </div>
+
+  <div class="tres-grid">
+
+    <!-- IDEA 1: PRG 211 + 212 -->
+    <div class="tres-card">
+      <div class="tres-card-icon">
+        <svg width="36" height="36" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="18" cy="18" r="15" fill="#e1f5ee" stroke="#2a8f8f" stroke-width="1.5"/>
+          <!-- onda de respiración -->
+          <path d="M8 18 Q11 12 14 18 Q17 24 20 18 Q23 12 26 18" fill="none" stroke="#1d6b6b" stroke-width="2" opacity="0.6" stroke-linecap="round"/>
+          <!-- cruz/jesús sutil -->
+          <line x1="28" y1="10" x2="28" y2="18" stroke="#c05a3a" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+          <line x1="25" y1="13" x2="31" y2="13" stroke="#c05a3a" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+        </svg>
+      </div>
+      <div>
+        <p>La respiración consciente no es yoga ni técnica new age — es una capacidad de restauración que Dios nos dio y que no usamos.</p>
+      </div>
+    </div>
+
+    <!-- IDEA 2: PRG 213 + 214 -->
+    <div class="tres-card">
+      <div class="tres-card-icon">
+        <svg width="36" height="36" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="18" cy="18" r="15" fill="#e1f5ee" stroke="#2a8f8f" stroke-width="1.5"/>
+          <path d="M10 22 Q18 12 26 22" fill="none" stroke="#c05a3a" stroke-width="1.5" opacity="0.5" stroke-linecap="round"/>
+          <circle cx="18" cy="14" r="3.5" fill="#c05a3a" opacity="0.4"/>
+          <path d="M22 26 Q17 24 17 27 Q17 30 22 29 Q19 29 19 27 Q19 25 22 26Z" fill="#1d6b6b" opacity="0.4"/>
+        </svg>
+      </div>
+      <div>
+        <p>Un ritual no es una rutina rígida — es un gesto intencional que le da forma al día.</p>
+      </div>
+    </div>
+
+    <!-- IDEA 3: PRG 215 -->
+    <div class="tres-card">
+      <div class="tres-card-icon">
+        <svg width="36" height="36" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="18" cy="18" r="15" fill="#e1f5ee" stroke="#2a8f8f" stroke-width="1.5"/>
+          <path d="M12 16 Q18 10 24 16 Q24 22 18 26 Q12 22 12 16Z" fill="#c05a3a" opacity="0.25" stroke="#c05a3a" stroke-width="1.2"/>
+          <circle cx="18" cy="19" r="2.5" fill="#1d6b6b" opacity="0.4"/>
+        </svg>
+      </div>
+      <div>
+        <p>Un momento disfrutado no se recupera después. Un momento vivido de prisa tampoco.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PROGRAMAS DE LA SEMANA -->
+  <div style="background:var(--white); border-radius:12px; padding:22px 24px; margin-top:20px;">
+    <div style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:3px; text-transform:uppercase; color:var(--terracota); margin-bottom:14px;">Ver los programas de esta semana</div>
+    <div class="btn-row" style="margin-top:0;">
+      <a href="PLACEHOLDER_211_PRG" class="btn-watch">▶ La respiración como ancla</a>
+      <a href="PLACEHOLDER_212_PRG" class="btn-watch">▶ El ritmo de vida de Jesús</a>
+      <a href="PLACEHOLDER_213_PRG" class="btn-watch">▶ Rituales de desaceleración</a>
+      <a href="PLACEHOLDER_214_PRG" class="btn-watch">▶ La adicción a la urgencia</a>
+      <a href="PLACEHOLDER_215_PRG" class="btn-watch">▶ Saborear el presente</a>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- 2 HERRAMIENTAS -->
+  <div class="num-header">
+    <div class="num-circle terra">2</div>
+    <div>
+      <div class="num-label">herramientas para aplicar esta semana</div>
+      <div class="num-title">De la reflexión a la práctica</div>
+    </div>
+  </div>
+
+  <div class="dos-grid">
+    <div class="dos-card">
+      <div class="dos-card-icon">
+        <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="4" width="24" height="24" rx="5" fill="#fdf4ec" stroke="#e8ddd0" stroke-width="1.5"/>
+          <!-- onda 4-4-4 -->
+          <path d="M8 18 Q11 12 14 18 Q17 24 20 18 Q23 12 26 18" fill="none" stroke="#1d6b6b" stroke-width="1.8" opacity="0.6" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h3>Respiración 4-4-4</h3>
+      <p>Inhalá 4 segundos, sostené 4, exhalá 4. Tres ciclos. Antes de responder algo que te alteró, antes de entrar a una reunión, antes de comer. No necesita más de 40 segundos. Cambia el estado del sistema nervioso en el momento.</p>
+    </div>
+    <div class="dos-card">
+      <div class="dos-card-icon">
+        <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="4" width="24" height="24" rx="5" fill="#fdf4ec" stroke="#e8ddd0" stroke-width="1.5"/>
+          <!-- ancla del día -->
+          <circle cx="16" cy="11" r="3" fill="none" stroke="#1d6b6b" stroke-width="1.5" opacity="0.6"/>
+          <line x1="16" y1="14" x2="16" y2="22" stroke="#1d6b6b" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+          <path d="M10 19 Q16 24 22 19" fill="none" stroke="#c05a3a" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+        </svg>
+      </div>
+      <h3>Ritual ancla</h3>
+      <p>Elegí un gesto para abrir el día (versículo + cama tendida, oración + desayuno sin celular) y uno para cerrarlo (merienda tranquila, gratitud en voz alta). No importa cuánto dura — importa que lo hacés todos los días.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- 1 FRASE -->
+  <div class="num-header">
+    <div class="num-circle teal">1</div>
+    <div>
+      <div class="num-label">frase para llevar esta semana</div>
+      <div class="num-title">Para reflexionar y compartir</div>
+    </div>
+  </div>
+
+  <div class="uno-card">
+    <svg class="uno-deco" viewBox="0 0 680 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <circle cx="40" cy="60" r="70" fill="rgba(255,255,255,0.05)"/>
+      <circle cx="640" cy="60" r="80" fill="rgba(255,255,255,0.04)"/>
+    </svg>
+    <span class="quote-mark">"</span>
+    <blockquote>Mi forma de respirar<br>reflejaba mi forma de vivir.<br>Ahí empezó el cambio.</blockquote>
+    <div class="attribution">— Vida &amp; Salud · PRG 211</div>
+  </div>
+
+  <!-- NUTRICIONAL -->
+  <div class="nutricion-section">
+    <div class="nutri-header">
+      <svg width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="14" cy="14" r="13" fill="#e1f5ee"/>
+        <ellipse cx="14" cy="16" rx="8" ry="4" fill="none" stroke="#1d6b6b" stroke-width="1.5"/>
+        <ellipse cx="14" cy="15.5" rx="8" ry="4" fill="#fdfaf6" stroke="#1d6b6b" stroke-width="1.2"/>
+        <line x1="7" y1="8" x2="7" y2="14" stroke="#1d6b6b" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="5.5" y1="8" x2="5.5" y2="11" stroke="#1d6b6b" stroke-width="1" stroke-linecap="round"/>
+        <line x1="8.5" y1="8" x2="8.5" y2="11" stroke="#1d6b6b" stroke-width="1" stroke-linecap="round"/>
+        <line x1="21" y1="8" x2="21" y2="14" stroke="#1d6b6b" stroke-width="1.2" stroke-linecap="round"/>
+        <ellipse cx="14" cy="15" rx="5" ry="2.5" fill="#c05a3a" opacity="0.35"/>
+      </svg>
+      <div>
+        <div class="section-tag">Nutrición</div>
+        <div class="section-title" style="font-size:15px;font-weight:900;letter-spacing:-0.2px;text-transform:uppercase;">Nutrición de esta semana</div>
+      </div>
+    </div>
+    <div class="nutri-body">
+
+      <div class="nutri-item">
+        <h4>Aprovechar los alimentos · Lic. Cynthia Schlegel (PRG 211) <a href="PLACEHOLDER_211_LCDP" class="btn-watch" style="margin-top:4px;">▶ Ver</a></h4>
+        <p>Las hojas de remolacha se saltean. Los troncos de brócoli van en croquetas. Las bananas pasadas hacen muffins. El arroz de ayer se convierte en ensalada. Todo tiene una segunda vida.</p>
+      </div>
+
+      <div class="nutri-item">
+        <h4>El intestino, el segundo cerebro · Lic. Cynthia Schlegel (PRG 213) <a href="PLACEHOLDER_213_LCDP" class="btn-watch" style="margin-top:4px;">▶ Ver</a></h4>
+        <p>Más del 90% de la serotonina se produce en el intestino. Lo que comés afecta cómo te sentís. El estrés lo inflama — y respirar y caminar también lo cuidan.</p>
+      </div>
+
+      <div class="nutri-item">
+        <h4>Dietas basadas en plantas · Lic. Melina Schimpf (PRG 215) <a href="PLACEHOLDER_215_LCDP" class="btn-watch" style="margin-top:4px;">▶ Ver</a></h4>
+        <p>Legumbres + cereales integrales + frutas y verduras de colores + frutos secos. El único suplemento indispensable: vitamina B12. Bien planificada, cubre todo.</p>
+      </div>
+
+      <div style="grid-column:1/-1; display:flex; align-items:center; gap:12px; margin: 4px 0;">
+        <div style="flex:1; height:1px; background:var(--sand-dark);"></div>
+        <span style="font-family:'DM Mono',monospace; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); white-space:nowrap;">Recetas de la semana</span>
+        <div style="flex:1; height:1px; background:var(--sand-dark);"></div>
+      </div>
+
+      <div class="nutri-recipe">
+        <a href="PLACEHOLDER_212_RECETA" class="btn-watch" style="flex-shrink:0;">▶ Ver receta</a>
+        <p><strong>Ceviche de hongos (PRG 212):</strong> Champiñones, cebolla morada, limón, aceite de oliva y cilantro. Sin cocción, listo en 10 minutos.</p>
+      </div>
+      <div class="nutri-recipe">
+        <a href="PLACEHOLDER_214_RECETA" class="btn-watch" style="flex-shrink:0;">▶ Ver receta</a>
+        <p><strong>Galletas de banana (PRG 214):</strong> Banana pisada, manteca de maní y cacao. Sin harina, sin azúcar. Horno 170°C, 15 minutos.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PROTOCOLO -->
+  <div class="protocolo">
+    <svg class="proto-deco" viewBox="0 0 680 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <circle cx="620" cy="20" r="80" fill="rgba(255,255,255,0.06)"/>
+      <circle cx="50" cy="180" r="60" fill="rgba(255,255,255,0.05)"/>
+    </svg>
+    <div class="section-tag">Protocolo de Implementación</div>
+    <div class="section-title">Tu plan semanal para vivir sin prisa de verdad</div>
+    <div class="proto-steps">
+      <div class="proto-step">
+        <div class="step-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="14" cy="14" r="13" fill="rgba(255,255,255,0.15)"/>
+            <path d="M7 14 Q10 9 13 14 Q16 19 19 14 Q22 9 25 14" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h4>Respiración 4-4-4 (lunes)</h4>
+        <p>Elegí un momento del día — antes del almuerzo, antes de revisar mensajes — y hacé tres ciclos de respiración 4-4-4. Solo eso. Esta semana, todos los días.</p>
+      </div>
+      <div class="proto-step">
+        <div class="step-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="14" cy="14" r="13" fill="rgba(255,255,255,0.15)"/>
+            <circle cx="14" cy="10" r="3" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.2"/>
+            <line x1="14" y1="13" x2="14" y2="20" stroke="rgba(255,255,255,0.5)" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M9 17 Q14 21 19 17" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h4>Ritual ancla (miércoles)</h4>
+        <p>Definí un gesto para abrir el día y uno para cerrarlo. Escríbilos en un papel. No importa cuánto duran — importa que son tuyos y los hacés con intención.</p>
+      </div>
+      <div class="proto-step">
+        <div class="step-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="14" cy="14" r="13" fill="rgba(255,255,255,0.15)"/>
+            <path d="M9 14 Q14 8 19 14 Q14 20 9 14Z" fill="rgba(255,255,255,0.3)" stroke="rgba(255,255,255,0.6)" stroke-width="1"/>
+            <circle cx="14" cy="14" r="2.5" fill="rgba(255,255,255,0.6)"/>
+          </svg>
+        </div>
+        <h4>Un momento presente (viernes)</h4>
+        <p>Elegí una actividad del día para hacerla completamente presente. Sin celular, sin prisa, sin pensando en lo siguiente. Solo eso, bien saboreado.</p>
+      </div>
+    </div>
+    <div class="desafio-box">
+      <svg width="36" height="36" viewBox="0 0 36 36" style="flex-shrink:0;margin-top:2px;" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="18" cy="18" r="17" fill="rgba(255,255,255,0.15)"/>
+        <rect x="10" y="8" width="16" height="20" rx="2" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.5)" stroke-width="1"/>
+        <path d="M14 16 L16 18 L22 13" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <line x1="14" y1="21" x2="22" y2="21" stroke="rgba(255,255,255,0.4)" stroke-width="1" stroke-linecap="round"/>
+        <line x1="14" y1="24" x2="19" y2="24" stroke="rgba(255,255,255,0.3)" stroke-width="1" stroke-linecap="round"/>
+      </svg>
+      <div>
+        <div class="d-label">Tu desafío semanal</div>
+        <p>Elegí UNA acción con día y hora: <strong>(a)</strong> Practicar la respiración 4-4-4 antes de una situación que normalmente te genera urgencia o tensión. <strong>(b)</strong> Crear tu ritual ancla de la mañana y cumplirlo cinco días seguidos — aunque sea en su versión más corta. <strong>(c)</strong> La próxima vez que estés a punto de decir "no tengo tiempo", preguntate si es tiempo lo que falta o calma.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- COMUNIDAD -->
+  <div class="diag-section">
+    <div>
+      <div class="section-tag">COMUNIDAD DIGITAL</div>
+      <div class="section-title">Seguí a Vida &amp; Salud TV</div>
+      <ul class="check-list">
+        <li><div><a class="btn-watch" href="https://www.youtube.com/@vidaysaludtv" target="_blank">Canal YouTube</a> Programas completos, temporadas y episodios especiales.</div></li>
+        <li><div><a class="btn-watch" href="https://www.instagram.com/vidaysaludtv" target="_blank">Instagram</a> Clips diarios y actualidad del proyecto.</div></li>
+        <li><div><a class="btn-watch" href="https://www.facebook.com/tv.vidaysalud" target="_blank">Facebook</a> Comunidad extendida y publicaciones semanales.</div></li>
+        <li><div><a class="btn-watch" href="https://whatsapp.com/channel/0029VbCXcJD72WU2Tvqiv31h" target="_blank">Canal WhatsApp</a> Recordatorios y contenido exclusivo directo en tu celular.</div></li>
+      </ul>
+      <div class="diag-note">Suscribite y activá notificaciones para no perder ningún programa, segmento nutricional ni reflexión semanal.</div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  Una guía de <strong>@vidaysaludtv</strong> &nbsp;·&nbsp; PRG 211–215 &nbsp;·&nbsp; Aprender a Vivir sin Prisa
+</footer>
+
+</body>
+</html>
