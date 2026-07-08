@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vida & Salud — Resumen Semanal PRG 231–235</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal:       #1d6b6b;
+    --teal-light: #2a8f8f;
+    --teal-pale:  #e1f5ee;
+    --sand:       #f5efe6;
+    --sand-dark:  #e8ddd0;
+    --terracota:  #c05a3a;
+    --ink:        #1a1a1a;
+    --muted:      #6b6b6b;
+    --white:      #fdfaf6;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--sand); font-family: 'Poppins', sans-serif; color: var(--ink); font-size: 16px; line-height: 1.65; }
+
+  .main-nav { background: var(--teal); padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--terracota); position: sticky; top: 0; z-index: 1000; }
+  .nav-logo { height: 32px; width: auto; filter: brightness(0) invert(1); }
+  .nav-btn { color: white; font-family: 'DM Mono', monospace; font-size: 13px; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.3); padding: 6px 14px; border-radius: 20px; background: rgba(255,255,255,0.1); text-decoration: none; transition: all .2s; }
+  .nav-btn:hover { background: rgba(255,255,255,0.2); }
+  @media(max-width:600px){ .main-nav { padding: 10px 14px; } .nav-logo { height: 26px; } .nav-btn { font-size: 11px; padding: 5px 10px; } }
+
+  .cover { background: var(--teal); padding: 52px 40px 44px; text-align: center; position: relative; overflow: hidden; }
+  .cover-deco { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+  .brand { font-family: 'DM Mono', monospace; font-size: 14px; letter-spacing: 4px; text-transform: uppercase; color: rgba(255,255,255,.5); margin-bottom: 18px; position: relative; }
+  .cover h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(28px,6vw,44px); font-weight: 900; letter-spacing: -1px; color: #fff; line-height: 1.15; margin-bottom: 10px; position: relative; text-transform: uppercase; }
+  .cover h1 em { font-style: italic; color: #9dd8d8; }
+  .cover-sub { font-size: 16px; color: rgba(255,255,255,.55); margin-bottom: 28px; position: relative; }
+
+  .opening { background: var(--terracota); padding: 40px; text-align: center; position: relative; overflow: hidden; }
+  .opening p { font-size: clamp(18px,2.5vw,22px); font-style: italic; color: #fff; max-width: 600px; margin: 0 auto; line-height: 1.65; position: relative; }
+
+  .body-wrap { max-width: 720px; margin: 0 auto; padding: 0 24px 60px; }
+
+  .diag-section { background: var(--white); border-radius: 16px; padding: 32px 28px; margin-top: 36px; border-left: 6px solid var(--terracota); display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: start; }
+  @media(max-width:540px){ .diag-section { grid-template-columns: 1fr; } }
+  .section-tag { font-family: 'DM Mono', monospace; font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: var(--terracota); margin-bottom: 8px; }
+  .section-title { font-family: 'Montserrat', sans-serif; font-size: 26px; font-weight: 700; color: var(--ink); margin-bottom: 16px; }
+  .check-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .check-list li { display: flex; gap: 12px; align-items: flex-start; font-size: 17px; color: #333; line-height: 1.5; }
+  .check-input { appearance: none; width: 20px; height: 20px; border: 2px solid var(--sand-dark); border-radius: 4px; margin-top: 3px; cursor: pointer; position: relative; flex-shrink: 0; transition: all .2s; }
+  .check-input:checked { background: var(--terracota); border-color: var(--terracota); }
+  .check-input:checked::after { content: "✓"; color: #fff; font-size: 14px; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-58%); font-weight: bold; }
+  .diag-note { margin-top: 20px; background: var(--sand); border-radius: 10px; padding: 14px 16px; font-size: 16px; color: var(--muted); line-height: 1.6; }
+
+  a { text-decoration: none; color: inherit; }
+  .btn-watch { display: inline-flex; align-items: center; gap: 8px; margin-top: 12px; font-family: 'DM Mono', monospace; font-size: 13px; text-transform: uppercase; font-weight: 600; color: var(--terracota); border: 1.5px solid var(--terracota); padding: 6px 14px; border-radius: 4px; transition: all 0.2s; }
+  .btn-watch:hover { background: var(--terracota); color: #fff; }
+  .btn-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+
+  .section-intro { text-align: center; font-size: 24px; font-weight: 900; color: var(--teal); margin-bottom: 24px; }
+
+  .num-header { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
+  .num-circle { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Montserrat', sans-serif; font-size: 22px; font-weight: 900; flex-shrink: 0; }
+  .num-circle.teal { background: var(--teal); color: #fff; }
+  .num-circle.terra { background: var(--terracota); color: #fff; }
+  .num-label { font-family: 'DM Mono', monospace; font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); }
+  .num-title { font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 900; letter-spacing: -0.2px; color: var(--ink); margin-top: 4px; text-transform: uppercase; }
+
+  .tres-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+  .tres-card { background: var(--white); border-radius: 12px; padding: 24px; border-top: 4px solid var(--teal-light); display: grid; grid-template-columns: auto 1fr; gap: 0 18px; }
+  .tres-card-icon { padding-top: 4px; }
+  .tres-card p { font-size: 17px; color: #444; line-height: 1.65; }
+
+  .programas-section { background: var(--white); border-radius: 12px; padding: 22px 24px; margin-top: 20px; }
+  .programas-section .section-tag { margin-bottom: 14px; }
+
+  .dos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media(max-width:500px){ .dos-grid { grid-template-columns: 1fr; } }
+  .dos-card { background: var(--white); border-radius: 12px; padding: 24px; border-bottom: 4px solid var(--terracota); }
+  .dos-card-icon { margin-bottom: 12px; }
+  .dos-card h3 { font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 900; color: var(--ink); margin-bottom: 8px; text-transform: uppercase; }
+  .dos-card p { font-size: 17px; color: #555; line-height: 1.6; }
+
+  .uno-card { background: var(--teal); border-radius: 16px; padding: 36px 28px; text-align: center; position: relative; overflow: hidden; }
+  .uno-deco { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+  .quote-mark { font-family: 'Montserrat', sans-serif; font-size: 60px; line-height: .8; opacity: .25; display: block; margin-bottom: 6px; color: #fff; position: relative; }
+  .uno-card blockquote { font-size: clamp(18px,3vw,22px); font-style: italic; line-height: 1.65; color: #fff; margin-bottom: 16px; position: relative; }
+  .uno-card .attribution { font-size: 15px; opacity: .55; letter-spacing: 1px; color: #fff; position: relative; }
+
+  /* CIERRE ESPECIAL */
+  .cierre-card {
+    background: var(--terracota); border-radius: 16px; padding: 36px 28px;
+    text-align: center; position: relative; overflow: hidden; margin-top: 32px;
+  }
+  .cierre-card p { font-size: clamp(16px,2.5vw,19px); color: rgba(255,255,255,0.9); line-height: 1.75; position: relative; max-width: 560px; margin: 0 auto; }
+  .cierre-card .cierre-tag { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 16px; display: block; position: relative; }
+
+  .nutricion-section { margin-top: 36px; background: var(--white); border-radius: 16px; overflow: hidden; }
+  .nutri-header { background: var(--sand-dark); padding: 18px 24px; border-left: 6px solid var(--teal); display: flex; align-items: center; gap: 16px; }
+  .nutri-body { padding: 22px 24px 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  @media(max-width:500px){ .nutri-body { grid-template-columns: 1fr; } }
+  .nutri-item h4 { font-size: 17px; font-weight: 600; color: var(--teal); margin-bottom: 6px; }
+  .nutri-item p { font-size: 16px; color: #555; line-height: 1.55; }
+  .nutri-recipe { grid-column: 1/-1; background: var(--sand); border-radius: 10px; padding: 16px 18px; display: flex; gap: 12px; align-items: flex-start; flex-wrap: wrap; }
+  .nutri-recipe .btn-watch { flex-shrink: 0; }
+  .nutri-recipe p { font-size: 17px; color: #444; line-height: 1.6; min-width: 0; flex: 1 1 200px; }
+  @media(max-width:500px){ .nutri-recipe { flex-direction: column; align-items: flex-start; } .nutri-recipe .btn-watch { margin-top: 0; } }
+
+  .protocolo { margin-top: 32px; background: var(--terracota); border-radius: 16px; padding: 28px 22px; position: relative; overflow: hidden; }
+  .proto-deco { position: absolute; inset: 0; pointer-events: none; }
+  .protocolo .section-tag { color: rgba(255,255,255,.65); }
+  .protocolo .section-title { color: #fff; font-size: clamp(16px,2.5vw,20px); margin-bottom: 20px; }
+  .proto-steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 22px; }
+  .proto-step { background: rgba(255,255,255,.13); border-radius: 10px; padding: 16px; }
+  .proto-step .step-icon { margin-bottom: 9px; }
+  .proto-step h4 { font-size: clamp(14px,2vw,17px); font-weight: 600; margin-bottom: 6px; color: #fff; }
+  .proto-step p { font-size: clamp(12px,1.7vw,15px); opacity: .88; line-height: 1.5; color: #fff; }
+  .desafio-box { background: rgba(255,255,255,.15); border: 1.5px dashed rgba(255,255,255,.4); border-radius: 14px; padding: 22px 20px; display: flex; flex-direction: row; gap: 16px; align-items: flex-start; }
+  .desafio-box .d-label { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 3px; text-transform: uppercase; opacity: .65; margin-bottom: 10px; color: #fff; }
+  .desafio-box p { font-size: clamp(14px,2vw,17px); line-height: 1.7; color: #fff; }
+  @media(max-width:600px){ .desafio-box { flex-direction: column; align-items: center; text-align: center; } .proto-steps { grid-template-columns: 1fr; } }
+
+  .divider { border: none; border-top: 1px solid var(--sand-dark); margin: 30px 0; }
+  footer { background: var(--teal); padding: 24px 40px; text-align: center; color: rgba(255,255,255,.45); font-size: 14px; letter-spacing: 1px; }
+  footer strong { color: rgba(255,255,255,.75); }
+</style>
+</head>
+<body>
+
+<nav class="main-nav">
+  <img src="../Marca V&S T7.png" alt="Vida y Salud" class="nav-logo">
+  <a href="../index.html" class="nav-btn">← Volver al Inicio</a>
+</nav>
+
+<div class="cover">
+  <svg class="cover-deco" viewBox="0 0 680 280" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+    <circle cx="620" cy="40" r="110" fill="rgba(255,255,255,0.05)"/>
+    <circle cx="60" cy="240" r="90" fill="rgba(255,255,255,0.04)"/>
+    <circle cx="650" cy="250" r="22" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/>
+    <!-- río que fluye -->
+    <path d="M80 200 Q200 140 340 160 Q480 180 600 120" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="4" stroke-linecap="round"/>
+    <path d="M80 220 Q200 160 340 180 Q480 200 600 140" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="3" stroke-linecap="round"/>
+  </svg>
+  <div class="brand">Resumen Final · Sexta Temporada</div>
+  <h1>Caminar sin prisa.<br><em>Seguir sin apuro.</em></h1>
+  <div class="cover-sub">PRG 231–235 · Cierre de Temporada</div>
+</div>
+
+<div class="opening">
+  <svg style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;" viewBox="0 0 680 90" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+    <circle cx="30" cy="45" r="50" fill="rgba(255,255,255,0.06)"/>
+    <circle cx="660" cy="45" r="55" fill="rgba(255,255,255,0.05)"/>
+  </svg>
+  <p>No llegamos al final — llegamos al comienzo. Esta semana: espiritualidad sin prisas, herramientas para sostener el cambio, gratitud y alegría en lo cotidiano, experiencias reales del equipo y una invitación final a seguir caminando.</p>
+</div>
+
+<div class="body-wrap">
+
+  <div class="diag-section">
+    <div>
+      <div class="section-tag">Reflexión de cierre</div>
+      <div class="section-title">¿Qué cambió en vos esta temporada?</div>
+      <ul class="check-list">
+        <li><input type="checkbox" class="check-input" id="c1"><label for="c1">¿Hay algo concreto en tu ritmo de vida que hoy es diferente a cuando empezaste?</label></li>
+        <li><input type="checkbox" class="check-input" id="c2"><label for="c2">¿Tu fe se volvió más presente, más integrada al día a día?</label></li>
+        <li><input type="checkbox" class="check-input" id="c3"><label for="c3">¿Encontraste al menos un hábito que querés sostener más allá de esta temporada?</label></li>
+        <li><input type="checkbox" class="check-input" id="c4"><label for="c4">¿Hay alguien a quien contarle lo que aprendiste y que también podría necesitarlo?</label></li>
+        <li><input type="checkbox" class="check-input" id="c5"><label for="c5">¿Podés decir hoy, con honestidad, que estás más en paz con tu ritmo de vida?</label></li>
+      </ul>
+      <div class="diag-note">No se trata de haber llegado. Se trata de seguir eligiendo el camino — un paso a la vez, al ritmo de Jesús.</div>
+    </div>
+    <div>
+      <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="46" fill="#fdf4ec" stroke="#e8ddd0" stroke-width="1.5"/>
+        <!-- río / camino -->
+        <path d="M20 75 Q35 55 50 50 Q65 45 80 25" fill="none" stroke="#1d6b6b" stroke-width="3" opacity="0.4" stroke-linecap="round"/>
+        <path d="M25 80 Q40 60 50 55 Q60 50 75 30" fill="none" stroke="#1d6b6b" stroke-width="1.5" opacity="0.2" stroke-linecap="round"/>
+        <!-- punto de inicio -->
+        <circle cx="20" cy="75" r="5" fill="#c05a3a" opacity="0.5"/>
+        <!-- punto actual -->
+        <circle cx="80" cy="25" r="5" fill="#1d6b6b" opacity="0.6"/>
+        <circle cx="80" cy="25" r="9" fill="none" stroke="#1d6b6b" stroke-width="1.5" opacity="0.3"/>
+      </svg>
+    </div>
+  </div>
+
+  <br><br>
+
+  <div class="section-intro">
+    3 ideas que cambian la perspectiva<br><br>
+    2 herramientas para llevar<br><br>
+    1 frase para el camino
+  </div>
+
+  <hr class="divider">
+
+  <div class="num-header">
+    <div class="num-circle teal">3</div>
+    <div>
+      <div class="num-label">ideas que cambian la perspectiva</div>
+      <div class="num-title">Lo que aprendimos esta temporada</div>
+    </div>
+  </div>
+
+  <div class="tres-grid">
+
+    <div class="tres-card">
+      <div class="tres-card-icon">
+        <svg width="36" height="36" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="18" cy="18" r="15" fill="#e1f5ee" stroke="#2a8f8f" stroke-width="1.5"/>
+          <!-- libro abierto / espiritualidad -->
+          <path d="M10 13 L10 24 Q18 22 18 24 Q18 22 26 24 L26 13 Q18 15 18 13 Q18 15 10 13Z" fill="none" stroke="#1d6b6b" stroke-width="1.5" opacity="0.6"/>
+          <line x1="18" y1="13" x2="18" y2="24" stroke="#1d6b6b" stroke-width="1" opacity="0.3"/>
+          <circle cx="18" cy="10" r="2.5" fill="#c05a3a" opacity="0.4"/>
+        </svg>
+      </div>
+      <div>
+        <p>La espiritualidad no es un momento del día — es la calidad de presencia con la que vivís cada momento.</p>
+      </div>
+    </div>
+
+    <div class="tres-card">
+      <div class="tres-card-icon">
+        <svg width="36" height="36" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="18" cy="18" r="15" fill="#e1f5ee" stroke="#2a8f8f" stroke-width="1.5"/>
+          <!-- herramienta / llave -->
+          <circle cx="13" cy="13" r="4" fill="none" stroke="#1d6b6b" stroke-width="1.5" opacity="0.6"/>
+          <line x1="16" y1="16" x2="25" y2="25" stroke="#1d6b6b" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+          <line x1="22" y1="23" x2="24" y2="21" stroke="#c05a3a" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+        </svg>
+      </div>
+      <div>
+        <p>Un hábito no se sostiene con fuerza de voluntad — se sostiene con estructura, intención y un propósito claro.</p>
+      </div>
+    </div>
+
+    <div class="tres-card">
+      <div class="tres-card-icon">
+        <svg width="36" height="36" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="18" cy="18" r="15" fill="#e1f5ee" stroke="#2a8f8f" stroke-width="1.5"/>
+          <!-- camino / río -->
+          <path d="M8 26 Q13 18 18 16 Q23 14 28 8" fill="none" stroke="#1d6b6b" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+          <circle cx="8" cy="26" r="2.5" fill="#c05a3a" opacity="0.5"/>
+          <circle cx="28" cy="8" r="2.5" fill="#1d6b6b" opacity="0.6"/>
+        </svg>
+      </div>
+      <div>
+        <p>Este camino no termina hoy. Las grabaciones cerraron — el estilo de vida recién empieza.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="programas-section">
+    <div class="section-tag">Ver los programas de esta semana</div>
+    <div class="btn-row" style="margin-top:0;">
+      <a href="https://youtu.be/JQyTEOCfjz8" class="btn-watch">▶ PRG 231 · Espiritualidad sin prisas</a>
+      <a href="https://youtu.be/mpPR-_FNBgA" class="btn-watch">▶ PRG 232 · Herramientas prácticas</a>
+      <a href="https://youtu.be/oXHPjpaLtdA" class="btn-watch">▶ PRG 233 · Gratitud y alegría</a>
+      <a href="https://youtu.be/FtQmekos9fM" class="btn-watch">▶ PRG 234 · Nuestra experiencia real</a>
+      <a href="https://youtu.be/mR407EeIxnw" class="btn-watch">▶ PRG 235 · Episodio final</a>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="num-header">
+    <div class="num-circle terra">2</div>
+    <div>
+      <div class="num-label">herramientas para llevar</div>
+      <div class="num-title">Lo que no termina con la temporada</div>
+    </div>
+  </div>
+
+  <div class="dos-grid">
+    <div class="dos-card">
+      <div class="dos-card-icon">
+        <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="4" width="24" height="24" rx="5" fill="#fdf4ec" stroke="#e8ddd0" stroke-width="1.5"/>
+          <!-- regla de vida -->
+          <line x1="10" y1="11" x2="22" y2="11" stroke="#1d6b6b" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+          <line x1="10" y1="16" x2="22" y2="16" stroke="#1d6b6b" stroke-width="1.5" stroke-linecap="round" opacity="0.45"/>
+          <line x1="10" y1="21" x2="16" y2="21" stroke="#c05a3a" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+          <circle cx="20" cy="21" r="2.5" fill="#c05a3a" opacity="0.4"/>
+        </svg>
+      </div>
+      <h3>Tu regla de vida</h3>
+      <p>Tres pilares inamovibles sobre los que querés vivir — estés donde estés y pase lo que pase. No tiene que ser perfecta. Tiene que ser tuya. Escribila esta semana.</p>
+    </div>
+    <div class="dos-card">
+      <div class="dos-card-icon">
+        <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="4" width="24" height="24" rx="5" fill="#fdf4ec" stroke="#e8ddd0" stroke-width="1.5"/>
+          <!-- siguiente paso -->
+          <path d="M10 16 L18 16" stroke="#1d6b6b" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+          <path d="M16 12 L22 16 L16 20" fill="none" stroke="#c05a3a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>
+        </svg>
+      </div>
+      <h3>El paso siguiente</h3>
+      <p>No un plan completo — solo lo próximo más pequeño. ¿Qué vas a hacer distinto mañana? Una sola cosa, con nombre y hora. El camino sin prisa también avanza.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="num-header">
+    <div class="num-circle teal">1</div>
+    <div>
+      <div class="num-label">frase para el camino</div>
+      <div class="num-title">Para llevar más allá de esta temporada</div>
+    </div>
+  </div>
+
+  <div class="uno-card">
+    <svg class="uno-deco" viewBox="0 0 680 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <circle cx="40" cy="60" r="70" fill="rgba(255,255,255,0.05)"/>
+      <circle cx="640" cy="60" r="80" fill="rgba(255,255,255,0.04)"/>
+    </svg>
+    <span class="quote-mark">"</span>
+    <blockquote>No fuiste diseñado para vivir<br>en la corriente acelerada.<br>Fuiste creado para fluir — con calma, con propósito.</blockquote>
+    <div class="attribution">— Vida &amp; Salud · PRG 235</div>
+  </div>
+
+  <!-- NUTRICIONAL -->
+  <div class="nutricion-section">
+    <div class="nutri-header">
+      <svg width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="14" cy="14" r="13" fill="#e1f5ee"/>
+        <ellipse cx="14" cy="16" rx="8" ry="4" fill="none" stroke="#1d6b6b" stroke-width="1.5"/>
+        <ellipse cx="14" cy="15.5" rx="8" ry="4" fill="#fdfaf6" stroke="#1d6b6b" stroke-width="1.2"/>
+        <line x1="7" y1="8" x2="7" y2="14" stroke="#1d6b6b" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="5.5" y1="8" x2="5.5" y2="11" stroke="#1d6b6b" stroke-width="1" stroke-linecap="round"/>
+        <line x1="8.5" y1="8" x2="8.5" y2="11" stroke="#1d6b6b" stroke-width="1" stroke-linecap="round"/>
+        <line x1="21" y1="8" x2="21" y2="14" stroke="#1d6b6b" stroke-width="1.2" stroke-linecap="round"/>
+        <ellipse cx="14" cy="15" rx="5" ry="2.5" fill="#c05a3a" opacity="0.35"/>
+      </svg>
+      <div>
+        <div class="section-tag">La ciencia del plato</div>
+        <div class="section-title" style="font-size:15px;font-weight:900;letter-spacing:-0.2px;text-transform:uppercase;">Nutrición de esta semana</div>
+      </div>
+    </div>
+    <div class="nutri-body">
+
+      <div class="nutri-item">
+        <h4>Nutrición en el climaterio · Lic. Yanina García (PRG 231) <a href="https://youtu.be/qFKidgi8A-o" class="btn-watch" style="margin-top:4px;">▶ Ver</a></h4>
+        <p>La caída de estrógenos aumenta el riesgo de osteoporosis y acumulación abdominal. Claves: calcio + vitamina D, omega-3 (sardinas, nueces), proteínas de calidad y fitoestrógenos (soja, garbanzos, linaza). Menos ultraprocesados, más fibra y mucha agua.</p>
+      </div>
+
+      <div class="nutri-item">
+        <h4>Germinados en casa · Lic. Melina Schimpf (PRG 233) <a href="https://youtu.be/_1-R3o67wog" class="btn-watch" style="margin-top:4px;">▶ Ver</a></h4>
+        <p>Al germinar, las semillas multiplican vitaminas B y C, aumentan antioxidantes y hacen las proteínas más digeribles. Con lentejas, agua y un colador: remojo 8 hs, enjuagá 2-3 veces por día, en 3-4 días están listos.</p>
+      </div>
+
+      <div class="nutri-item">
+        <h4>Salud de la piel desde adentro · Lic. Melina Schimpf (PRG 235) <a href="https://youtu.be/bjseZ4uZJIM" class="btn-watch" style="margin-top:4px;">▶ Ver</a></h4>
+        <p>La inflamación crónica daña el colágeno y envejece la piel. La solución empieza en el plato: vegetales de hoja verde, frutos rojos, nueces, omega-3 y fermentados. Menos ultraprocesados, buen descanso y sol regulado.</p>
+      </div>
+
+      <div style="grid-column:1/-1; display:flex; align-items:center; gap:12px; margin: 4px 0;">
+        <div style="flex:1; height:1px; background:var(--sand-dark);"></div>
+        <span style="font-family:'DM Mono',monospace; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); white-space:nowrap;">Recetas de esta semana</span>
+        <div style="flex:1; height:1px; background:var(--sand-dark);"></div>
+      </div>
+
+      <div class="nutri-recipe">
+        <a href="https://youtu.be/CeXCTSfgwes" class="btn-watch" style="flex-shrink:0;">▶ Ver receta</a>
+        <p><strong>Budín de limón y yogur (PRG 232):</strong> Harina leudante, harina de almendras, azúcar mascabo, ralladura de limón, yogur griego, aceite de girasol y huevos. Horno 180°C, 20-30 minutos. Con glasé de limón encima. Húmedo, esponjoso y sin culpa.</p>
+      </div>
+      <div class="nutri-recipe">
+        <a href="https://youtu.be/4WhxLR4ZBfo" class="btn-watch" style="flex-shrink:0;">▶ Ver receta</a>
+        <p><strong>Talitas de garbanzos (PRG 234):</strong> Garbanzos cocidos procesados con harina de garbanzos, aceite de oliva, orégano, paprika y ajo. En placa con papel manteca, cortados en tiritas. Horno 20 minutos hasta dorar. Snack proteico, sin harinas y apto para freezar.</p>
+      </div>
+      <div class="nutri-recipe">
+        <a href="https://youtu.be/bjseZ4uZJIM" class="btn-watch" style="flex-shrink:0;">▶ Ver receta</a>
+        <p><strong>Limonada de frutilla (PRG 235):</strong> Limones sin semillas, agua, stevia y hielo en licuadora. Colar. Volver a licuar con frutillas y más hielo. Refrescante, sin azúcar y lista en 5 minutos. Variante con durazno o menta.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CIERRE ESPECIAL -->
+  <div class="cierre-card">
+    <svg style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;" viewBox="0 0 680 160" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <circle cx="60" cy="80" r="70" fill="rgba(255,255,255,0.06)"/>
+      <circle cx="620" cy="80" r="80" fill="rgba(255,255,255,0.05)"/>
+    </svg>
+    <span class="cierre-tag">Cierre de la Sexta Temporada</span>
+    <p>Gracias por caminar esta temporada con nosotros. Los conductores lo dijeron en el último programa: no llegaron igual que como empezaron — y vos tampoco. Cada pausa que elegiste, cada no que dijiste, cada momento que viviste con más presencia fue parte de este camino. El ritmo de Jesús es posible. Y este camino sin prisa no termina hoy — recién comienza.</p>
+  </div>
+
+  <!-- PROTOCOLO -->
+  <div class="protocolo">
+    <svg class="proto-deco" viewBox="0 0 680 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <circle cx="620" cy="20" r="80" fill="rgba(255,255,255,0.06)"/>
+      <circle cx="50" cy="180" r="60" fill="rgba(255,255,255,0.05)"/>
+    </svg>
+    <div class="section-tag">Para seguir en este camino</div>
+    <div class="section-title">Tres gestos para esta semana</div>
+    <div class="proto-steps">
+      <div class="proto-step">
+        <div class="step-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="14" cy="14" r="13" fill="rgba(255,255,255,0.15)"/>
+            <line x1="8" y1="11" x2="20" y2="11" stroke="rgba(255,255,255,0.6)" stroke-width="1.3" stroke-linecap="round"/>
+            <line x1="8" y1="15" x2="20" y2="15" stroke="rgba(255,255,255,0.5)" stroke-width="1.3" stroke-linecap="round"/>
+            <line x1="8" y1="19" x2="14" y2="19" stroke="rgba(255,255,255,0.4)" stroke-width="1.3" stroke-linecap="round"/>
+            <circle cx="19" cy="19" r="2.5" fill="rgba(255,255,255,0.5)"/>
+          </svg>
+        </div>
+        <h4>Escribí tu regla de vida</h4>
+        <p>Tres pilares. Una hoja. Sin perfección. Solo honestidad sobre cómo querés vivir.</p>
+      </div>
+      <div class="proto-step">
+        <div class="step-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="14" cy="14" r="13" fill="rgba(255,255,255,0.15)"/>
+            <path d="M8 14 Q11 10 14 14 Q17 18 20 14" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="14" y1="19" x2="14" y2="23" stroke="rgba(255,255,255,0.4)" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h4>Nombrá un cambio real</h4>
+        <p>¿Qué cambió en vos desde que empezó la temporada? Una sola cosa, en voz alta o en papel. Nombrarlo lo hace real.</p>
+      </div>
+      <div class="proto-step">
+        <div class="step-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="14" cy="14" r="13" fill="rgba(255,255,255,0.15)"/>
+            <circle cx="10" cy="13" r="2.5" fill="rgba(255,255,255,0.4)"/>
+            <circle cx="18" cy="13" r="2.5" fill="rgba(255,255,255,0.4)"/>
+            <path d="M8 19 Q14 24 20 19" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h4>Compartilo con alguien</h4>
+        <p>Una persona que necesite escuchar algo de lo que aprendiste. El cambio que se comparte se arraiga.</p>
+      </div>
+    </div>
+    <div class="desafio-box">
+      <svg width="36" height="36" viewBox="0 0 36 36" style="flex-shrink:0;margin-top:2px;" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="18" cy="18" r="17" fill="rgba(255,255,255,0.15)"/>
+        <rect x="10" y="8" width="16" height="20" rx="2" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.5)" stroke-width="1"/>
+        <path d="M14 16 L16 18 L22 13" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <line x1="14" y1="21" x2="22" y2="21" stroke="rgba(255,255,255,0.4)" stroke-width="1" stroke-linecap="round"/>
+        <line x1="14" y1="24" x2="19" y2="24" stroke="rgba(255,255,255,0.3)" stroke-width="1" stroke-linecap="round"/>
+      </svg>
+      <div>
+        <div class="d-label">Tu desafío final</div>
+        <p>Elegí UNA acción con día y hora: <strong>(a)</strong> Esta semana escribí tu regla de vida — tres pilares sobre los que querés moverte. <strong>(b)</strong> Hacé los germinados de lentejas en casa: una cucharada, un frasco, agua. En 3 días tenés algo vivo que comer. <strong>(c)</strong> Mandá un mensaje a alguien que también camina este camino. Solo para decírselo.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="diag-section">
+    <div>
+      <div class="section-tag">COMUNIDAD DIGITAL</div>
+      <div class="section-title">Seguí a Vida &amp; Salud TV</div>
+      <ul class="check-list">
+        <li><div><a class="btn-watch" href="https://www.youtube.com/@vidaysaludtv" target="_blank">Canal YouTube</a> Programas completos, temporadas y episodios especiales.</div></li>
+        <li><div><a class="btn-watch" href="https://www.instagram.com/vidaysaludtv" target="_blank">Instagram</a> Clips diarios y actualidad del proyecto.</div></li>
+        <li><div><a class="btn-watch" href="https://www.facebook.com/tv.vidaysalud" target="_blank">Facebook</a> Comunidad extendida y publicaciones semanales.</div></li>
+        <li><div><a class="btn-watch" href="https://whatsapp.com/channel/0029VbCXcJD72WU2Tvqiv31h" target="_blank">Canal WhatsApp</a> Recordatorios y contenido exclusivo directo en tu celular.</div></li>
+      </ul>
+      <div class="diag-note">La temporada cierra — la comunidad sigue. Suscribite para no perderte lo que viene.</div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  Una guía de <strong>@vidaysaludtv</strong> &nbsp;·&nbsp; PRG 231–235 &nbsp;·&nbsp; Cierre de la Sexta Temporada
+</footer>
+
+</body>
+</html>
